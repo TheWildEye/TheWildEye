@@ -1,15 +1,15 @@
 <h1 align="center"><strong style="font-size:48px;">Vyom Nagpal</strong></h1>
 
 <h3 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Jetbrains+Mono&size=26&pause=800&color=15FF00&center=true&vCenter=true&width=760&lines=Cybersecurity+Student;Security+Researcher;CTF+Player" alt="typing"/>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Jetbrains+Mono&size=28&pause=2000&color=00FF3C&center=true&vCenter=true&width=820&lines=Cybersecurity+Student;Security+Researcher;CTF+Player" alt="typing" />
 </h3>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg" width="820" alt="contribution-snake" />
+  <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake.svg" width="820" alt="contribution-snake" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/TheWildEye-Recon%20%26%20OSINT-0f0?style=for-the-badge&logo=github&logoColor=white" alt="TheWildEye Badge"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=60&section=header&text=Matrix+Mode+%7C+Recon+%26+Automation&fontSize=22&color=00FF3C&style=neon" alt="matrix-bar" />
 </p>
 
 ---
@@ -27,26 +27,20 @@
 I build practical security tooling focused on reconnaissance, OSINT, and automation.  
 My workflow: **research → break → understand → automate → document**.
 
----
-
 ## Featured Projects
-- **TheWildEye** — Unified Recon & OSINT framework (recon modules, metadata extraction, WP enum, dir scanning).  
+- **TheWildEye** — Recon & OSINT framework (metadata extraction, WP enum, dir scanning).  
 - **TigerHunt** — Multithreaded directory buster with redirect handling and live progress.  
-- **TigerCrawler** — Crawler for email/link discovery and domain-bound recursive exploration.  
-- Java Weather Forecasting App — Servlets + OpenWeatherMap + JDBC + MySQL.  
+- **TigerCrawler** — Email & link discovery crawler with noise filtering.  
+- Java Weather App — Servlets + OpenWeatherMap + JDBC + MySQL.  
 - Freelance creative & pipeline automation for creators (S8UL Esports).
-
----
 
 ## Skills
 **Security:** OSINT, Reconnaissance, VAPT basics, Linux tooling  
 **Languages:** Python, C, C++, Java, C#  
 **Web:** HTML, CSS, JavaScript  
 **DB:** MySQL, Oracle SQL  
-**Tools:** Git, API integrations, automation scripting  
+**Tools:** Git, APIs, automation scripting  
 **Creative:** Premiere Pro, After Effects, Photoshop
-
----
 
 ## Certifications
 - Threat Intelligence Analyst — arcX  
@@ -54,9 +48,7 @@ My workflow: **research → break → understand → automate → document**.
 - Cyber Threat Management — Cisco  
 - Cyber Security Associate — Reliance Foundation
 
----
-
-## Highlights (numbers that matter)
+## Highlights
 - **#9 (MVP #5)** — NFSU CTF 2023  
 - **#28 (MVP #7)** — NFSU CTF 2022  
 - **3+** custom security tools for recon & automation  
@@ -65,14 +57,10 @@ My workflow: **research → break → understand → automate → document**.
 - **4+ years** freelance; **100+** edited videos/graphics delivered  
 - Pipeline optimizations reduced turnaround by **25%**
 
----
-
 ## Current focus
 - Expanding TheWildEye modules & automation  
-- Building Python-based security utilities for red-team use  
-- OSINT workflow optimization and reliable tooling
-
----
+- OSINT automation & Python security utilities  
+- Red-team oriented scripting
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=vyomnagpal&show_icons=true&theme=tokyonight&hide_border=true" width="48%" />
@@ -84,3 +72,5 @@ My workflow: **research → break → understand → automate → document**.
 </p>
 
 <h3 align="center">Always building. Always learning. Always improving.</h3>
+
+
