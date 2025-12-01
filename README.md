@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=000000&height=140&text=Vyom%20Nagpal&fontSize=50&textColor=FFFFFF&fontAlign=60&animation=fadeIn" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=000000&height=140&text=VYOM%20NAGPAL&fontSize=55&textAlign=50&fontColor=FFD700&animation=fadeIn" width="100%"/>
 </p>
 
 <h3 align="center">
@@ -17,30 +17,29 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg" width="820" alt="contribution-snake"/>
+  <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg" width="820" alt="snake" />
 </p>
 
 ---
 
 ## <span style="color:#00FF3C;font-weight:700">🧾 Details</span>
 **Location:** Ahmedabad, Gujarat  
-**University:** National Forensic Sciences University (B.Tech–M.Tech CSE, Cyber Security)  
-**Domains:** Reconnaissance, OSINT, automation, security tooling, red-team oriented workflows
+**University:** National Forensic Sciences University (Cyber Security)  
+**Domains:** Reconnaissance, OSINT, automation, red-team tooling
 
 ---
 
 ## <span style="color:#00FF3C;font-weight:700">📋 About</span>
-I specialize in building security-focused tools for **reconnaissance, metadata extraction, endpoint analysis, OSINT, and automation**.  
-My work is centered around clean engineering, consistency, and measurable improvements in security workflows.
+I build technical cybersecurity tools specializing in **reconnaissance, metadata extraction, OSINT pipelines, endpoint analysis, and automation**. My approach focuses on performance, reproducibility, and clean engineering for red-team workflows.
 
 ---
 
 ## <span style="color:#00FF3C;font-weight:700">🛠️ Projects</span>
-- **TheWildEye** — Unified Recon & OSINT framework (modular recon, metadata extraction, SSL/endpoint analysis, WP enumeration, directory scanning).  
-- **TigerHunt** — Multithreaded directory buster with redirect handling and categorized HTTP results.  
-- **TigerCrawler** — Domain-bound crawler for email & link discovery with noise filtering.  
-- **Java Weather App** — Servlet-based application using JDBC + MySQL + OpenWeatherMap API.  
-- **Creative automation** — Editing pipeline automation and motion graphics for creators under **S8UL**.
+- **TheWildEye** — Unified Recon & OSINT framework (modular recon, metadata extraction, SSL & endpoint analysis, WP enumeration, directory scanning).  
+- **TigerHunt** — Multithreaded directory buster with redirect awareness and categorized HTTP response reporting.  
+- **TigerCrawler** — Domain-wide crawler for email + link discovery with intelligent noise filtering.  
+- **Java Weather App** — Servlets + OpenWeatherMap API + JDBC + MySQL.  
+- **S8UL Workflow Automation** — Editing/graphics pipeline efficiency improvements.
 
 ---
 
@@ -53,16 +52,15 @@ My work is centered around clean engineering, consistency, and measurable improv
 ---
 
 ## <span style="color:#00FF3C;font-weight:700">💻 Skills</span>
-
 <p align="center">
   <img src="https://skillicons.dev/icons?i=python,cpp,java,cs,js,html,css,mysql,linux,git&theme=dark"/>
 </p>
 
 **Languages:** Python, C, C++, Java, C#  
-**Security:** OSINT, Recon, VAPT fundamentals, Linux tooling  
+**Security:** OSINT, Recon, VAPT fundamentals, Linux  
 **Web:** HTML, CSS, JavaScript  
 **Databases:** MySQL, Oracle SQL  
-**Tools:** Git, automation scripting, API integrations  
+**Tools:** Git, API integrations, automation scripting  
 **Creative:** Premiere Pro, After Effects, Photoshop
 
 ---
@@ -70,14 +68,14 @@ My work is centered around clean engineering, consistency, and measurable improv
 ## <span style="color:#00FF3C;font-weight:700">🏆 Achievements & Highlights</span>
 - **#9 (MVP #5)** — NFSU CTF 2023  
 - **#28 (MVP #7)** — NFSU CTF 2022  
-- Built **3+ production-ready** cybersecurity tools  
-- Tools tested on **5,000+ URLs** across recon test cycles  
-- Improved recon speed by **30–40%** via automation  
-- **4+ years** freelance; delivered **100+** videos/graphics for creators  
-- Designed optimized editing pipelines reducing turnaround by **25%**
+- Built **3+ recon/OSINT automation tools**  
+- Tools tested on **5,000+ URLs**  
+- Reduced recon time by **30–40%** via automation  
+- **4+ years** freelance; **100+** edited videos/graphics  
+- Improved editing workflow efficiency by **25%**
 
 ---
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=80&section=footer&text=Vyom+Nagpal+-+Recon+%7C+OSINT+%7C+Automation&fontSize=16&color=00FF3C&style=neon"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=80&section=footer&text=Vyom%20Nagpal%20%7C%20Recon%20%7C%20OSINT%20%7C%20Automation&fontSize=16&color=00FF3C&fontColor=FFD700&style=neon"/>
 </p>
