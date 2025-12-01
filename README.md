@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/3T3QZQX.gif" width="700" />
+  <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg" width="800" />
 </p>
 
 <h3 align="center">
@@ -18,12 +18,12 @@
 ---
 
 <p align="center">
-  <img src="https://i.imgur.com/qpssJwB.gif" width="600" />
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:0f0,100:000&height=3" width="100%"/>
 </p>
 
 ## 👨‍💻 About Me  
-I work at the intersection of cybersecurity, OSINT, security engineering, and automation.  
-I enjoy building **practical tools**, studying systems in depth, and automating repetitive recon workflows.  
+I work across cybersecurity, OSINT, recon engineering, automation, and security-focused development.  
+I enjoy building **practical tools** that reduce manual effort and help analyze systems more efficiently.  
 My mindset: **research → break → understand → automate → repeat**.
 
 ---
@@ -31,29 +31,29 @@ My mindset: **research → break → understand → automate → repeat**.
 ## 🛠️ Security & Development Projects  
 
 ### 🔥 TheWildEye – Recon & OSINT Framework  
-A modular toolkit for reconnaissance, metadata extraction, SSL analysis, URL/endpoint discovery, WP enum, directory brute-forcing, and more.
+A modular toolkit for reconnaissance: metadata extraction, SSL analysis, URL discovery, WP enum, directory scanning, and more.
 
-### 🐅 TigerHunt – Directory Buster  
-A fast multithreaded dirbuster with redirect logic, color-coded results, clean reporting, and live progress tracking.
+### 🐅 TigerHhunt – Directory Buster  
+Multithreaded dirbuster with redirect logic, categorized output, and clean reporting.
 
 ### 🕸️ TigerCrawler – Email & Link Discovery  
-A crawler for email enumeration, link extraction, domain-restricted recursion, and noise filtering.
+Hybrid crawler for email enumeration, link extraction, recursion, and noise filtering.
 
 ### ☁️ Java Weather Forecasting App  
-Servlet-based application using OpenWeatherMap API + JDBC + MySQL.
+Servlet + JDBC + MySQL + API-based weather system.
 
 ### 🎬 S8UL Creative Work  
-Produced high-performance media workflows, motion graphics, and automated content pipelines for creators with large audiences.
+High-efficiency editing workflows, automated pipelines, and brand asset optimization.
 
 ---
 
 ## 🧠 Skills  
-**Security:** OSINT, Reconnaissance, VAPT basics, Linux tooling  
+**Security:** OSINT, Recon, VAPT basics, Linux  
 **Languages:** Python, C, C++, Java, C#  
 **Web:** HTML, CSS, JavaScript  
 **Databases:** MySQL, Oracle SQL  
-**Tools:** Git, APIs, automation scripting  
-**Creative:** Premiere Pro, After Effects, Photoshop  
+**Tools:** Git, APIs, scripting  
+**Creative:** Premiere Pro, AE, Photoshop  
 
 ---
 
@@ -65,34 +65,33 @@ Produced high-performance media workflows, motion graphics, and automated conten
 
 ---
 
-## 🏆 Highlights (Strong Numbers & Achievements)  
+## 🏆 Highlights (Strong Numerical Impact)
 
 ### 🛡️ Cybersecurity  
-- **#9 Rank (MVP #5)** in NFSU Capture The Flag 2023  
-- **#28 Rank (MVP #7)** in NFSU CTF 2022  
-- Built **3+ custom security tools** used for recon, enumeration, and automation  
-- Automated workflows that reduce manual recon time by **30–40%**  
-- Experience working with recon logic across **5000+ URLs** during testing cycles  
+- **#9 Rank (MVP #5)** — NFSU CTF 2023  
+- **#28 Rank (MVP #7)** — NFSU CTF 2022  
+- Built **3+ security tools** for recon & automation  
+- Automation reduced manual recon time by **30–40%**  
+- Tested tools across **5000+ URLs** during dev cycles  
 
 ### 🎬 Creative & Technical  
-- 4+ years of freelance work, including creators from **S8UL Esports**  
-- Delivered **100+ edited videos and graphics** with optimized workflows  
-- Improved render pipelines with automation, cutting turnaround time by **25%**  
+- 4+ years freelance  
+- Worked with creators from **S8UL Esports**  
+- Delivered **100+ videos/graphics**  
+- Optimized pipelines → **25% faster turnaround**
 
-### 🧩 Engineering & Dev  
-- Developed multi-threaded tools handling **thousands of requests/second** (depending on target & threads)  
-- Designed full-stack Java project integrating API + DB + UI  
-- Strong research-driven approach: regularly reverse-engineer workflows, endpoints, and patterns for automation  
-
-These quantified points hit directly where recruiters look: **impact, scale, rankings, and output volume**.
+### 🧩 Engineering  
+- Built multithreaded tools handling **thousands of requests/sec**  
+- Integrated API + DB + UI in full-stack projects  
+- Strong research + automation mindset
 
 ---
 
 ## 📌 Current Focus  
-- Expanding TheWildEye architecture & modules  
+- Expanding TheWildEye  
 - OSINT automation  
-- Building more Python-based security utilities  
-- Strengthening red-team oriented development  
+- Python security tools  
+- Red-team oriented scripting  
 
 ---
 
@@ -106,7 +105,7 @@ These quantified points hit directly where recruiters look: **impact, scale, ran
 </p>
 
 <p align="center">
-  <img src="https://i.imgur.com/3T3QZQX.gif" width="400" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=120&color=0:0f0,90:000&section=footer" width="100%"/>
 </p>
 
 <h3 align="center">Always building. Always learning. Always improving.</h3>
