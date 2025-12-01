@@ -53,27 +53,27 @@ Workflow: **research → break → understand → automate → document**.
 
 ---
 
-## Highlights (numbers that recruit)
+## Highlights (numbers that matter)
 - **#9 (MVP #5)** — NFSU CTF 2023  
 - **#28 (MVP #7)** — NFSU CTF 2022  
-- **3+** custom security tools for recon & automation released publicly  
-- Automation reduced manual recon time by **30–40%** in testing runs  
-- Tools tested across **5,000+ URLs** during development & QA  
-- **4+ years** freelance; **100+** videos/graphics delivered for creators  
-- Pipeline optimizations cut turnaround by **~25%**
+- Built **3+ security tools** for recon & automation  
+- Automation reduced manual recon time by **30–40%**  
+- Tools tested across **5000+ URLs**  
+- **4+ years** freelance; **100+** videos/graphics delivered  
+- Pipeline optimizations reduced turnaround by **25%**
 
 ---
 
 ## Current focus
 - Expanding TheWildEye modules & automation  
-- Building Python-based security utilities for red-team use  
-- OSINT workflow hardening and reproducible tooling
+- Python-based recon & OSINT utilities  
+- Red-team oriented scripting
 
 ---
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=vyomnagpal&show_icons=true&theme=tokyonight&hide_border=true" width="48%" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=vyomnagpal&theme=tokyonight&hide_border=true" width="48%" />
+  <img src="https://github-readme-stats.vercel.app/api?username=VyomNagpal&show_icons=true&theme=tokyonight&hide_border=true" width="48%" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=VyomNagpal&theme=tokyonight&hide_border=true" width="48%" />
 </p>
 
 <h3 align="center">Always building. Always learning. Always improving.</h3>
