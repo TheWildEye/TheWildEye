@@ -1,4 +1,4 @@
-# 🧿 TheWildEye  
+# 🧑🏻‍💻👨🏻‍💻👩🏻‍💻 TheWildEye  
 ### Unified Reconnaissance & OSINT Framework  
 **Developer:** Vyom Nagpal
 
