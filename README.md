@@ -1,76 +1,162 @@
-<h1 align="center"><strong style="font-size:48px;">Vyom Nagpal</strong></h1>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" width="100%" preserveAspectRatio="xMidYMid meet">
+  <rect width="100%" height="100%" fill="#000000"/>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#00FF3C"/>
+      <stop offset="1" stop-color="#33FF88"/>
+    </linearGradient>
 
-<h3 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Jetbrains+Mono&size=28&pause=2000&color=00FF3C&center=true&vCenter=true&width=820&lines=Cybersecurity+Student;Security+Researcher;CTF+Player" alt="typing" />
-</h3>
+    <style type="text/css"><![CDATA[
+      .name { font: 700 48px 'Courier New', monospace; fill: url(#g); letter-spacing:1px; }
+      .role { font: 400 26px 'Courier New', monospace; fill: #00FF3C; opacity:0.0; }
+      .shadow { fill: rgba(0,255,60,0.06); }
+    ]]></style>
+  </defs>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake.svg" width="820" alt="contribution-snake" />
-</p>
+  <!-- Big bold name -->
+  <text x="50%" y="90" class="name" text-anchor="middle" dominant-baseline="middle">Vyom Nagpal</text>
+  <text x="50%" y="110" class="shadow" text-anchor="middle" dominant-baseline="middle">Vyom Nagpal</text>
 
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=60&section=header&text=Matrix+Mode+%7C+Recon+%26+Automation&fontSize=22&color=00FF3C&style=neon" alt="matrix-bar" />
-</p>
+  <!-- Matrix bar -->
+  <rect x="0" y="128" width="1000" height="6" fill="#001100" opacity="0.7"/>
+  <rect x="0" y="128" width="1000" height="6">
+    <animate attributeName="fill" values="#001100;#002200;#001100" dur="3s" repeatCount="indefinite"/>
+  </rect>
 
----
+  <!-- Role 1: Cybersecurity Student (typing effect via per-char opacity) -->
+  <g id="r1" transform="translate(0,0)">
+    <text x="50%" y="180" text-anchor="middle" class="role" >
+      <tspan x="50%" dy="0" font-family="Courier New" font-size="26">
+        <tspan opacity="0">C</tspan>
+        <tspan opacity="0">y</tspan>
+        <tspan opacity="0">b</tspan>
+        <tspan opacity="0">e</tspan>
+        <tspan opacity="0">r</tspan>
+        <tspan opacity="0">s</tspan>
+        <tspan opacity="0">e</tspan>
+        <tspan opacity="0">c</tspan>
+        <tspan opacity="0">u</tspan>
+        <tspan opacity="0">r</tspan>
+        <tspan opacity="0">i</tspan>
+        <tspan opacity="0">t</tspan>
+        <tspan opacity="0">y</tspan>
+        <tspan opacity="0"> </tspan>
+        <tspan opacity="0">S</tspan>
+        <tspan opacity="0">t</tspan>
+        <tspan opacity="0">u</tspan>
+        <tspan opacity="0">d</tspan>
+        <tspan opacity="0">e</tspan>
+        <tspan opacity="0">n</tspan>
+        <tspan opacity="0">t</tspan>
+      </tspan>
+    </text>
 
-### 🔗 Connect
-<p align="center">
-  <a href="https://linkedin.com/in/vyomnagpal" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-Vyom%20Nagpal-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-</p>
+    <!-- staggered typing: each char fades in -->
+    <animate xlink:href="#r1 text tspan tspan[1]" attributeName="opacity" from="0" to="1" begin="1s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[2]" attributeName="opacity" from="0" to="1" begin="1.06s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[3]" attributeName="opacity" from="0" to="1" begin="1.12s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[4]" attributeName="opacity" from="0" to="1" begin="1.18s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[5]" attributeName="opacity" from="0" to="1" begin="1.24s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[6]" attributeName="opacity" from="0" to="1" begin="1.30s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[7]" attributeName="opacity" from="0" to="1" begin="1.36s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[8]" attributeName="opacity" from="0" to="1" begin="1.42s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[9]" attributeName="opacity" from="0" to="1" begin="1.48s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[10]" attributeName="opacity" from="0" to="1" begin="1.54s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[11]" attributeName="opacity" from="0" to="1" begin="1.60s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[12]" attributeName="opacity" from="0" to="1" begin="1.66s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[13]" attributeName="opacity" from="0" to="1" begin="1.72s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[14]" attributeName="opacity" from="0" to="1" begin="1.78s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[15]" attributeName="opacity" from="0" to="1" begin="1.84s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[16]" attributeName="opacity" from="0" to="1" begin="1.90s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[17]" attributeName="opacity" from="0" to="1" begin="1.96s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[18]" attributeName="opacity" from="0" to="1" begin="2.02s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[19]" attributeName="opacity" from="0" to="1" begin="2.08s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[20]" attributeName="opacity" from="0" to="1" begin="2.14s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r1 text tspan tspan[21]" attributeName="opacity" from="0" to="1" begin="2.20s" dur="0.06s" fill="freeze"/>
 
----
+    <!-- visible window for r1 -->
+    <animate attributeName="opacity" from="0" to="1" begin="1s" dur="2.4s" fill="freeze" />
+    <animate attributeName="opacity" from="1" to="0" begin="5.4s" dur="0.1s" fill="freeze" />
+  </g>
 
-## About
-I build practical security tooling focused on reconnaissance, OSINT, and automation.  
-My workflow: **research → break → understand → automate → document**.
+  <!-- Role 2: Security Researcher -->
+  <g id="r2">
+    <text x="50%" y="180" text-anchor="middle" class="role">
+      <tspan x="50%" dy="0" font-family="Courier New" font-size="26">
+        <tspan opacity="0">S</tspan><tspan opacity="0">e</tspan><tspan opacity="0">c</tspan><tspan opacity="0">u</tspan><tspan opacity="0">r</tspan><tspan opacity="0">i</tspan><tspan opacity="0">t</tspan><tspan opacity="0">y</tspan>
+        <tspan opacity="0"> </tspan>
+        <tspan opacity="0">R</tspan><tspan opacity="0">e</tspan><tspan opacity="0">s</tspan><tspan opacity="0">e</tspan><tspan opacity="0">a</tspan><tspan opacity="0">r</tspan><tspan opacity="0">c</tspan><tspan opacity="0">h</tspan><tspan opacity="0">e</tspan><tspan opacity="0">r</tspan>
+      </tspan>
+    </text>
 
-## Featured Projects
-- **TheWildEye** — Recon & OSINT framework (metadata extraction, WP enum, dir scanning).  
-- **TigerHunt** — Multithreaded directory buster with redirect handling and live progress.  
-- **TigerCrawler** — Email & link discovery crawler with noise filtering.  
-- Java Weather App — Servlets + OpenWeatherMap + JDBC + MySQL.  
-- Freelance creative & pipeline automation for creators (S8UL Esports).
+    <!-- typing for r2 with shifted begin -->
+    <animate xlink:href="#r2 text tspan tspan[1]" attributeName="opacity" from="0" to="1" begin="5.6s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[2]" attributeName="opacity" from="0" to="1" begin="5.66s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[3]" attributeName="opacity" from="0" to="1" begin="5.72s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[4]" attributeName="opacity" from="0" to="1" begin="5.78s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[5]" attributeName="opacity" from="0" to="1" begin="5.84s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[6]" attributeName="opacity" from="0" to="1" begin="5.90s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[7]" attributeName="opacity" from="0" to="1" begin="5.96s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[8]" attributeName="opacity" from="0" to="1" begin="6.02s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[9]" attributeName="opacity" from="0" to="1" begin="6.08s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[10]" attributeName="opacity" from="0" to="1" begin="6.14s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[11]" attributeName="opacity" from="0" to="1" begin="6.20s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[12]" attributeName="opacity" from="0" to="1" begin="6.26s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[13]" attributeName="opacity" from="0" to="1" begin="6.32s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[14]" attributeName="opacity" from="0" to="1" begin="6.38s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r2 text tspan tspan[15]" attributeName="opacity" from="0" to="1" begin="6.44s" dur="0.06s" fill="freeze"/>
+    <animate attributeName="opacity" from="0" to="1" begin="5.6s" dur="2.2s" fill="freeze" />
+    <animate attributeName="opacity" from="1" to="0" begin="10.0s" dur="0.1s" fill="freeze" />
+  </g>
 
-## Skills
-**Security:** OSINT, Reconnaissance, VAPT basics, Linux tooling  
-**Languages:** Python, C, C++, Java, C#  
-**Web:** HTML, CSS, JavaScript  
-**DB:** MySQL, Oracle SQL  
-**Tools:** Git, APIs, automation scripting  
-**Creative:** Premiere Pro, After Effects, Photoshop
+  <!-- Role 3: CTF Player -->
+  <g id="r3">
+    <text x="50%" y="180" text-anchor="middle" class="role">
+      <tspan x="50%" dy="0" font-family="Courier New" font-size="26">
+        <tspan opacity="0">C</tspan><tspan opacity="0">T</tspan><tspan opacity="0">F</tspan><tspan opacity="0"> </tspan><tspan opacity="0">P</tspan><tspan opacity="0">l</tspan><tspan opacity="0">a</tspan><tspan opacity="0">y</tspan><tspan opacity="0">e</tspan><tspan opacity="0">r</tspan>
+      </tspan>
+    </text>
 
-## Certifications
-- Threat Intelligence Analyst — arcX  
-- ISO/IEC 27001:2022 Information Security Associate — Skillfront  
-- Cyber Threat Management — Cisco  
-- Cyber Security Associate — Reliance Foundation
+    <animate xlink:href="#r3 text tspan tspan[1]" attributeName="opacity" from="0" to="1" begin="10.2s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r3 text tspan tspan[2]" attributeName="opacity" from="0" to="1" begin="10.26s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r3 text tspan tspan[3]" attributeName="opacity" from="0" to="1" begin="10.32s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r3 text tspan tspan[4]" attributeName="opacity" from="0" to="1" begin="10.38s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r3 text tspan tspan[5]" attributeName="opacity" from="0" to="1" begin="10.44s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r3 text tspan tspan[6]" attributeName="opacity" from="0" to="1" begin="10.50s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r3 text tspan tspan[7]" attributeName="opacity" from="0" to="1" begin="10.56s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r3 text tspan tspan[8]" attributeName="opacity" from="0" to="1" begin="10.62s" dur="0.06s" fill="freeze"/>
+    <animate xlink:href="#r3 text tspan tspan[9]" attributeName="opacity" from="0" to="1" begin="10.68s" dur="0.06s" fill="freeze"/>
 
-## Highlights
-- **#9 (MVP #5)** — NFSU CTF 2023  
-- **#28 (MVP #7)** — NFSU CTF 2022  
-- **3+** custom security tools for recon & automation  
-- Reduced manual recon time by **30–40%** via automation  
-- Tested tooling across **5000+ URLs** during dev cycles  
-- **4+ years** freelance; **100+** edited videos/graphics delivered  
-- Pipeline optimizations reduced turnaround by **25%**
+    <animate attributeName="opacity" from="0" to="1" begin="10.2s" dur="1.0s" fill="freeze" />
+    <animate attributeName="opacity" from="1" to="0" begin="13.0s" dur="0.1s" fill="freeze" />
+  </g>
 
-## Current focus
-- Expanding TheWildEye modules & automation  
-- OSINT automation & Python security utilities  
-- Red-team oriented scripting
+  <!-- Glitch effect: small jitter + color flicker on the active group after ~5s -->
+  <g id="glitch" opacity="0">
+    <animate attributeName="opacity" from="0" to="1" begin="6.8s" dur="0.2s" fill="freeze"/>
+    <animate attributeName="opacity" from="1" to="0.5" begin="7s" dur="0.6s" repeatCount="indefinite" values="1;0.6;1" />
+  </g>
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=vyomnagpal&show_icons=true&theme=tokyonight&hide_border=true" width="48%" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=vyomnagpal&theme=tokyonight&hide_border=true" width="48%" />
-</p>
+  <!-- jitter applied to the entire roles area (works intermittently depending on sanitizer) -->
+  <animateTransform xlink:href="#r1" attributeName="transform" type="translate" values="0 0;2 -1;0 0;-2 1;0 0" dur="0.18s" begin="6s" repeatCount="indefinite"/>
+  <animateTransform xlink:href="#r2" attributeName="transform" type="translate" values="0 0;1 -1;0 0;-1 1;0 0" dur="0.18s" begin="8s" repeatCount="indefinite"/>
+  <animateTransform xlink:href="#r3" attributeName="transform" type="translate" values="0 0;1 0;0 0;-1 0;0 0" dur="0.18s" begin="11s" repeatCount="indefinite"/>
 
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=python,cpp,java,cs,js,html,css,mysql,linux,git&theme=dark" alt="skills"/>
-</p>
+  <!-- small green noise lines (matrix vibe) -->
+  <g>
+    <rect x="120" y="220" width="2" height="40" fill="#00FF3C" opacity="0.06">
+      <animate attributeName="opacity" values="0.06;0.4;0.06" dur="3s" begin="2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="260" y="220" width="2" height="36" fill="#00FF3C" opacity="0.05">
+      <animate attributeName="opacity" values="0.05;0.35;0.05" dur="2.5s" begin="3s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="640" y="220" width="2" height="46" fill="#00FF3C" opacity="0.04">
+      <animate attributeName="opacity" values="0.04;0.3;0.04" dur="2.8s" begin="4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="820" y="220" width="2" height="30" fill="#00FF3C" opacity="0.03">
+      <animate attributeName="opacity" values="0.03;0.2;0.03" dur="3.2s" begin="1.5s" repeatCount="indefinite"/>
+    </rect>
+  </g>
 
-<h3 align="center">Always building. Always learning. Always improving.</h3>
-
+</svg>
 
