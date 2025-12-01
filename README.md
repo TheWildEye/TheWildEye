@@ -1,4 +1,4 @@
-# 🧑🏻‍💻👨🏻‍💻👩🏻‍💻 TheWildEye  
+# 🐯 TheWildEye  
 ### Unified Reconnaissance & OSINT Framework  
 **Developer:** Vyom Nagpal
 
@@ -6,20 +6,20 @@
 
 ## ⚡ Overview
 
-TheWildEye is a cross-platform **reconnaissance and OSINT framework** built in Python.  
-It unifies multiple offensive security tools into a single command-line interface, enabling fast and automated reconnaissance for:
+TheWildEye is a **Unified Reconnaissance and OSINT Framework**  
+It unifies multiple offensive security tools into a single cross-platform command-line interface, enabling fast and automated reconnaissance for:
 
 - Penetration Testing  
 - Bug Bounty Recon  
 - Threat Intelligence  
-- Digital Forensics  
+- OSINT
 - Red Teaming
 
 The entire framework runs on **Kali Linux, ParrotOS, Ubuntu, Windows 10/11, and Termux** without modification.
 
 ---
 
-## 🧩 Features
+## ⚡ Features
 
 ### 1. 🕵️ TigerCrawler – Email Intelligence Harvester  
 Source: `TigerCrawler.py`  
@@ -33,13 +33,14 @@ Source: `TigerCrawler.py`
 
 ---
 
-### 2. 🚀 TigerHunt – Directory & File Bruteforcer  
+### 2. 🐅 TigerHunt – Directory & File Bruteforcer  
 Source: `tigbuster.py`  
 - High-speed multithreaded directory enumeration  
-- Live ETA, status tracking, and colored output  
-- Detects 200/301/302/403/401 and other statuses  
-- Uses `wordlists/common.txt` for directory brute-force  
-- Final result table for discovered directories  
+- Live ETA, status tracking, and colored output
+- Detects 200/301/302/403/404 and other statuses
+- Redirect handling and redirecting links
+- Uses `wordlists/common.txt` or personal dictionary for directory brute-force  
+- Final tabular results for discovered directories  
 - Clean CLI optimized for reconnaissance workflows
 
 ---
@@ -63,11 +64,10 @@ Source: `whois.py`
 - Retrieves A and AAAA DNS records  
 - Performs reverse DNS lookups  
 - Extracts SSL certificates (CN and SAN)  
-- Falls back to system `whois` if direct queries fail
 
 ---
 
-### 5. 🧭 TheWildEye Launcher  
+### 5. 👨🏻‍💻 TheWildEye Launcher  
 Source: `TheWildEye.py`  
 - Unified launcher for all modules  
 - Detects missing scripts before execution  
@@ -90,25 +90,25 @@ pip install requests bs4 lxml
 
 ### Clone the Repository
 ```
-git clone https://github.com/<your-username>/TheWildEye
+git clone https://github.com/TheWildEye/TheWildEye
 cd TheWildEye
 ```
 
 ---
 
-## ▶️ Usage
+## ⚡ Usage
 
 ### Launch the Framework
 ```
-python3 TheWildEye.py
+python TheWildEye.py
 ```
 
 ### Run Tools Individually
 ```
-python3 TigerCrawler.py
-python3 tigbuster.py
-python3 wp_enum.py
-python3 whois.py
+python TigerCrawler.py
+python tigbuster.py
+python wp_enum.py
+python whois.py
 ```
 
 ---
@@ -136,17 +136,11 @@ TheWildEye/
 ├── whois.py
 │
 └── wordlists/
+    ├── rockyou.txt
     └── common.txt
 ```
 
----
-
-## 📄 License
-MIT License
-
----
-
 ## 👨‍💻 Author
 **Vyom Nagpal**  
-Cybersecurity & Offensive Security Developer
+Cyber Security Researcher & Enthusiast
 
