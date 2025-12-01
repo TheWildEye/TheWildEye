@@ -1,146 +1,89 @@
-# 🐯 TheWildEye  
-### Unified Reconnaissance & OSINT Framework  
-**Developer:** Vyom Nagpal
+<h1 align="center">👋 Hi, I'm Vyom Nagpal</h1>
+<h3 align="center">Cybersecurity Enthusiast | Security Researcher | CTF Player </h3>
 
 ---
 
-## ⚡ Overview
-
-TheWildEye is a **Unified Reconnaissance and OSINT Framework**  
-It unifies multiple offensive security tools into a single cross-platform command-line interface, enabling fast and automated reconnaissance for:
-
-- Penetration Testing  
-- Bug Bounty Recon  
-- Threat Intelligence  
-- OSINT
-- Red Teaming
-
-The entire framework runs on **Kali Linux, ParrotOS, Ubuntu, Windows 10/11, and Termux** without modification.
+### 🔗 Connect with Me  
+<p>
+  <a href="https://linkedin.com/in/vyomnagpal" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-Vyom%20Nagpal-blue?logo=linkedin&logoColor=white" />
+  </a>
+</p>
 
 ---
 
-## ⚡ Features
+## 👨‍💻 What I Do  
+I explore and build across **cybersecurity, OSINT, system security, and automation**.  
+My interests fall into three major buckets:
 
-### 1. 🕵️ TigerCrawler – Email Intelligence Harvester  
-Source: `TigerCrawler.py`  
-- Multithreaded email-focused crawler  
-- Extracts valid email patterns using strict regex  
-- Filters image-like false positives  
-- Crawls up to 100 URLs using parallel workers  
-- Normalizes absolute & relative URLs  
-- Real-time URL processing feed  
-- Uses persistent HTTP sessions for improved speed
+- **Security Engineering**  
+  Writing scripts, small tools, and utilities that support recon, enumeration, and analysis.
 
----
+- **OSINT & Recon**  
+  Researching footprinting techniques, metadata extraction, web recon and building my own recon framework.
 
-### 2. 🐅 TigerHunt – Directory & File Bruteforcer  
-Source: `tigbuster.py`  
-- High-speed multithreaded directory enumeration  
-- Live ETA, status tracking, and colored output
-- Detects 200/301/302/403/404 and other statuses
-- Redirect handling and redirecting links
-- Uses `wordlists/common.txt` or personal dictionary for directory brute-force  
-- Final tabular results for discovered directories  
-- Clean CLI optimized for reconnaissance workflows
+- **Software & Automation**  
+  Building practical projects using Python, Java, web technologies, and APIs.
+
+I prefer creating tools that solve real problems instead of theoretical projects.
 
 ---
 
-### 3. 🔎 TigerWP – WordPress Recon Scanner  
-Source: `wp_enum.py`  
-- Detects exposed REST API users  
-- Extracts meta tags, OG tags, authors, JSON-LD  
-- Identifies themes and plugins via HTML path detection  
-- Parses `style.css` for theme metadata  
-- Fetches `robots.txt` and common sitemap locations  
-- Extracts SSL CN & SAN details automatically  
-- Useful for WordPress footprinting during recon
+## 🛠️ Projects & Work  
+Here are the projects that represent my current skill set:
+
+### 🔥 **TheWildEye — Recon & OSINT Framework**  
+A unified reconnaissance framework with modules for OSINT, metadata extraction, URL/SSL analysis, WP enumeration, directory discovery, etc.  
+Built from scratch for practical red-team style recon.
+
+### 🐅 **TigerHunt — Directory Buster**  
+Multithreaded dirbuster with clean output, status categorization, redirect handling, and live progress tracking.
+
+### 🧾 **TigerCrawler (Email + Link Discovery)**  
+Multithreaded web crawler for enumerating emails, validating formats, extracting domain-wide links, and avoiding admin/login noise.
+
+### 🌐 **Java Weather Forecasting App**  
+Servlet-based web app using OpenWeatherMap API + JDBC + MySQL.
+
+### 🎬 **Freelance Creative Work (S8UL Esports)**  
+Video editing & motion graphics for national-level gaming creators.  
+Developed strong experience in **workflow automation**, **media pipeline management**, and **brand content optimization**.
 
 ---
 
-### 4. 🌐 WHOIS Recon Engine  
-Source: `whois.py`  
-- Multi-server WHOIS querying (with referral follow-up)  
-- Extracts domain registrar data, expiry, nameservers  
-- Retrieves A and AAAA DNS records  
-- Performs reverse DNS lookups  
-- Extracts SSL certificates (CN and SAN)  
+## 🔧 Technical Skills  
+**Languages:** Python, C, C++, Java, C#  
+**Web:** HTML, CSS, JavaScript  
+**Security:** Kali Linux, OSINT, Reconnaissance, VAPT basics  
+**Databases:** MySQL, Oracle SQL  
+**Tools & Tech:** Git, API integration, automation scripting  
+**Creative Tools:** Photoshop, After Effects, Premiere Pro  
+**Other:** Team collaboration, documentation, requirement gathering
 
 ---
 
-### 5. 👨🏻‍💻 TheWildEye Launcher  
-Source: `TheWildEye.py`  
-- Unified launcher for all modules  
-- Detects missing scripts before execution  
-- Executes tools via Python subprocess  
-- Modern ANSI banner and clean interface  
-- Fully cross-platform architecture
+## 🏅 Certifications  
+- Threat Intelligence Analyst — arcX  
+- ISO/IEC 27001:2022 Information Security Associate — Skillfront  
+- Cyber Threat Management — Cisco  
+- Cyber Security Associate — Reliance Foundation  
 
 ---
 
-## 🛠️ Installation
-
-### Requirements
-- Python 3.8+  
-- pip package manager
-
-### Install Dependencies
-```
-pip install requests bs4 lxml
-```
-
-### Clone the Repository
-```
-git clone https://github.com/TheWildEye/TheWildEye
-cd TheWildEye
-```
+## 🏆 Highlights  
+- Built multiple **security-focused tools** used for reconnaissance and automation.  
+- Ranked in **NFSU Capture The Flag** competitions (2022 & 2023).  
+- Worked with creators from **S8UL Esports**, handling high-volume content workflows.  
+- Strong interest in **defensive and offensive security**, scripting, and real-world tooling.  
 
 ---
 
-## ⚡ Usage
-
-### Launch the Framework
-```
-python TheWildEye.py
-```
-
-### Run Tools Individually
-```
-python TigerCrawler.py
-python tigbuster.py
-python wp_enum.py
-python whois.py
-```
+## 📌 Current Focus  
+- Improving TheWildEye and its modules  
+- Expanding Python-based security utilities  
+- OSINT automation  
+- Building skills towards VAPT roles
 
 ---
 
-## 💻 Cross-Platform Support
-
-Fully supported operating systems:
-- Linux (Kali, ParrotOS, Ubuntu)  
-- Windows 10/11  
-- Termux (Android)
-
-The project uses relative paths and Python standard libraries, ensuring OS independence.
-
----
-
-## 📁 Project Structure
-
-```
-TheWildEye/
-│
-├── TheWildEye.py
-├── TigerCrawler.py
-├── tigbuster.py
-├── wp_enum.py
-├── whois.py
-│
-└── wordlists/
-    ├── rockyou.txt
-    └── common.txt
-```
-
-## 👨‍💻 Author
-**Vyom Nagpal**  
-Cyber Security Researcher & Enthusiast
-
+<h3 align="center">Open to opportunities in Cybersecurity, Security Engineering, and Software Development.</h3>
