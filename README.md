@@ -1,7 +1,7 @@
 <h1 align="center"><strong style="font-size:56px;">Vyom Nagpal</strong></h1>
 
 <h3 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Jetbrains+Mono&size=28&pause=1500&color=00FF3C&center=true&vCenter=true&width=820&lines=Cybersecurity+Student;Security+Researcher;CTF+Player" alt="typing"/>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Jetbrains+Mono&size=26&pause=1600&color=00FF3C&center=true&vCenter=true&width=820&lines=Cybersecurity+Student;Security+Researcher;CTF+Player" alt="typing"/>
 </h3>
 
 <p align="center">
@@ -9,68 +9,33 @@
 </p>
 
 <p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=40&section=header&text=Matrix+Mode+%7C+Recon+%26+Automation&fontSize=18&color=00FF3C&style=neon" alt="matrix-bar" />
+</p>
+
+<p align="center">
   <a href="https://linkedin.com/in/vyomnagpal" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-Vyom%20Nagpal-blue?style=for-the-badge&logo=linkedin&logoColor=white"/>
+    <img src="https://img.shields.io/badge/LinkedIn-Vyom%20Nagpal-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin"/>
   </a>
+  &nbsp;
+  <img src="https://img.shields.io/badge/Focus-OSINT%20%26%20Recon-00FF3C?style=for-the-badge" alt="focus"/>
+  &nbsp;
+  <img src="https://img.shields.io/badge/Role-Research%20%26%20Tooling-0f0?style=for-the-badge" alt="role"/>
 </p>
 
 ---
 
-## About  
-I build practical cybersecurity tools focused on **reconnaissance, OSINT, automation**, and problem-solving.
+## About
+I build practical cybersecurity tooling focused on **reconnaissance, OSINT, automation**, and reproducible engineering.
 
 ---
 
 ## Featured Projects
-- **TheWildEye** — Unified Recon & OSINT framework (metadata extraction, SSL analysis, WP enum, directory scanning).  
-- **TigerHunt** — Multithreaded directory buster with redirect handling and categorized results.  
-- **TigerCrawler** — Domain-bound crawler for email + link discovery with noise filtering.  
-- **Java Weather App** — Servlets + JDBC + MySQL + API integration.  
+- **TheWildEye** — Unified Recon & OSINT framework (metadata extraction, SSL & endpoint analysis, WP enumeration, directory scanning).  
+- **TigerHunt** — Multithreaded directory buster with redirect handling and categorized output.  
+- **TigerCrawler** — Domain-bound crawler for email & link discovery with noise filtering.  
+- **Java Weather App** — Servlets + JDBC + MySQL + OpenWeatherMap API.  
 - Freelance creative & workflow automation for **S8UL** creators.
 
 ---
 
-## Skills
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=python,cpp,java,cs,js,html,css,mysql,linux,git&theme=dark"/>
-</p>
-
-**Security:** OSINT, Recon, VAPT basics, Linux  
-**Languages:** Python, C, C++, Java, C#  
-**Web:** HTML, CSS, JavaScript  
-**Databases:** MySQL, Oracle SQL  
-**Tools:** Git, APIs, automation scripting  
-**Creative:** Premiere Pro, After Effects, Photoshop  
-
----
-
-## Certifications
-- Threat Intelligence Analyst — arcX  
-- ISO/IEC 27001:2022 Information Security Associate — Skillfront  
-- Cyber Threat Management — Cisco  
-- Cyber Security Associate — Reliance Foundation  
-
----
-
-## Highlights (numbers)
-- **#9 (MVP #5)** — NFSU CTF 2023  
-- **#28 (MVP #7)** — NFSU CTF 2022  
-- **3+** recon & automation tools built  
-- Automation reduced manual recon by **30–40%**  
-- Tools tested on **5000+ URLs**  
-- **4+ years** freelance; delivered **100+** videos/graphics  
-- Workflow automation improved TAT by **25%**
-
----
-
-## Current Focus
-- Expanding TheWildEye modules  
-- Automating OSINT workflows  
-- Python tooling for recon & red-team tasks  
-
----
-
-<p align="center">
-  <img src="https://github-readme-stats-one-bice.vercel.app/api?username=VyomNagpal&show_icons=true&theme=tokyonight&hide_border=true" width="48%"/>
-  <img src="https://streak-stats.demolab.com?user=VyomNagpal&theme=tokyonight&hide_border=true" width="48%"/>
-</p>
+## Quick Usage — TheWildEye (terminal demo)
