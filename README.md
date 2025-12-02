@@ -75,3 +75,4 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&height=80&section=footer&fontSize=16&color=00FF3C&fontColor=FFD700&style=neon" width="100%"/>
 </p>
+---
