@@ -65,6 +65,12 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg" width="820" alt="snake"/>
+  <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake.svg" />
+  <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg" />
+  <img src="https://raw.githubusercontent.com/DanielVDev/github-snake-dark-matrix/output/snake-dark-matrix.svg" />
+  <img src="https://raw.githubusercontent.com/omidnikrah/github-snake-dark/output/github-snake.svg" />
+  <img src="https://raw.githubusercontent.com/TrungNguyen1909/github-snake-dark/output/snake.svg" />
+
 </p>
 
 <p align="center">
