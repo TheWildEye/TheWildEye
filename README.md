@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://linkedin.com/in/vyomnagpal" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-Vyom%20Nagpal-blue?style=for-the-badge&logo=linkedin&logoColor=white"/>
+    <img src="https://img.shields.io/badge/LinkedIn-Vyom%Nagpal-blue?style=for-the-badge&logo=linkedin&logoColor=white"/>
   </a>
   &nbsp;
   <a href="https://github.com/VyomNagpal" target="_blank">
@@ -64,10 +64,6 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 ---
 
 <p align="center">
-   <p align="center">
-  <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake.svg" width="820" alt="snake" />
-</p>
-
   <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg" />
   
 </p>
