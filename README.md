@@ -1,5 +1,7 @@
+<h1 align="center"><strong>VYOM NAGPAL</strong></h1>
+
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Jetbrains+Mono&size=40&duration=2500&pause=800&color=00FF3C&center=true&vCenter=true&width=900&lines=VYOM+NAGPAL;Cybersecurity+Student;Security+Researcher;CTF+Player" alt="typing"/>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Jetbrains+Mono&size=26&pause=1800&color=00FF3C&center=true&vCenter=true&width=820&lines=Cybersecurity+Student;Security+Researcher;CTF+Player" alt="typing"/>
 </p>
 
 <p align="center">
@@ -31,19 +33,19 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 ---
 
 ## 🛠️ Projects
-- **TheWildEye** — Unified Recon & OSINT framework (modular recon, metadata extraction, SSL & endpoint analysis, WP enumeration, directory scanning).  
-- **TigerHunt** — Multithreaded directory buster with redirect awareness and categorized HTTP response reporting.  
-- **TigerCrawler** — Domain-wide crawler for email + link discovery with intelligent noise filtering.  
-- **Java Weather App** — Servlets + OpenWeatherMap API + JDBC + MySQL.  
-- **S8UL Workflow Automation** — Editing/graphics pipeline efficiency improvements.
+- **TheWildEye** - Unified recon & OSINT framework (modular recon, metadata extraction, SSL & endpoint analysis, WP enumeration, directory scanning)  
+- **TigerHunt** - Multithreaded directory buster with redirect awareness and categorized HTTP response reporting  
+- **TigerCrawler** - Domain-wide crawler for email + link discovery with intelligent noise filtering  
+- **Java Weather App** - Servlets + OpenWeatherMap API + JDBC + MySQL  
+- **S8UL Workflow Automation** - Editing/graphics pipeline efficiency improvements
 
 ---
 
 ## 📜 Certifications
-- Foundation Level Threat Intelligence Analyst — arcX  
-- ISO/IEC 27001:2022 Information Security Associate — Skillfront  
-- Cyber Threat Management — Cisco  
-- Cyber Security Associate — Reliance Foundation  
+- Foundation Level Threat Intelligence Analyst - arcX  
+- ISO/IEC 27001:2022 Information Security Associate - Skillfront  
+- Cyber Threat Management - Cisco  
+- Cyber Security Associate - Reliance Foundation
 
 ---
 
@@ -62,17 +64,16 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 ---
 
 ## 🏆 Achievements & Highlights
-- **#9 (MVP #5)** — NFSU CTF 2023  
-- **#28 (MVP #7)** — NFSU CTF 2022  
+- **#9 (MVP #5)** - NFSU CTF 2023  
+- **#28 (MVP #7)** - NFSU CTF 2022  
 - Built **3+ recon/OSINT automation tools**  
 - Tools tested on **5,000+ URLs**  
-- Reduced recon time by **30–40%**  
+- Reduced recon time by **30-40%** via automation  
 - **4+ years** freelance; **100+** edited videos/graphics  
 - Improved editing workflow efficiency by **25%**
 
 ---
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=80&section=footer&fontSize=16&color=00FF3C&fontColor=FFD700&style=neon" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=80&section=footer&text=&fontSize=16&color=00FF3C&fontColor=FFD700&style=neon" width="100%"/>
 </p>
----
