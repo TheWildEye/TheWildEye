@@ -1,10 +1,6 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=000000&height=140&text=VYOM%20NAGPAL&fontSize=55&textAlign=50&fontColor=FFD700&animation=fadeIn" width="100%"/>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Jetbrains+Mono&size=40&duration=2500&pause=800&color=00FF3C&center=true&vCenter=true&width=900&lines=VYOM+NAGPAL;Cybersecurity+Student;Security+Researcher;CTF+Player" alt="typing"/>
 </p>
-
-<h3 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Jetbrains+Mono&size=26&pause=1800&color=00FF3C&center=true&vCenter=true&width=820&lines=Cybersecurity+Student;Security+Researcher;CTF+Player" alt="typing"/>
-</h3>
 
 <p align="center">
   <a href="https://linkedin.com/in/vyomnagpal" target="_blank">
@@ -22,19 +18,19 @@
 
 ---
 
-## <span style="color:#00FF3C;font-weight:700">🧾 Details</span>
+## 🧾 Details
 **Location:** Ahmedabad, Gujarat  
 **University:** National Forensic Sciences University (Cyber Security)  
 **Domains:** Reconnaissance, OSINT, automation, red-team tooling
 
 ---
 
-## <span style="color:#00FF3C;font-weight:700">📋 About</span>
+## 📋 About
 I build technical cybersecurity tools specializing in **reconnaissance, metadata extraction, OSINT pipelines, endpoint analysis, and automation**. My approach focuses on performance, reproducibility, and clean engineering for red-team workflows.
 
 ---
 
-## <span style="color:#00FF3C;font-weight:700">🛠️ Projects</span>
+## 🛠️ Projects
 - **TheWildEye** — Unified Recon & OSINT framework (modular recon, metadata extraction, SSL & endpoint analysis, WP enumeration, directory scanning).  
 - **TigerHunt** — Multithreaded directory buster with redirect awareness and categorized HTTP response reporting.  
 - **TigerCrawler** — Domain-wide crawler for email + link discovery with intelligent noise filtering.  
@@ -43,7 +39,7 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 
 ---
 
-## <span style="color:#00FF3C;font-weight:700">📜 Certifications</span>
+## 📜 Certifications
 - Foundation Level Threat Intelligence Analyst — arcX  
 - ISO/IEC 27001:2022 Information Security Associate — Skillfront  
 - Cyber Threat Management — Cisco  
@@ -51,7 +47,7 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 
 ---
 
-## <span style="color:#00FF3C;font-weight:700">💻 Skills</span>
+## 💻 Skills
 <p align="center">
   <img src="https://skillicons.dev/icons?i=python,cpp,java,cs,js,html,css,mysql,linux,git&theme=dark"/>
 </p>
@@ -65,17 +61,17 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 
 ---
 
-## <span style="color:#00FF3C;font-weight:700">🏆 Achievements & Highlights</span>
+## 🏆 Achievements & Highlights
 - **#9 (MVP #5)** — NFSU CTF 2023  
 - **#28 (MVP #7)** — NFSU CTF 2022  
 - Built **3+ recon/OSINT automation tools**  
 - Tools tested on **5,000+ URLs**  
-- Reduced recon time by **30–40%** via automation  
+- Reduced recon time by **30–40%**  
 - **4+ years** freelance; **100+** edited videos/graphics  
 - Improved editing workflow efficiency by **25%**
 
 ---
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=80&section=footer&text=Vyom%20Nagpal%20%7C%20Recon%20%7C%20OSINT%20%7C%20Automation&fontSize=16&color=00FF3C&fontColor=FFD700&style=neon"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=80&section=footer&fontSize=16&color=00FF3C&fontColor=FFD700&style=neon" width="100%"/>
 </p>
