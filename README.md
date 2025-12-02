@@ -8,7 +8,6 @@
   <a href="https://linkedin.com/in/vyomnagpal" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-Vyom%20Nagpal-blue?style=for-the-badge&logo=linkedin&logoColor=white"/>
   </a>
-  &nbsp;
   <a href="https://github.com/VyomNagpal" target="_blank">
     <img src="https://img.shields.io/badge/GitHub-VyomNagpal-black?style=for-the-badge&logo=github&logoColor=white"/>
   </a>
