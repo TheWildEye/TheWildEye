@@ -16,13 +16,6 @@
 
 ---
 
-## 🧾 Details
-**Location:** Ahmedabad, Gujarat  
-**University:** National Forensic Sciences University (Cyber Security)  
-**Domains:** Reconnaissance, OSINT, automation, red-team tooling
-
----
-
 ## 📋 About
 I build technical cybersecurity tools specializing in **reconnaissance, metadata extraction, OSINT pipelines, endpoint analysis, and automation**. My approach focuses on performance, reproducibility, and clean engineering for red-team workflows.
 
