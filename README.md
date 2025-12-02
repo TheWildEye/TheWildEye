@@ -64,7 +64,10 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 ---
 
 <p align="center">
- 
+   <p align="center">
+  <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake.svg" width="820" alt="snake" />
+</p>
+
   <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg" />
   
 </p>
