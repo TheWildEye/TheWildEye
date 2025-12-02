@@ -42,22 +42,19 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 </p>
 
 **Languages:** Python, C, C++, Java  
-**Security:** OSINT, Recon, VAPT fundamentals, Linux  
+**Security:** OSINT, Recon, VAPT fundamentals & Web Crawling
 **Web:** HTML, CSS, JavaScript  
 **Databases:** MySQL, Oracle SQL  
-**Tools:** Git, API integrations, automation scripting  
+**Tools:** Git, API integrations
 **Creative:** Premiere Pro, After Effects, Photoshop  
 
 ---
 
-## 🏆 Achievements & Highlights
+## 🏆 Highlights
 - **#9 (MVP #5)** — NFSU CTF 2023  
 - **#28 (MVP #7)** — NFSU CTF 2022  
-- Built **3+ recon/OSINT automation tools**  
-- Tools tested on **5,000+ URLs**  
-- Reduced recon time by **30–40%**  
-- **4+ years** freelance; **100+** edited videos/graphics  
-- Improved editing workflow efficiency by **25%**
+- Built **5+ Reconnaissance & OSINT tools**  
+- Tools tested on **100+ URLs**  
 
 ---
 
