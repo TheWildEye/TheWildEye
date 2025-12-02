@@ -3,12 +3,11 @@
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Jetbrains+Mono&size=26&pause=1800&color=00FF3C&center=true&vCenter=true&width=820&lines=Cybersecurity+Student;Security+Researcher;CTF+Player" alt="typing"/>
 </p>
-
 <p align="center">
-  <a href="https://linkedin.com/in/vyomnagpal" target="_blank">
+  <a href="https://linkedin.com/in/vyomnagpal" target="_blank" style="margin-right:10px;">
     <img src="https://img.shields.io/badge/LinkedIn-Vyom%20Nagpal-blue?style=for-the-badge&logo=linkedin&logoColor=white"/>
   </a>
-  <a href="https://github.com/TheWildEye" target="_blank">
+  <a href="https://github.com/TheWildEye" target="_blank" style="margin-left:10px;">
     <img src="https://img.shields.io/badge/GitHub-TheWildEye-black?style=for-the-badge&logo=github&logoColor=white"/>
   </a>
 </p>
