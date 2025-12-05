@@ -43,10 +43,13 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 ---
 
 ## 🛠️ Projects
-- **TheWildEye** — Unified Reconnaissance & OSINT framework.
-- **DirHunter** — Multithreaded Cross-platform Directory Hunter with HTTP Codes and Redirect Handling.
-- **TigerCrawler** — Domain-wide email discovery crawler.  
-- **Real-Time Weather Forecasting App** — Servlets + JDBC + API  
+- **TheWildEye** - Unified Reconnaissance & OSINT framework.
+- **DirHunter** - Multithreaded Cross-platform Directory Hunter with HTTP Codes and Redirect Handling.
+- **WAFHunter** - Hunts possible Web-application Firewalls with DNS, CN & SAN.
+- **WPHunter** - A Wordpress Hunter that identifies users, plugins & security related configs.
+- **TigerCrawler** - Domain-wide email discovery crawler.
+- **WHOIS** - Advanced WHOIS utility that transforms raw registry output into organized high-value recon information.
+- **Real-Time Weather Forecasting App** - Servlets + JDBC + API  
 
 ---
 
