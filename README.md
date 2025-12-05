@@ -19,12 +19,31 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 
 ---
 
+## 🏆 Highlights
+- **#9 (MVP #5)** — NFSU CTF 2023  
+- **#28 (MVP #7)** — NFSU CTF 2022
+- 4x Bugs Reported  
+- Built **5+ Cybersecurity Tools**  
+- Tools tested on **100+ URLs**  
+
 ## 🛠️ Projects
-- **TheWildEye** — Unified recon & OSINT framework  
-- **TigerHunt** — Multithreaded directory buster  
-- **TigerCrawler** — Domain-wide email/link discovery  
-- **Java Weather App** — Servlets + JDBC + API  
-- **S8UL Workflow Automation** — Editing/graphics pipeline efficiency
+- **TheWildEye** — Unified Reconnaissance & OSINT framework.
+- **DirHunter** — Multithreaded Cross-platform Directory Hunter with HTTP Codes and Redirect Handling.
+- **TigerCrawler** — Domain-wide email discovery crawler.  
+- **Real-Time Weather Forecasting App** — Servlets + JDBC + API  
+
+---
+## 💻 Skills
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=python,cpp,java,js,html,css,mysql,linux,git&theme=dark"/>
+</p>
+
+**Security:** OSINT, Recon, Vulnerability Assessment & Penetration Testing
+**Tools:** NMap, WireShark, BurpSuite, OWASP Zap, Metasploit,
+           Dirbuster/GoBuster, Sqlmap, Hydra, Git, GitHub
+**Languages:** Python, C, C++, Java  
+**Web:** HTML, CSS, JavaScript  
+**Databases:** MySQL, Oracle SQL  
 
 ---
 
@@ -32,29 +51,10 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 - Foundation Level Threat Intelligence Analyst — arcX  
 - ISO/IEC 27001:2022 Information Security Associate — Skillfront  
 - Cyber Threat Management — Cisco  
-- Cyber Security Associate — Reliance Foundation  
-
----
-
-## 💻 Skills
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=python,cpp,java,js,html,css,mysql,linux,git&theme=dark"/>
-</p>
-
-**Languages:** Python, C, C++, Java  
-**Security:** OSINT, Recon, VAPT fundamentals & Web Crawling
-**Web:** HTML, CSS, JavaScript  
-**Databases:** MySQL, Oracle SQL  
-**Tools:** Git, API integrations
-**Creative:** Premiere Pro, After Effects, Photoshop  
-
----
-
-## 🏆 Highlights
-- **#9 (MVP #5)** — NFSU CTF 2023  
-- **#28 (MVP #7)** — NFSU CTF 2022  
-- Built **5+ Reconnaissance & OSINT tools**  
-- Tools tested on **100+ URLs**  
+- Cyber Security Associate — Reliance Foundation
+- Certified Cyber Hygiene Practitioner - ISEA
+- SQL Injection Attacks - EC-Council
+- Intro to Dark Web, Anonymity & Cryptocurrency - EC-Council
 
 ---
 
