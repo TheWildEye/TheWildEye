@@ -26,13 +26,8 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 - Built **5+ Cybersecurity Tools**  
 - Tools tested on **100+ URLs**  
 
-## 🛠️ Projects
-- **TheWildEye** — Unified Reconnaissance & OSINT framework.
-- **DirHunter** — Multithreaded Cross-platform Directory Hunter with HTTP Codes and Redirect Handling.
-- **TigerCrawler** — Domain-wide email discovery crawler.  
-- **Real-Time Weather Forecasting App** — Servlets + JDBC + API  
-
 ---
+
 ## 💻 Skills
 <p align="center">
   <img src="https://skillicons.dev/icons?i=python,cpp,java,js,html,css,mysql,linux,git&theme=dark"/>
@@ -44,6 +39,14 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 **Languages:** Python, C, C++, Java  
 **Web:** HTML, CSS, JavaScript  
 **Databases:** MySQL, Oracle SQL  
+
+---
+
+## 🛠️ Projects
+- **TheWildEye** — Unified Reconnaissance & OSINT framework.
+- **DirHunter** — Multithreaded Cross-platform Directory Hunter with HTTP Codes and Redirect Handling.
+- **TigerCrawler** — Domain-wide email discovery crawler.  
+- **Real-Time Weather Forecasting App** — Servlets + JDBC + API  
 
 ---
 
