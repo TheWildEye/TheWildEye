@@ -1,4 +1,4 @@
-<h1 align="center"><strong>VYOM NAGPAL</strong></h1>
+<h1 align="center"><strong>VYOM NAGPAL</strong></h1>a
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Jetbrains+Mono&size=28&duration=1200&pause=2000&color=00FF3C&center=true&vCenter=true&width=820&lines=Cybersecurity+Student;Security+Researcher;CTF+Player" alt="typing"/>
 </p>
