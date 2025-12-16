@@ -35,8 +35,7 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 
 **Security:** OSINT, Recon, Vulnerability Assessment & Penetration Testing
 **Tools:** NMap, WireShark, BurpSuite, OWASP Zap, Metasploit,
-           Dirbuster/GoBuster, Sqlmap, Hydra, Git, GitHub
-           
+           Dirbuster/GoBuster, Sqlmap, Hydra, Git, GitHub      
 **Languages:** Python, C, C++, Java  
 **Web:** HTML, CSS, JavaScript  
 **Databases:** MySQL, Oracle SQL  
