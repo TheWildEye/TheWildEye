@@ -22,7 +22,7 @@ I build technical cybersecurity tools specializing in **reconnaissance, metadata
 ## 🏆 Highlights
 - **#9 (MVP #5)** — NFSU CTF 2023  
 - **#28 (MVP #7)** — NFSU CTF 2022
-- **4x Bugs** Reported  
+- **3x Bugs** Reported  
 - Built **5+ Cybersecurity Tools**  
 - Tools tested on **100+ URLs**  
 
