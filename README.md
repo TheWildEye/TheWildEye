@@ -15,7 +15,7 @@
 ---
 
 ## 📋 About
-I build technical cybersecurity tools specializing in **reconnaissance, metadata extraction, aOSINT pipelines, endpoint analysis, and automation**. My approach focuses on performance, reproducibility, and clean engineering for red-team workflows
+I build technical cybersecurity tools specializing in **reconnaissance, metadata extraction, OSINT pipelines, endpoint analysis, and automation**. My approach focuses on performance, reproducibility, and clean engineering for red-team workflows
 
 ---
 
