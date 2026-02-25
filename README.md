@@ -54,7 +54,7 @@ M.Tech Cybersecurity student specializing in **reconnaissance, OSINT pipelines, 
 
 | Project | Description |
 |---------|-------------|
-| **[TheWildEye](https://github.com/TheWildEye)** | Unified Reconnaissance & OSINT framework |
+| **[TheWildEye](https://github.com/TheWildEye/TheWildEyeFW)** | Unified Reconnaissance & OSINT framework |
 | **DirHunter** | Multithreaded cross-platform directory brute-forcer with HTTP code & redirect handling |
 | **WAFHunter** | Detects Web Application Firewalls via DNS, CN & SAN analysis |
 | **WPHunter** | WordPress hunter — identifies users, plugins & security misconfigs |
