@@ -1,15 +1,15 @@
 <h1 align="center"><strong>VYOM NAGPAL</strong></h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&size=22&duration=1200&pause=2000&color=00FF3C&center=true&vCenter=true&width=820&lines=Cybersecurity+Student;Security+Researcher;CTF+Player;Red+Team+Tooling" alt="typing"/>
+  <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&size=22&duration=1200&pause=2000&color=00FF3C&center=true&vCenter=true&width=820&lines=M.Tech+Cybersecurity;Security+Researcher;CTF+Player;" alt="typing"/>
 </p>
 
 <p align="center">
-  <a href="https://linkedin.com/in/vyomnagpal" target="_blank">
+  <a href="https://linkedin.com/in/vyomnagpal" target="_blank" style="text-decoration:none;">
     <img src="https://img.shields.io/badge/LinkedIn-Vyom%20Nagpal-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
   </a>
   &nbsp;
-  <a href="https://github.com/TheWildEye" target="_blank">
+  <a href="https://github.com/TheWildEye" target="_blank" style="text-decoration:none;">
     <img src="https://img.shields.io/badge/GitHub-TheWildEye-181717?style=for-the-badge&logo=github&logoColor=white"/>
   </a>
 </p>
@@ -18,7 +18,7 @@
 
 ## 📋 About
 
-M.Tech Cybersecurity student specializing in **reconnaissance, OSINT pipelines, metadata extraction, endpoint analysis, and red-team automation**. I build focused, clean cybersecurity tooling with an emphasis on performance and reproducibility.
+M.Tech Cybersecurity student focused on **Offensive security and Security Operations** — Reconnaissance, OSINT threat analysis, and endpoint fingerprinting. I build tools that are fast, practical, and built for real-world use.
 
 ---
 
@@ -54,14 +54,14 @@ M.Tech Cybersecurity student specializing in **reconnaissance, OSINT pipelines, 
 
 | Project | Description |
 |---------|-------------|
-| **[TheWildEye](https://github.com/TheWildEye/TheWildEyeFW)** | Unified Reconnaissance & OSINT framework |
-| **DirHunter** | Multithreaded cross-platform directory brute-forcer with HTTP code & redirect handling |
-| **WAFHunter** | Detects Web Application Firewalls via DNS, CN & SAN analysis |
-| **WPHunter** | WordPress hunter — identifies users, plugins & security misconfigs |
-| **TigerCrawler** | Domain-wide email discovery crawler |
-| **WHOIS** | Advanced WHOIS utility transforming raw registry data into structured recon intel |
-| **Evidential** | Chain of Custody Integrity Management system with SHA-256 cryptographic verification |
-| **Real-Time Weather App** | Servlets + JDBC + API integration |
+| **[TheWildEye](https://github.com/TheWildEyeFW)** | Unified recon & OSINT framework — the main toolkit |
+| **Evidential** | Chain of Custody Integrity Management with SHA-256 cryptographic evidence verification |
+| **DirHunter** | Multithreaded, cross-platform directory brute-forcer with HTTP code & redirect handling |
+| **WAFHunter** | Fingerprints Web Application Firewalls via DNS, CN & SAN probing |
+| **WPHunter** | WordPress attack-surface mapper — users, plugins & security misconfigs |
+| **TigerCrawler** | Passive domain-wide email harvesting crawler |
+| **WHOIS** | Advanced WHOIS parser that transforms raw registry output into structured recon intel |
+| **Real-Time Weather App** | Full-stack weather app — Servlets + JDBC + Live API |
 
 ---
 
