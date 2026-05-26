@@ -243,30 +243,32 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
 ## 💻 TECHNICAL SKILLS
 
 ### ⚔️ Domain Expertise
-* **Offensive Security:** OSINT • Passive Reconnaissance • Vulnerability Assessment • Penetration Testing (VA/PT) • Exploit Writing
-* **Network & App Security:** Web App Security • Mobile Device (Android/iOS) Pentesting • WAF Bypass • Traffic Analysis
-* **Digital Forensics:** Evidence Analysis • Chain of Custody Integrity • Legal Compliance (BSA S.63, IEA S.65B)
+* **Security:** Vulnerability Assessment • Penetration Testing • Web and Mobile Application Security • OSINT
 
-### 🛠️ Languages & Databases
+### 🛠️ Programming & Scripting
 <p align="left">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
-  <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++"/>
-  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JS"/>
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"/>
-  <img src="https://img.shields.io/badge/Oracle_SQL-F80000?style=for-the-badge&logo=oracle&logoColor=white" alt="Oracle"/>
+  <img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/>
 </p>
 
-### 🔧 Pentesting & Forensics Tools
+### 🔧 Security Tools
 <p align="left">
-  <img src="https://img.shields.io/badge/Kali_Linux-557C94?style=for-the-badge&logo=kali-linux&logoColor=white" alt="Kali"/>
+  <img src="https://img.shields.io/badge/Burp_Suite-FF6600?style=for-the-badge&logo=portswigger&logoColor=white" alt="Burp Suite"/>
   <img src="https://img.shields.io/badge/Nmap-007ACC?style=for-the-badge&logo=nmap&logoColor=white" alt="Nmap"/>
-  <img src="https://img.shields.io/badge/Burp_Suite-FF6600?style=for-the-badge&logo=portswigger&logoColor=white" alt="Burp"/>
-  <img src="https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white" alt="Wireshark"/>
   <img src="https://img.shields.io/badge/Metasploit-010101?style=for-the-badge&logo=metasploit&logoColor=white" alt="Metasploit"/>
+  <img src="https://img.shields.io/badge/Nuclei-3F51B5?style=for-the-badge&logo=security&logoColor=white" alt="Nuclei"/>
+  <img src="https://img.shields.io/badge/OWASP_ZAP-000000?style=for-the-badge&logo=owasp&logoColor=white" alt="OWASP ZAP"/>
+  <img src="https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white" alt="Wireshark"/>
+  <img src="https://img.shields.io/badge/MobSF-00599C?style=for-the-badge&logo=android&logoColor=white" alt="MobSF"/>
+</p>
+
+### 🌐 Other
+<p align="left">
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux"/>
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"/>
   <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git"/>
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
 </p>
 
 ---
