@@ -18,9 +18,17 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/TheWildEye">
+    <img src="https://img.shields.io/github/search/commits?q=author%3ATheWildEye&color=00ff41&style=for-the-badge&label=CONTRIBUTIONS&logo=github&logoColor=black" alt="Total Contributions" />
+  </a>
+  &nbsp;&nbsp;
+  <img src="https://komarev.com/ghpvc/?username=TheWildEye&color=00ff41&style=for-the-badge&label=PROFILE+VISITORS&base=2305" alt="Profile Visitors" />
+</p>
+
 ---
 
-## 📁 WHOAMI // SYSTEM_IDENTITY.sh
+## 📁 WHOAMI
 
 ```bash
 $ whoami --verbose
@@ -37,7 +45,7 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
 
 ---
 
-## 🏆 CORE ACHIEVEMENTS
+## 🏆 ACHIEVEMENTS
 
 | Achievement | Event / Organization | Detail |
 | :--- | :--- | :--- |
@@ -202,7 +210,7 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
 
 ---
 
-## 🛠️ PROJECTS // ACTIVE OPERATIONS
+## 🛠️ PROJECTS
 
 ### ⚖️ [Evidential](https://github.com/TheWildEye/Evidential)
 > **Forensic Chain of Custody Integrity Management**
@@ -233,7 +241,7 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
 
 ---
 
-## 💻 TECHNICAL SKILLS & ARSENAL
+## 💻 TECHNICAL SKILLS
 
 ### ⚔️ Domain Expertise
 * **Offensive Security:** OSINT • Passive Reconnaissance • Vulnerability Assessment • Penetration Testing (VA/PT) • Exploit Writing
@@ -242,36 +250,24 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
 
 ### 🛠️ Languages & Databases
 <p align="left">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
-  <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=c%2B%2B&logoColor=white" alt="C++"/>
-  <img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white" alt="Java"/>
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS"/>
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5"/>
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3"/>
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white" alt="MySQL"/>
-  <img src="https://img.shields.io/badge/Oracle_SQL-F80000?style=flat-square&logo=oracle&logoColor=white" alt="Oracle"/>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++"/>
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JS"/>
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"/>
+  <img src="https://img.shields.io/badge/Oracle_SQL-F80000?style=for-the-badge&logo=oracle&logoColor=white" alt="Oracle"/>
 </p>
 
 ### 🔧 Pentesting & Forensics Tools
 <p align="left">
-  <img src="https://img.shields.io/badge/Kali_Linux-557C94?style=flat-square&logo=kali-linux&logoColor=white" alt="Kali"/>
-  <img src="https://img.shields.io/badge/Nmap-007ACC?style=flat-square&logo=nmap&logoColor=white" alt="Nmap"/>
-  <img src="https://img.shields.io/badge/Burp_Suite-FF6600?style=flat-square&logo=portswigger&logoColor=white" alt="Burp"/>
-  <img src="https://img.shields.io/badge/Wireshark-1679A7?style=flat-square&logo=wireshark&logoColor=white" alt="Wireshark"/>
-  <img src="https://img.shields.io/badge/Metasploit-010101?style=flat-square&logo=metasploit&logoColor=white" alt="Metasploit"/>
-  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git"/>
-</p>
-
----
-
-## 📈 STATS & ACTIVITY
-
-<p align="center">
-  <a href="https://github.com/TheWildEye">
-    <img src="https://img.shields.io/badge/Total%20Contributions-1,500%2B-00ff41?style=for-the-badge&logo=github&logoColor=black" alt="Total Contributions" />
-  </a>
-  &nbsp;&nbsp;
-  <img src="https://komarev.com/ghpvc/?username=TheWildEye&color=00ff41&style=for-the-badge&label=PROFILE+VISITORS&base=12500" alt="Profile Visitors" />
+  <img src="https://img.shields.io/badge/Kali_Linux-557C94?style=for-the-badge&logo=kali-linux&logoColor=white" alt="Kali"/>
+  <img src="https://img.shields.io/badge/Nmap-007ACC?style=for-the-badge&logo=nmap&logoColor=white" alt="Nmap"/>
+  <img src="https://img.shields.io/badge/Burp_Suite-FF6600?style=for-the-badge&logo=portswigger&logoColor=white" alt="Burp"/>
+  <img src="https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white" alt="Wireshark"/>
+  <img src="https://img.shields.io/badge/Metasploit-010101?style=for-the-badge&logo=metasploit&logoColor=white" alt="Metasploit"/>
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git"/>
 </p>
 
 ---
