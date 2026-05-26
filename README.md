@@ -20,10 +20,10 @@
 
 <p align="center">
   <a href="https://github.com/TheWildEye">
-    <img src="https://img.shields.io/badge/dynamic/json?color=ff1744&label=CONTRIBUTIONS&query=total.all&url=https%3A%2F%2Fgithub-contributions-api.jogruber.de%2Fv4%2FTheWildEye&style=for-the-badge&logo=github&logoColor=white" alt="Total Contributions" />
+    <img src="https://img.shields.io/badge/CONTRIBUTIONS-850%2B-ff1744?style=for-the-badge&logo=github&logoColor=white" alt="Total Contributions" />
   </a>
   &nbsp;&nbsp;
-  <img src="https://komarev.com/ghpvc/?username=TheWildEye&color=red&style=for-the-badge&label=PROFILE+VISITORS&base=2305" alt="Profile Visitors" />
+  <img src="https://komarev.com/ghpvc/?username=TheWildEye&color=ff1744&style=for-the-badge&label=PROFILE+VISITORS&base=2305" alt="Profile Visitors" />
 </p>
 
 ---
@@ -34,8 +34,7 @@
 $ whoami --verbose
 [+] Identity  : Vyom Nagpal (TheWildEye)
 [+] Role      : B.Tech - M.Tech CSE (Cybersecurity)
-[+] University: National Forensic Sciences University (NFSU), Ahmedabad
-[+] Location  : Ahmedabad, Gujarat, India
+[+] University: National Forensic Sciences University (NFSU)
 [+] Contact   : vyomnagpal7@gmail.com
 
 $ cat mission.txt
@@ -74,7 +73,7 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
       <td>
         <img src="https://vyomnagpal.in/ONGC_Logo.svg.png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
         <strong>ONGC</strong><br/>
-        <small>CERT-In&nbsp;Disclosure</small>
+        <small>CERT-In Disclosure</small>
       </td>
       <td>Broken Access Control</td>
       <td><code>WEB&nbsp;APP</code></td>
@@ -85,9 +84,9 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
       <td>
         <img src="https://vyomnagpal.in/ONGC_Logo.svg.png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
         <strong>ONGC</strong><br/>
-        <small>CERT-In&nbsp;Disclosure</small><br/>
+        <small>CERT-In Disclosure</small><br/>
         <img src="https://vyomnagpal.in/download%20(1).png" width="14" height="14" style="vertical-align:middle; margin-right:2px;"/>
-        <small>CERT-In&nbsp;✓&nbsp;~3,000&nbsp;Employee&nbsp;Records&nbsp;Secured</small>
+        <small>CERT-In ✓ ~3,000 Employee Records Secured</small>
       </td>
       <td>Sensitive Data Exposure</td>
       <td><code>WEB&nbsp;APP</code></td>
@@ -100,7 +99,7 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
         <strong>TRON&nbsp;DAO</strong><br/>
         <small>HackerOne</small>
       </td>
-      <td>Cryptographic Weakness<br/><small>Weak&nbsp;Pseudo-Random&nbsp;Number&nbsp;Generator&nbsp;(PRNG)</small></td>
+      <td>Cryptographic Weakness<br/><small>Weak Pseudo-Random Number Generator (PRNG)</small></td>
       <td><code>WEB&nbsp;APP</code></td>
       <td><img src="https://img.shields.io/badge/CRITICAL-ff1744?style=flat-square" alt="CRITICAL"/></td>
     </tr>
@@ -111,9 +110,9 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
         <strong>Samsung</strong><br/>
         <small>VDP</small><br/>
         <img src="https://vyomnagpal.in/Google__G__logo.svg.png" width="14" height="14" style="vertical-align:middle; margin-right:2px;"/>
-        <small>Google:&nbsp;<em>"High&nbsp;quality&nbsp;research"</em></small>
+        <small>Google: <em>"High quality research"</em></small>
       </td>
-      <td>Authentication Bypass<br/><small>Incorrect&nbsp;Authorization&nbsp;·&nbsp;Android&nbsp;16</small></td>
+      <td>Authentication Bypass<br/><small>Incorrect Authorization · Android 16</small></td>
       <td><code>MOBILE&nbsp;DEVICE</code></td>
       <td><img src="https://img.shields.io/badge/HIGH-ff6d00?style=flat-square" alt="HIGH"/></td>
     </tr>
@@ -122,7 +121,7 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
       <td>
         <img src="https://vyomnagpal.in/ONGC_Logo.svg.png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
         <strong>ONGC</strong><br/>
-        <small>CERT-In&nbsp;Disclosure</small>
+        <small>CERT-In Disclosure</small>
       </td>
       <td>Security Misconfiguration</td>
       <td><code>WEB&nbsp;APP</code></td>
@@ -146,7 +145,7 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
         <strong>Pet&nbsp;Pooja</strong><br/>
         <small>VDP</small>
       </td>
-      <td>Infrastructure Security Misconfiguration<br/><small>WAF&nbsp;Bypass</small></td>
+      <td>Infrastructure Security Misconfiguration<br/><small>WAF Bypass</small></td>
       <td><code>WEBSITE</code></td>
       <td><img src="https://img.shields.io/badge/HIGH-ff6d00?style=flat-square" alt="HIGH"/></td>
     </tr>
@@ -166,9 +165,9 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
       <td>
         <img src="https://vyomnagpal.in/meta_PNG5.png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
         <strong>Meta</strong><br/>
-        <small>Bug&nbsp;Bounty</small><br/>
+        <small>Bug Bounty</small><br/>
         <img src="https://vyomnagpal.in/whatsapp.png" width="14" height="14" style="vertical-align:middle; margin-right:2px;"/>
-        <small>WhatsApp&nbsp;Locked&nbsp;Chats</small>
+        <small>WhatsApp Locked Chats</small>
       </td>
       <td>Authentication Flow Inconsistency</td>
       <td><code>DESKTOP&nbsp;APP</code></td>
@@ -189,9 +188,9 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
       <td align="center">11</td>
       <td>
         🔒 <strong>[ UNDISCLOSED ]</strong><br/>
-        <small>Private&nbsp;Program&nbsp;·&nbsp;NDA</small>
+        <small>Private Program · NDA</small>
       </td>
-      <td>[ CONFIDENTIAL ]<br/><small>Vulnerability details withheld — active NDA in effect</small></td>
+      <td>[ CONFIDENTIAL ]<br/><small>Vulnerability details withheld - active NDA in effect</small></td>
       <td><code>REDACTED</code></td>
       <td><img src="https://img.shields.io/badge/PENDING-00b0ff?style=flat-square" alt="PENDING"/></td>
     </tr>
@@ -199,9 +198,9 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
       <td align="center">12</td>
       <td>
         🔒 <strong>[ UNDISCLOSED ]</strong><br/>
-        <small>Private&nbsp;Program&nbsp;·&nbsp;NDA</small>
+        <small>Private Program · NDA</small>
       </td>
-      <td>[ CONFIDENTIAL ]<br/><small>Cannot disclose — responsible disclosure timeline active</small></td>
+      <td>[ CONFIDENTIAL ]<br/><small>Cannot disclose - responsible disclosure timeline active</small></td>
       <td><code>REDACTED</code></td>
       <td><img src="https://img.shields.io/badge/PENDING-00b0ff?style=flat-square" alt="PENDING"/></td>
     </tr>
