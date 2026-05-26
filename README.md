@@ -1,7 +1,7 @@
-<h1 align="center"><strong>VYOM NAGPAL // THE WILD EYE</strong></h1>
+<h1 align="center"><strong>VYOM NAGPAL</strong></h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=1500&pause=2000&color=00ff41&center=true&vCenter=true&width=820&lines=M.Tech+Cybersecurity;Security+Researcher;CTF+Player;Hackathon+Finalist;OSINT+%26+Recon+Specialist;" alt="typing"/>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Share+Tech+Mono&size=22&duration=1500&pause=2000&color=00ff41&center=true&vCenter=true&width=820&lines=M.Tech+Cybersecurity;Security+Researcher;CTF+Player;Hackathon+Finalist;OSINT+%26+Recon+Specialist;" alt="typing"/>
 </p>
 
 <p align="center">
@@ -50,20 +50,155 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
 
 ## 🐛 BUG BOUNTY & VDP DISCLOSURES
 
-| Target / Asset | Vulnerability | Severity | Platform / Program | Impact / Details |
-| :--- | :--- | :--- | :--- | :--- |
-| <img src="https://vyomnagpal.in/ONGC_Logo.svg.png" width="22" height="22" valign="middle"/> **ONGC** | Broken Access Control | 🔴 **CRITICAL** | CERT-In Disclosure | - |
-| <img src="https://vyomnagpal.in/ONGC_Logo.svg.png" width="22" height="22" valign="middle"/> **ONGC** | Sensitive Data Exposure | 🔴 **CRITICAL** | CERT-In Disclosure | <img src="https://vyomnagpal.in/download%20(1).png" width="16" height="16" valign="middle"/> ~3,000 Employee Records Secured |
-| <img src="https://vyomnagpal.in/tron-trx-logo.png" width="22" height="22" valign="middle"/> **TRON DAO** | Cryptographic Weakness | 🔴 **CRITICAL** | HackerOne | Weak Pseudo-Random Number Generator (PRNG) |
-| <img src="https://vyomnagpal.in/download.png" width="22" height="22" valign="middle"/> **Samsung** | Authentication Bypass | 🟠 **HIGH** | VDP | Android 16 • <img src="https://vyomnagpal.in/Google__G__logo.svg.png" width="14" height="14" valign="middle"/> Google Acknowledged: *"High quality research"* |
-| <img src="https://vyomnagpal.in/ONGC_Logo.svg.png" width="22" height="22" valign="middle"/> **ONGC** | Security Misconfiguration | 🟠 **HIGH** | CERT-In Disclosure | - |
-| <img src="https://vyomnagpal.in/tron-trx-logo.png" width="22" height="22" valign="middle"/> **TRON DAO** | Cross-Site Request Forgery | 🟠 **HIGH** | HackerOne | - |
-| <img src="https://vyomnagpal.in/new_petpooja_logo_whitered_result%20(1).png" width="22" height="22" valign="middle"/> **Pet Pooja** | Infrastructure Misconfiguration | 🟠 **HIGH** | VDP | WAF Bypass |
-| <img src="https://vyomnagpal.in/fork.png" width="22" height="22" valign="middle"/> **The Fork** | Server Security Misconfiguration | ⚪ **INFO** | Bugcrowd | APK Target |
-| <img src="https://vyomnagpal.in/meta_PNG5.png" width="22" height="22" valign="middle"/> **Meta** | Authentication Flow Inconsistency | 🔵 **PENDING** | Bug Bounty | WhatsApp Locked Chats • <img src="https://vyomnagpal.in/whatsapp.png" width="14" height="14" valign="middle"/> |
-| <img src="https://vyomnagpal.in/foundation%20dark%20(1).png" width="22" height="22" valign="middle"/> **Foundation** | Security Misconfiguration | 🔵 **PENDING** | VDP | Web App Target |
-| 🔒 **[ UNDISCLOSED ]** | [ CONFIDENTIAL ] | 🔵 **PENDING** | Private Program | Under active NDA |
-| 🔒 **[ UNDISCLOSED ]** | [ CONFIDENTIAL ] | 🔵 **PENDING** | Private Program | Under responsible disclosure timeline |
+<table>
+  <thead>
+    <tr>
+      <th width="36" align="center">#</th>
+      <th align="left">TARGET / ASSET</th>
+      <th align="left">VULNERABILITY</th>
+      <th align="left">TYPE</th>
+      <th align="left">SEVERITY</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">1</td>
+      <td>
+        <img src="https://vyomnagpal.in/ONGC_Logo.svg.png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
+        <strong>ONGC</strong><br/>
+        <small>CERT-In Disclosure</small>
+      </td>
+      <td>Broken Access Control</td>
+      <td><code>WEB APP</code></td>
+      <td><font color="#ff1744"><strong>CRITICAL</strong></font></td>
+    </tr>
+    <tr>
+      <td align="center">2</td>
+      <td>
+        <img src="https://vyomnagpal.in/ONGC_Logo.svg.png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
+        <strong>ONGC</strong><br/>
+        <small>CERT-In Disclosure</small><br/>
+        <img src="https://vyomnagpal.in/download%20(1).png" width="14" height="14" style="vertical-align:middle; margin-right:2px;"/>
+        <small>CERT-In ✓ ~3,000 Employee Records Secured</small>
+      </td>
+      <td>Sensitive Data Exposure</td>
+      <td><code>WEB APP</code></td>
+      <td><font color="#ff1744"><strong>CRITICAL</strong></font></td>
+    </tr>
+    <tr>
+      <td align="center">3</td>
+      <td>
+        <img src="https://vyomnagpal.in/tron-trx-logo.png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
+        <strong>TRON DAO</strong><br/>
+        <small>HackerOne</small>
+      </td>
+      <td>Cryptographic Weakness<br/><small>Weak Pseudo-Random Number Generator (PRNG)</small></td>
+      <td><code>WEB APP</code></td>
+      <td><font color="#ff1744"><strong>CRITICAL</strong></font></td>
+    </tr>
+    <tr>
+      <td align="center">4</td>
+      <td>
+        <img src="https://vyomnagpal.in/download.png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
+        <strong>Samsung</strong><br/>
+        <small>VDP</small><br/>
+        <img src="https://vyomnagpal.in/Google__G__logo.svg.png" width="14" height="14" style="vertical-align:middle; margin-right:2px;"/>
+        <small>Google: <em>"High quality research"</em></small>
+      </td>
+      <td>Authentication Bypass<br/><small>Incorrect Authorization · Android 16</small></td>
+      <td><code>MOBILE DEVICE</code></td>
+      <td><font color="#ff6d00"><strong>HIGH</strong></font></td>
+    </tr>
+    <tr>
+      <td align="center">5</td>
+      <td>
+        <img src="https://vyomnagpal.in/ONGC_Logo.svg.png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
+        <strong>ONGC</strong><br/>
+        <small>CERT-In Disclosure</small>
+      </td>
+      <td>Security Misconfiguration</td>
+      <td><code>WEB APP</code></td>
+      <td><font color="#ff6d00"><strong>HIGH</strong></font></td>
+    </tr>
+    <tr>
+      <td align="center">6</td>
+      <td>
+        <img src="https://vyomnagpal.in/tron-trx-logo.png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
+        <strong>TRON DAO</strong><br/>
+        <small>HackerOne</small>
+      </td>
+      <td>Cross-Site Request Forgery (CSRF)</td>
+      <td><code>WEB APP</code></td>
+      <td><font color="#ff6d00"><strong>HIGH</strong></font></td>
+    </tr>
+    <tr>
+      <td align="center">7</td>
+      <td>
+        <img src="https://vyomnagpal.in/new_petpooja_logo_whitered_result%20(1).png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
+        <strong>Pet Pooja</strong><br/>
+        <small>VDP</small>
+      </td>
+      <td>Infrastructure Security Misconfiguration<br/><small>WAF Bypass</small></td>
+      <td><code>WEBSITE</code></td>
+      <td><font color="#ff6d00"><strong>HIGH</strong></font></td>
+    </tr>
+    <tr>
+      <td align="center">8</td>
+      <td>
+        <img src="https://vyomnagpal.in/fork.png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
+        <strong>The Fork</strong><br/>
+        <small>Bugcrowd</small>
+      </td>
+      <td>Server Security Misconfiguration</td>
+      <td><code>APK</code></td>
+      <td><font color="#9e9e9e"><strong>INFO</strong></font></td>
+    </tr>
+    <tr>
+      <td align="center">9</td>
+      <td>
+        <img src="https://vyomnagpal.in/meta_PNG5.png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
+        <strong>Meta</strong><br/>
+        <small>Bug Bounty</small><br/>
+        <img src="https://vyomnagpal.in/whatsapp.png" width="14" height="14" style="vertical-align:middle; margin-right:2px;"/>
+        <small>WhatsApp Locked Chats</small>
+      </td>
+      <td>Authentication Flow Inconsistency</td>
+      <td><code>DESKTOP APP</code></td>
+      <td><font color="#00b0ff"><strong>PENDING</strong></font></td>
+    </tr>
+    <tr>
+      <td align="center">10</td>
+      <td>
+        <img src="https://vyomnagpal.in/foundation%20dark%20(1).png" width="22" height="22" style="vertical-align:middle; margin-right:6px;"/>
+        <strong>Foundation</strong><br/>
+        <small>VDP</small>
+      </td>
+      <td>Security Misconfiguration</td>
+      <td><code>WEB APP</code></td>
+      <td><font color="#00b0ff"><strong>PENDING</strong></font></td>
+    </tr>
+    <tr>
+      <td align="center">11</td>
+      <td>
+        🔒 <strong>[ UNDISCLOSED ]</strong><br/>
+        <small>Private Program · NDA</small>
+      </td>
+      <td>[ CONFIDENTIAL ]<br/><small>Vulnerability details withheld — active NDA in effect</small></td>
+      <td><code>REDACTED</code></td>
+      <td><font color="#00b0ff"><strong>PENDING</strong></font></td>
+    </tr>
+    <tr>
+      <td align="center">12</td>
+      <td>
+        🔒 <strong>[ UNDISCLOSED ]</strong><br/>
+        <small>Private Program · NDA</small>
+      </td>
+      <td>[ CONFIDENTIAL ]<br/><small>Cannot disclose — responsible disclosure timeline active</small></td>
+      <td><code>REDACTED</code></td>
+      <td><font color="#00b0ff"><strong>PENDING</strong></font></td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -133,8 +268,10 @@ Ex-Intern @ ShadowFox. Building offensive security tools for real-world use."
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=TheWildEye&show_icons=true&theme=tokyonight&hide_border=false&title_color=00ff41&icon_color=00ff41&text_color=e8ffe8&bg_color=030303" alt="GitHub Stats" />
-  &nbsp;&nbsp;
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=TheWildEye&theme=tokyonight&background=030303&fire=00ff41&ring=00ff41&text_color=e8ffe8&stroke=00ff41" alt="GitHub Streak" />
+</p>
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=TheWildEye&color=00ff41&style=flat-square&label=PROFILE+VISITORS" alt="Profile Visitors" />
 </p>
 
 ---
