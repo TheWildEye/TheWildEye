@@ -1,7 +1,7 @@
 <h1 align="center"><strong>VYOM NAGPAL</strong></h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Share+Tech+Mono&size=22&duration=1500&pause=2000&color=00ff41&center=true&vCenter=true&width=820&lines=M.Tech+Cybersecurity;Security+Researcher;CTF+Player;Hackathon+Finalist;OSINT+%26+Recon+Specialist;" alt="typing"/>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Share+Tech+Mono&size=22&duration=1500&pause=2000&color=00ff41&center=true&vCenter=true&width=820&lines=M.Tech+Cybersecurity;Security+Researcher;Bug+Hunter;CTF+Player;Hackathon+Finalist;OSINT+%26+Recon+Specialist;" alt="typing"/>
 </p>
 
 <p align="center">
