@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://vyomnagpal.in" target="_blank" style="text-decoration:none;">
-    <img src="https://img.shields.io/badge/Portfolio-vyomnagpal.in-00ff41?style=for-the-badge&logo=opsgenie&logoColor=black"/>
+    <img src="https://img.shields.io/badge/Portfolio-vyomnagpal.in-ff1744?style=for-the-badge&logo=opsgenie&logoColor=white"/>
   </a>
   &nbsp;
   <a href="https://linkedin.com/in/vyomnagpal" target="_blank" style="text-decoration:none;">
@@ -20,10 +20,10 @@
 
 <p align="center">
   <a href="https://github.com/TheWildEye">
-    <img src="https://img.shields.io/github/search/commits?q=author%3ATheWildEye&color=00ff41&style=for-the-badge&label=CONTRIBUTIONS&logo=github&logoColor=black" alt="Total Contributions" />
+    <img src="https://img.shields.io/badge/dynamic/json?color=ff1744&label=CONTRIBUTIONS&query=total.all&url=https%3A%2F%2Fgithub-contributions-api.jogruber.de%2Fv4%2FTheWildEye&style=for-the-badge&logo=github&logoColor=white" alt="Total Contributions" />
   </a>
   &nbsp;&nbsp;
-  <img src="https://komarev.com/ghpvc/?username=TheWildEye&color=00ff41&style=for-the-badge&label=PROFILE+VISITORS&base=2305" alt="Profile Visitors" />
+  <img src="https://komarev.com/ghpvc/?username=TheWildEye&color=red&style=for-the-badge&label=PROFILE+VISITORS&base=2305" alt="Profile Visitors" />
 </p>
 
 ---
