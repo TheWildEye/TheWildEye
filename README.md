@@ -23,7 +23,7 @@
     <img src="https://img.shields.io/badge/CONTRIBUTIONS-850%2B-black?style=for-the-badge&logo=github&logoColor=white" alt="Total Contributions" />
   </a>
   &nbsp;&nbsp;
-  <img src="https://komarev.com/ghpvc/?username=TheWildEye&color=black&style=for-the-badge&label=PROFILE+VISITORS&base=2305" alt="Profile Visitors" />
+  <img src="https://komarev.com/ghpvc/?username=TheWildEye&color=000000&style=for-the-badge&label=PROFILE+VISITORS&base=2305" alt="Profile Visitors" />
 </p>
 
 ---
