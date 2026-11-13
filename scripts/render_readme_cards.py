@@ -158,11 +158,11 @@ def page_scene(w, h, seed=7):
             f'dur="{dur:.0f}s" repeatCount="indefinite"/></circle>'
         )
     rain = []
-    for _ in range(14):
+    for _ in range(34):
         x = rnd.uniform(-40, w + 40)
-        ln = rnd.uniform(12, 28)
-        dur = rnd.uniform(0.8, 1.7)
-        op = rnd.uniform(0.10, 0.34)
+        ln = rnd.uniform(14, 30)
+        dur = rnd.uniform(0.7, 1.5)
+        op = rnd.uniform(0.12, 0.36)
         dx = ln * 0.24
         y0 = rnd.uniform(-h, 0)
         rain.append(
