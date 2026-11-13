@@ -106,6 +106,18 @@ def d(s):
 BAT = ("M500.8 304.4L494.4 285.2L486.8 268.6L475.4 250.2L463.1 235.0L444.4 217.2L427.3 204.9L401.3 190.7L384.7 184.1L360.5 176.5L326.9 169.4L296.6 165.6L267.2 164.2L231.7 165.1L205.6 168.0L173.4 174.1L149.3 181.2L155.2 165.9L157.1 156.9L158.0 146.4L157.1 131.7L153.8 118.0L149.0 105.7L143.3 95.3L132.9 80.6L110.0 57.1L92.9 43.9L75.4 32.5L56.0 22.1L34.6 12.6L0.8 1.5L315.5 1.2L320.0 17.1L327.1 32.3L332.4 39.8L341.1 49.1L353.4 58.1L370.0 65.7L394.7 71.8L419.8 74.7L444.9 74.7L449.6 73.7L455.1 70.2L460.7 58.3L463.6 44.6L469.0 1.2L481.8 40.1L490.3 39.1L519.2 40.1L532.0 0.8L537.0 42.2L542.2 64.0L545.5 69.7L551.5 73.7L568.0 75.1L588.9 74.2L615.9 69.9L633.4 64.7L649.0 57.1L661.4 47.7L673.4 32.7L680.5 18.1L685.5 1.2L1000.8 1.5L984.9 6.0L958.8 15.9L925.2 33.0L907.7 44.3L893.0 55.7L868.6 80.1L853.0 103.8L848.2 115.2L844.4 128.9L843.5 153.5L845.9 165.9L851.3 181.2L825.7 173.7L792.6 167.5L762.3 164.7L731.9 164.2L710.1 165.1L679.8 168.5L645.7 175.1L623.0 181.7L597.9 191.7L577.5 202.6L556.2 217.7L538.4 234.5L522.8 254.4L513.8 269.6L506.2 286.6Z")
 
 
+def bat_wing(s, f):
+    """Two-wing bat silhouette ported from vyomnagpal.in's batWing(bx, by, s, f);
+    f is the flap factor (-1..1)."""
+    return (
+        f"M0 0"
+        f"Q{-0.45 * s:.1f} {-s * (0.5 + 0.45 * f):.1f} {-s:.1f} {-s * 0.9 * f:.1f}"
+        f"Q{-0.55 * s:.1f} {s * 0.12:.1f} {-0.12 * s:.1f} {s * 0.16:.1f}"
+        f"Q{0.55 * s:.1f} {s * 0.12:.1f} {s:.1f} {-s * 0.9 * f:.1f}"
+        f"Q{0.45 * s:.1f} {-s * (0.5 + 0.45 * f):.1f} 0 0Z"
+    )
+
+
 def _skyline(w, base_y, min_h, max_h, min_w, max_w, lit, color, win, rnd):
     out, buildings = [], []
     x = -30.0
@@ -160,18 +172,22 @@ def page_scene(w, h, seed=7):
             f'<animate attributeName="y2" from="{y0 + ln:.0f}" to="{h + ln:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/></line>'
         )
     bats = []
-    for i in range(6):
-        by = rnd.uniform(h * 0.04, h * 0.44)
-        sc = rnd.uniform(0.024, 0.055)
-        dur = rnd.uniform(34, 58)
-        dy = rnd.uniform(10, 26)
+    for i in range(5):
+        by = rnd.uniform(h * 0.04, h * 0.42)
+        s = rnd.uniform(14, 26)
+        drift = rnd.uniform(34, 60)
         phase = rnd.uniform(0, 1)
+        flapd = rnd.uniform(0.45, 0.7)
         bats.append(
             f'<g><animateTransform attributeName="transform" type="translate" '
-            f'values="{-120} {by:.0f};{w / 2:.0f} {by - dy:.0f};{w + 120:.0f} {by:.0f}" '
-            f'keyTimes="0;0.5;1" dur="{dur:.0f}s" begin="{-dur * phase:.0f}s" repeatCount="indefinite"/>'
-            f'<g transform="scale({sc:.4f})">'
-            f'<path class="bat" style="animation-delay:{rnd.uniform(0, 0.8):.2f}s" d="{BAT}" fill="#24395c"/></g></g>'
+            f'from="{-80} {by:.0f}" to="{w + 80} {by:.0f}" dur="{drift:.0f}s" '
+            f'begin="{-drift * phase:.0f}s" repeatCount="indefinite"/>'
+            f'<g><animateTransform attributeName="transform" type="translate" '
+            f'values="0 0;0 -9;0 0;0 9;0 0" dur="4.2s" repeatCount="indefinite"/>'
+            f'<path fill="#111d33" d="{bat_wing(s, 0)}">'
+            f'<animate attributeName="d" dur="{flapd:.2f}s" repeatCount="indefinite" '
+            f'values="{bat_wing(s, 1)};{bat_wing(s, 0)};{bat_wing(s, -1)};{bat_wing(s, 0)};{bat_wing(s, 1)}"/>'
+            f"</path></g></g>"
         )
     far_svg, _ = _skyline(w, h - 170, 450, 820, 34, 92, 0.08, "#0c1424", "rgba(150,178,220,0.34)", rnd)
     near_svg, near_b = _skyline(w, h + 6, 700, 1080, 40, 120, 0.09, "#05080e", "rgba(255,205,80,0.7)", rnd)
@@ -274,8 +290,8 @@ def count_up(num, x, y, attrs, begin, dur=1.3, frames=9, group=False):
 def hero():
     h = 340
     inner = (
-        f'<text class="r" {d(0.15)} x="42" y="156" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom Nagpal</text>'
-        f'<text class="f" {d(0.4)} x="46" y="194" font-family="{SANS}" font-size="16" fill="url(#shn)">Security Researcher &#183; Certified Ethical Hacker</text>'
+        f'<text class="r" {d(0.15)} x="42" y="156" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom <tspan fill="{GOLD_BRIGHT}">Nagpal</tspan></text>'
+        f'<text class="f" {d(0.4)} x="46" y="194" font-family="{SANS}" font-size="16" fill="{INK_SOFT}">Security Researcher &#183; <tspan fill="{GOLD_BRIGHT}">Certified Ethical Hacker</tspan></text>'
         f'<text class="f" {d(0.5)} x="46" y="218" font-family="{MONO}" font-size="13.5" fill="{MUTED}">National Forensic Sciences University &#183; B.Tech&#8211;M.Tech CSE</text>'
         f'<text class="r" {d(0.7)} x="46" y="282" font-family="{SANS}" font-size="15" fill="{INK_SOFT}">I break web &amp; mobile apps before attackers do,</text>'
         f'<text class="r" {d(0.78)} x="46" y="304" font-family="{SANS}" font-size="15" fill="{INK_SOFT}">and build offensive security tooling.</text>'
@@ -294,7 +310,7 @@ def kpi():
     for i, (label, num, group) in enumerate(tiles):
         x = 40 + i * (tw + gap)
         begin = 0.4 + i * 0.14
-        parts.append(count_up(num, x, 62, f'font-family="{SERIF}" font-size="44" fill="url(#shn)"', begin, group=group))
+        parts.append(count_up(num, x, 62, f'font-family="{SERIF}" font-size="44" fill="{GOLD_BRIGHT}"', begin, group=group))
         parts.append(f'<rect class="g" style="animation-delay:{begin:.2f}s" x="{x}" y="76" width="32" height="3" rx="1.5" fill="{GOLD}"/>')
         parts.append(f'<text class="f" style="animation-delay:{begin - 0.25:.2f}s" x="{x}" y="100" font-family="{MONO}" font-size="12.5" letter-spacing="1" fill="{MUTED}">{label}</text>')
     return h, "".join(parts)
@@ -363,7 +379,7 @@ def cvelog():
             f'<g class="r" style="animation-delay:{0.5 + i * 0.13:.2f}s">'
             f'<circle cx="52" cy="{y - 5}" r="4.5" fill="{GOLD}"/>'
             f'<text x="74" y="{y}" font-family="{MONO}" font-size="13.5" fill="url(#shn)">{escape(cid)}</text>'
-            f'<text x="320" y="{y}" font-family="{SANS}" font-size="15.5" fill="{INK_SOFT}">{escape(cls)}</text>'
+            f'<text x="320" y="{y}" font-family="{SANS}" font-size="15.5" fill="{GOLD_BRIGHT}">{escape(cls)}</text>'
             f'<text x="{W - 44}" y="{y}" text-anchor="end" font-family="{MONO}" font-size="13" letter-spacing="1" fill="{MUTED}">2026</text></g>'
         )
     head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="url(#shn)">6 published <tspan font-style="italic" fill="{GOLD}">CVEs</tspan></text>'
@@ -403,7 +419,7 @@ def repos(stars):
             f'<g class="r" style="animation-delay:{2.4 + i * 0.15:.2f}s">'
             f'<rect x="{x:.1f}" y="0" width="{rw:.1f}" height="3" rx="1.5" fill="{color}"/>'
             f'<text x="{x + 22:.1f}" y="38" font-family="{MONO}" font-size="12" letter-spacing="1" fill="{color}">&#9656; REPO</text>'
-            f'<text x="{x + 22:.1f}" y="68" font-family="{SANS}" font-weight="600" font-size="19" fill="url(#shn)">{escape(name)}</text>'
+            f'<text x="{x + 22:.1f}" y="68" font-family="{SANS}" font-weight="600" font-size="19" fill="{GOLD_BRIGHT}">{escape(name)}</text>'
             f'{body_lines}'
             f'<text x="{x + 22:.1f}" y="{h - 12}" font-family="{MONO}" font-size="13" fill="{MUTED}">{escape(meta)}</text></g>'
         )
