@@ -104,7 +104,30 @@ def _skyline(w, base_y, min_h, max_h, min_w, max_w, lit, color, win, rnd):
         bw = rnd.uniform(min_w, max_w)
         bh = rnd.uniform(min_h, max_h)
         top = base_y - bh
+        cxr = x + bw / 2
         out.append(f'<rect x="{x:.0f}" y="{top:.0f}" width="{bw:.0f}" height="{bh:.0f}" fill="{color}"/>')
+        style = rnd.random()
+        if style < 0.18:
+            rh = bw * rnd.uniform(0.35, 0.75)
+            out.append(f'<polygon points="{x:.0f},{top:.0f} {x + bw:.0f},{top:.0f} {cxr:.0f},{top - rh:.0f}" fill="{color}" stroke="rgba(150,182,232,.22)" stroke-width="1"/>')
+            out.append(f'<rect x="{cxr - 1:.0f}" y="{top - rh - 2:.0f}" width="2" height="2" fill="rgba(255,210,120,.8)"/>')
+        elif style < 0.38:
+            rh = bw * rnd.uniform(0.25, 0.5)
+            iw = bw * rnd.uniform(0.38, 0.66)
+            out.append(
+                f'<polygon points="{x:.0f},{top:.0f} {x + bw:.0f},{top:.0f} '
+                f'{cxr + iw / 2:.0f},{top - rh:.0f} {cxr - iw / 2:.0f},{top - rh:.0f}" fill="{color}" stroke="rgba(150,182,232,.22)" stroke-width="1"/>'
+            )
+        elif style < 0.56:
+            rh = bw * rnd.uniform(0.3, 0.55)
+            out.append(
+                f'<polygon points="{cxr:.0f},{top - rh * 1.9:.0f} {cxr + bw * 0.34:.0f},{top - rh * 0.95:.0f} '
+                f'{cxr:.0f},{top:.0f} {cxr - bw * 0.34:.0f},{top - rh * 0.95:.0f}" fill="{color}" stroke="rgba(150,182,232,.22)" stroke-width="1"/>'
+            )
+        elif style < 0.76:
+            rh = bw * rnd.uniform(0.2, 0.42)
+            iw = bw * rnd.uniform(0.4, 0.72)
+            out.append(f'<rect x="{cxr - iw / 2:.0f}" y="{top - rh:.0f}" width="{iw:.0f}" height="{rh:.0f}" fill="{color}" stroke="rgba(150,182,232,.22)" stroke-width="1"/>')
         cols = max(1, int(bw // 17))
         rows = max(1, int(bh // 27))
         for i in range(cols):
