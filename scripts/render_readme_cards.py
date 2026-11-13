@@ -215,7 +215,7 @@ def page_scene(w, h, seed=7):
     ons = sorted((b for b in near_b if b[0] + b[1] > 20), key=lambda b: b[0])
     host = ons[1] if len(ons) > 1 else (ons[0] if ons else near_b[0])
     ox, oy = host[0] + host[1] / 2, host[2]
-    tx, ty, rx = 646, 190, 138
+    tx, ty, rx = 646, 186, 172
     ry = rx * 0.5
     dx, dy = tx - ox, ty - oy
     s = (rx * 1.25) / 1002
@@ -356,13 +356,23 @@ def kpi():
     n = len(tiles)
     gap = 14
     tw = (W - 80 - gap * (n - 1)) / n
-    parts = []
+    litc, lits = "#fff8e3", "#ffe9a8"
+    lx = 40 + 2 * (tw + gap) + tw / 2
+    parts = [
+        '<defs><radialGradient id="kpilit"><stop offset="0" stop-color="#ffe9a8" stop-opacity=".17"/>'
+        '<stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/></radialGradient></defs>',
+        f'<ellipse cx="{lx:.0f}" cy="58" rx="122" ry="86" fill="url(#kpilit)"/>',
+    ]
     for i, (label, num, group) in enumerate(tiles):
         x = 40 + i * (tw + gap)
         begin = 0.4 + i * 0.14
-        parts.append(count_up(num, x, 62, f'font-family="{SERIF}" font-size="44" fill="{GOLD_BRIGHT}"', begin, group=group))
-        parts.append(f'<rect class="g" style="animation-delay:{begin:.2f}s" x="{x}" y="76" width="32" height="3" rx="1.5" fill="{GOLD}"/>')
-        parts.append(f'<text class="f" style="animation-delay:{begin - 0.25:.2f}s" x="{x}" y="100" font-family="{SANS}" font-weight="700" font-size="11.5" letter-spacing="0.3" fill="{INK}">{label}</text>')
+        lit = i == 2
+        numcol = litc if lit else GOLD_BRIGHT
+        lblcol = lits if lit else INK
+        barcol = "#fff0c2" if lit else GOLD
+        parts.append(count_up(num, x, 62, f'font-family="{SERIF}" font-size="44" fill="{numcol}"', begin, group=group))
+        parts.append(f'<rect class="g" style="animation-delay:{begin:.2f}s" x="{x}" y="76" width="32" height="3" rx="1.5" fill="{barcol}"/>')
+        parts.append(f'<text class="f" style="animation-delay:{begin - 0.25:.2f}s" x="{x}" y="100" font-family="{SANS}" font-weight="700" font-size="11.5" letter-spacing="0.3" fill="{lblcol}">{label}</text>')
     return h, "".join(parts)
 
 
