@@ -357,9 +357,10 @@ def orbital():
         ul = math.hypot(ux, uy) or 1
         ux, uy = ux / ul, uy / ul
         qx, qy = (nx + cx) / 2 - uy * 34, (ny + cy) / 2 + ux * 34
+        ex, ey = cx + ux * 106, cy + uy * 34
         pid = f"cn{i}"
         anchor = "start" if ux > 0.3 else ("end" if ux < -0.3 else "middle")
-        pdat = f"M{nx:.0f} {ny:.0f} Q{qx:.0f} {qy:.0f} {cx:.0f} {cy:.0f}"
+        pdat = f"M{nx:.0f} {ny:.0f} Q{qx:.0f} {qy:.0f} {ex:.0f} {ey:.0f}"
         lx, ly = nx + ux * 30, ny + uy * 20 + 4
         wave = (f'<animateTransform attributeName="transform" type="translate" '
                 f'values="0 0;{-ux * amp:.1f} {-uy * amp:.1f};0 0" '
@@ -377,13 +378,7 @@ def orbital():
             f'<animateMotion dur="{3.4 + i * 0.21:.1f}s" begin="{-i * 0.34:.2f}s" repeatCount="indefinite" rotate="0">'
             f'<mpath xlink:href="#{pid}"/></animateMotion></circle>'
         )
-    body.append(f'<circle class="pu" cx="{cx}" cy="{cy}" r="20" fill="{GOLD}"/>')
-    body.append(
-        f'<circle cx="{cx}" cy="{cy}" r="20" fill="none" stroke="{GOLD_BRIGHT}" stroke-width="2" opacity="0">'
-        f'<animate attributeName="r" from="20" to="58" dur="3.4s" repeatCount="indefinite"/>'
-        f'<animate attributeName="opacity" from="0.5" to="0" dur="3.4s" repeatCount="indefinite"/></circle>'
-    )
-    body.append(f'<circle cx="{cx}" cy="{cy}" r="8" fill="{GOLD_BRIGHT}"/>')
+    body.append(f'<text x="{cx}" y="{cy + 12}" text-anchor="middle" font-family="{SERIF}" font-size="38" letter-spacing="0.5" fill="{GOLD_BRIGHT}">TheWildEye</text>')
     head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="{INK}">Skills, <tspan font-style="italic" fill="{GOLD}">in orbit</tspan></text>'
     return h, f'<defs><radialGradient id="coreglow"><stop offset="0" stop-color="{GOLD}" stop-opacity=".2"/><stop offset="1" stop-color="{GOLD}" stop-opacity="0"/></radialGradient></defs>' + head + "".join(body)
 
