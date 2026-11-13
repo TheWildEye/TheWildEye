@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# local portrait pipeline inputs (keep your raw/prepped photo out of the repo)
+source-photo.*
+source-prepped.png

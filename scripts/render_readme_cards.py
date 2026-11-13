@@ -1,0 +1,478 @@
+#!/usr/bin/env python3
+"""
+Render the profile README as ONE animated SVG (cards/page.svg).
+
+Theme: "Gotham" - a single continuous night scene: night-navy sky, one city
+skyline at the bottom, a bat searchlight in the sky, and all content sitting
+directly on that background (no boxes). Instrument Serif display, Geist body,
+Geist Mono labels.
+
+Everything is one standalone SVG shown through <img>, so it can only use what
+GitHub allows there: inline CSS animations, SMIL and fonts embedded as data URIs
+(no JS, no external requests). Fonts are subset WOFFs in fonts/ (SIL OFL).
+
+Numbers mirror vyomnagpal.in and are set by hand. Only repo stars are fetched live.
+Run by .github/workflows/update-profile-art.yml.
+"""
+import base64
+import os
+import random
+import re
+from html import escape
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.join(HERE, "..")
+OUT = os.path.join(ROOT, "cards")
+FONTS = os.path.join(ROOT, "fonts")
+
+# ---- palette (dark Gotham: night navy + bat-yellow) ------------------------
+PAPER = "#0a0f1a"
+INK = "#eef2f8"
+INK_SOFT = "#cfd7e3"
+MUTED = "#a9b3c4"
+RULE = "#1e2739"
+GOLD = "#e6b325"
+GOLD_BRIGHT = "#ffcf3a"
+GOLD_DEEP = "#b8891a"
+GOLD_TINT = "#141824"
+GOLD_GLOW = "#ffcf3a"
+STEEL = "#6b86b8"
+W = 880
+
+SERIF = "'Instrument Serif', Georgia, serif"
+SANS = "Geist, system-ui, -apple-system, sans-serif"
+MONO = "'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace"
+
+FONT_FILES = {
+    "serif": ("Instrument Serif", "normal", 400, "serif-400.woff"),
+    "serif-i": ("Instrument Serif", "italic", 400, "serif-italic.woff"),
+    "sans": ("Geist", "normal", 400, "geist-400.woff"),
+    "sans-b": ("Geist", "normal", 600, "geist-600.woff"),
+    "mono": ("Geist Mono", "normal", 400, "geistmono-400.woff"),
+}
+
+BASE_CSS = """
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.1)}100%{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.95}}
+.r{opacity:0;animation:rise .9s cubic-bezier(.2,.7,.2,1) both;transform-box:fill-box}
+.f{opacity:0;animation:fade 1s ease-out both}
+.g{transform-box:fill-box;transform-origin:left;transform:scaleX(0);animation:grow 1s cubic-bezier(.2,.7,.2,1) both}
+.p{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .5s ease-out both}
+.pu{animation:pulse 2.4s ease-in-out infinite}
+.tw{animation:twinkle 3.5s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.pu,.tw{animation:none!important;opacity:1!important;transform:none!important}}
+"""
+
+
+def font_face(keys):
+    out = []
+    for k in keys:
+        fam, style, weight, fn = FONT_FILES[k]
+        b64 = base64.b64encode(open(os.path.join(FONTS, fn), "rb").read()).decode()
+        out.append(
+            f"@font-face{{font-family:'{fam}';font-style:{style};font-weight:{weight};"
+            f"src:url(data:font/woff;base64,{b64}) format('woff')}}"
+        )
+    return "".join(out)
+
+
+def svg(w, h, body, fonts, label):
+    css = font_face(fonts) + BASE_CSS
+    if os.environ.get("STATIC"):
+        css += ".r,.f,.g,.p,.pu{animation:none!important;opacity:1!important;transform:none!important}"
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '
+        f'width="{w:.0f}" height="{h:.0f}" viewBox="0 0 {w:.0f} {h:.0f}" '
+        f'role="img" aria-label="{escape(label)}"><title>{escape(label)}</title>'
+        f"<style>{css}</style>{body}</svg>"
+    )
+
+
+def write(name, content):
+    os.makedirs(OUT, exist_ok=True)
+    with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
+        f.write(content)
+    print(f"wrote cards/{name} ({len(content) // 1024} KB)")
+
+
+def d(s):
+    return f'style="animation-delay:{s:.2f}s"'
+
+
+# ---- bat silhouette (vectorised from the batman-website project) ---------------
+BAT = ("M500.8 304.4L494.4 285.2L486.8 268.6L475.4 250.2L463.1 235.0L444.4 217.2L427.3 204.9L401.3 190.7L384.7 184.1L360.5 176.5L326.9 169.4L296.6 165.6L267.2 164.2L231.7 165.1L205.6 168.0L173.4 174.1L149.3 181.2L155.2 165.9L157.1 156.9L158.0 146.4L157.1 131.7L153.8 118.0L149.0 105.7L143.3 95.3L132.9 80.6L110.0 57.1L92.9 43.9L75.4 32.5L56.0 22.1L34.6 12.6L0.8 1.5L315.5 1.2L320.0 17.1L327.1 32.3L332.4 39.8L341.1 49.1L353.4 58.1L370.0 65.7L394.7 71.8L419.8 74.7L444.9 74.7L449.6 73.7L455.1 70.2L460.7 58.3L463.6 44.6L469.0 1.2L481.8 40.1L490.3 39.1L519.2 40.1L532.0 0.8L537.0 42.2L542.2 64.0L545.5 69.7L551.5 73.7L568.0 75.1L588.9 74.2L615.9 69.9L633.4 64.7L649.0 57.1L661.4 47.7L673.4 32.7L680.5 18.1L685.5 1.2L1000.8 1.5L984.9 6.0L958.8 15.9L925.2 33.0L907.7 44.3L893.0 55.7L868.6 80.1L853.0 103.8L848.2 115.2L844.4 128.9L843.5 153.5L845.9 165.9L851.3 181.2L825.7 173.7L792.6 167.5L762.3 164.7L731.9 164.2L710.1 165.1L679.8 168.5L645.7 175.1L623.0 181.7L597.9 191.7L577.5 202.6L556.2 217.7L538.4 234.5L522.8 254.4L513.8 269.6L506.2 286.6Z")
+
+
+def _skyline(w, base_y, min_h, max_h, min_w, max_w, lit, color, win, rnd):
+    out, buildings = [], []
+    x = -30.0
+    while x < w + 40:
+        bw = rnd.uniform(min_w, max_w)
+        bh = rnd.uniform(min_h, max_h)
+        top = base_y - bh
+        out.append(f'<rect x="{x:.0f}" y="{top:.0f}" width="{bw:.0f}" height="{bh:.0f}" fill="{color}"/>')
+        cols = max(1, int(bw // 12))
+        rows = max(1, int(bh // 16))
+        for i in range(cols):
+            for j in range(rows):
+                if rnd.random() < lit:
+                    out.append(f'<rect x="{x + 5 + i * 12:.0f}" y="{top + 7 + j * 16:.0f}" width="4" height="6" fill="{win}"/>')
+        buildings.append((x, bw, top))
+        x += bw + rnd.uniform(3, 16)
+    return "".join(out), buildings
+
+
+def page_scene(w, h, seed=7):
+    """One continuous Gotham scene: starry sky, drifting clouds, rain, lightning,
+    a big city skyline and a bat searchlight."""
+    rnd = random.Random(seed)
+    stars = []
+    for _ in range(130):
+        sx = rnd.uniform(0, w)
+        sy = rnd.uniform(0, h * 0.72)
+        tw = f' class="tw" style="animation-delay:{rnd.uniform(0, 3.5):.2f}s"' if rnd.random() < 0.25 else ""
+        stars.append(f'<circle{tw} cx="{sx:.0f}" cy="{sy:.0f}" r="{rnd.uniform(0.6, 1.7):.1f}" fill="#d7e3ff" opacity="{rnd.uniform(0.12, 0.7):.2f}"/>')
+    clouds = []
+    for _ in range(6):
+        cy = rnd.uniform(h * 0.06, h * 0.34)
+        r = rnd.uniform(130, 280)
+        x0 = rnd.uniform(-w * 0.3, w)
+        dur = rnd.uniform(70, 140)
+        clouds.append(
+            f'<circle cx="{x0:.0f}" cy="{cy:.0f}" r="{r:.0f}" fill="url(#gcloud)" opacity="{rnd.uniform(0.06, 0.12):.2f}">'
+            f'<animateTransform attributeName="transform" type="translate" from="0 0" to="{w * 0.5:.0f} 0" '
+            f'dur="{dur:.0f}s" repeatCount="indefinite"/></circle>'
+        )
+    rain = []
+    for _ in range(70):
+        x = rnd.uniform(-40, w + 40)
+        ln = rnd.uniform(11, 26)
+        dur = rnd.uniform(0.8, 1.7)
+        op = rnd.uniform(0.10, 0.34)
+        dx = ln * 0.24
+        y0 = rnd.uniform(-h, 0)
+        rain.append(
+            f'<line x1="{x:.0f}" y1="{y0:.0f}" x2="{x - dx:.0f}" y2="{y0 + ln:.0f}" stroke="#afc4e4" stroke-width="1" opacity="{op:.2f}">'
+            f'<animate attributeName="y1" from="{y0:.0f}" to="{h:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/>'
+            f'<animate attributeName="y2" from="{y0 + ln:.0f}" to="{h + ln:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/></line>'
+        )
+    far_svg, _ = _skyline(w, h - 170, 450, 820, 34, 92, 0.08, "#0c1424", "rgba(150,178,220,0.34)", rnd)
+    near_svg, near_b = _skyline(w, h + 6, 700, 1080, 40, 120, 0.09, "#05080e", "rgba(255,205,80,0.7)", rnd)
+    # searchlight on the leftmost tower; bat projected to the right of the name
+    host = min((b for b in near_b if b[0] >= 0), key=lambda b: b[0], default=near_b[0])
+    ox, oy = host[0] + host[1] / 2, host[2]
+    tx, ty, rx = 648, 172, 46
+    ry = rx * 0.5
+    s = (rx * 1.25) / 1002
+    lightning = (
+        f'<rect width="{w}" height="{h}" fill="#c8dcff" opacity="0">'
+        f'<animate attributeName="opacity" values="0;0;0.16;0.02;0.1;0;0" '
+        f'keyTimes="0;0.86;0.89;0.91;0.93;0.96;1" dur="13s" repeatCount="indefinite"/></rect>'
+    )
+    return (
+        f'<rect width="{w}" height="{h}" fill="url(#gsky)"/>'
+        + "".join(stars) + "".join(clouds)
+        + far_svg + near_svg
+        + f'<path d="M{ox:.0f} {oy:.0f} L{tx - rx:.0f} {ty:.0f} L{tx + rx:.0f} {ty:.0f} Z" fill="url(#gbeam2)"/>'
+        + f'<rect x="{ox - 6:.0f}" y="{oy:.0f}" width="12" height="16" fill="#04060b"/>'
+        + f'<ellipse cx="{ox:.0f}" cy="{oy:.0f}" rx="13" ry="9" fill="#04060b"/>'
+        + f'<circle cx="{ox:.0f}" cy="{oy:.0f}" r="24" fill="url(#glens)"/>'
+        + f'<ellipse cx="{tx:.0f}" cy="{ty:.0f}" rx="{rx * 2.8:.0f}" ry="{ry * 3.2:.0f}" fill="url(#gsig)"/>'
+        + f'<ellipse cx="{tx:.0f}" cy="{ty:.0f}" rx="{rx:.0f}" ry="{ry:.0f}" fill="url(#gdisc)"/>'
+        + f'<path transform="translate({tx - 500.8 * s:.1f} {ty - 152.6 * s:.1f}) scale({s:.5f})" d="{BAT}" fill="#070a12"/>'
+        + "".join(rain)
+        + f'<rect width="{w}" height="{h}" fill="url(#gvig)"/>'
+        + f'<rect y="{h * 0.52:.0f}" width="{w}" height="{h * 0.48:.0f}" fill="url(#gbot)"/>'
+        + lightning
+    )
+
+
+SCENE_DEFS = f"""
+<defs>
+  <linearGradient id="gsky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#070c18"/><stop offset="0.35" stop-color="#0a1120"/>
+    <stop offset="0.75" stop-color="#080d18"/><stop offset="1" stop-color="#05080f"/>
+  </linearGradient>
+  <radialGradient id="gsig"><stop offset="0" stop-color="#ffd54a" stop-opacity=".22"/><stop offset="1" stop-color="#ffd54a" stop-opacity="0"/></radialGradient>
+  <linearGradient id="gbeam2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ffe680" stop-opacity=".34"/><stop offset="1" stop-color="#ffd54a" stop-opacity=".05"/></linearGradient>
+  <radialGradient id="glens"><stop offset="0" stop-color="#fffce0" stop-opacity=".95"/><stop offset="0.45" stop-color="#ffee8c" stop-opacity=".5"/><stop offset="1" stop-color="#ffe65f" stop-opacity="0"/></radialGradient>
+  <radialGradient id="gdisc"><stop offset="0" stop-color="#ffea96"/><stop offset="1" stop-color="#d6a424"/></radialGradient>
+  <radialGradient id="gvig" cx="0.5" cy="0.42" r="0.9">
+    <stop offset="0.4" stop-color="#03040a" stop-opacity="0"/><stop offset="1" stop-color="#020308" stop-opacity="0.9"/>
+  </radialGradient>
+  <linearGradient id="gbot" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#02030a" stop-opacity="0"/><stop offset="0.45" stop-color="#02030a" stop-opacity="0.5"/>
+    <stop offset="1" stop-color="#010208" stop-opacity="0.98"/>
+  </linearGradient>
+</defs>
+"""
+
+
+def shine_def(w, h, begin, dur=14.0):
+    """One regular diagonal gold band sweeping top-left -> bottom-right through any
+    text filled with url(#shn). Fixed 45-degree geometry so the wave is even, and it
+    starts/ends off-canvas so the loop resets invisibly."""
+    D = 1000
+    return (
+        f'<defs><linearGradient id="shn" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="{D}" y2="{D}">'
+        f'<stop offset="0" stop-color="{INK}"/><stop offset="0.47" stop-color="{INK}"/>'
+        f'<stop offset="0.5" stop-color="{GOLD}"/><stop offset="0.53" stop-color="{INK}"/>'
+        f'<stop offset="1" stop-color="{INK}"/>'
+        f'<animateTransform attributeName="gradientTransform" type="translate" '
+        f'from="{-D} {-D}" to="{D} {D}" dur="{dur}s" begin="{begin}s" repeatCount="indefinite"/>'
+        f'</linearGradient></defs>'
+    )
+
+
+def count_up(num, x, y, attrs, begin, dur=1.3, frames=24, group=False):
+    m = re.match(r"([\d.]+)(.*)", num)
+    val, suf = float(m.group(1)), m.group(2)
+    dec = len(m.group(1).split(".")[1]) if "." in m.group(1) else 0
+
+    def fmt(v):
+        return (f"{v:,.{dec}f}" if group else f"{v:.{dec}f}") + suf
+
+    if os.environ.get("STATIC"):
+        return f'<text x="{x}" y="{y}" {attrs}>{escape(num)}</text>'
+    out = []
+    for i in range(frames + 1):
+        e = 1 - (1 - i / frames) ** 3
+        txt = num if i == frames else fmt(val * e)
+        on = begin + dur * i / frames
+        off = "" if i == frames else f'<set attributeName="opacity" to="0" begin="{begin + dur * (i + 1) / frames:.3f}s"/>'
+        out.append(f'<text x="{x}" y="{y}" {attrs} opacity="0">{escape(txt)}'
+                   f'<set attributeName="opacity" to="1" begin="{on:.3f}s"/>{off}</text>')
+    return "".join(out)
+
+
+# ---- sections (each returns (height, inner_svg)) -------------------------------
+def hero():
+    h = 340
+    inner = (
+        f'<g class="f" {d(0)}>'
+        f'<circle class="pu" cx="46" cy="46" r="4.5" fill="{GOLD}"/>'
+        f'<text x="60" y="50" font-family="{MONO}" font-size="12" letter-spacing="1.6" fill="{MUTED}">OPEN TO SECURITY WORK</text></g>'
+        f'<text class="r" {d(0.15)} x="42" y="156" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom Nagpal</text>'
+        f'<text class="f" {d(0.4)} x="46" y="194" font-family="{SANS}" font-size="16" fill="url(#shn)">Security Researcher &#183; Certified Ethical Hacker</text>'
+        f'<text class="f" {d(0.5)} x="46" y="218" font-family="{MONO}" font-size="13.5" fill="{MUTED}">National Forensic Sciences University &#183; B.Tech&#8211;M.Tech CSE</text>'
+        f'<text class="r" {d(0.7)} x="46" y="282" font-family="{SANS}" font-size="15" fill="{INK_SOFT}">I break web &amp; mobile apps before attackers do,</text>'
+        f'<text class="r" {d(0.78)} x="46" y="304" font-family="{SANS}" font-size="15" fill="{INK_SOFT}">and build offensive security tooling.</text>'
+    )
+    return h, inner
+
+
+def kpi():
+    h = 120
+    tiles = [("VULNERABILITIES", "100+", False), ("CVE RECORDS", "6", False), ("APPS SECURED", "20+", False),
+             ("RECORDS PROTECTED", "4000", True), ("TARGETS RECONNED", "1000+", True)]
+    n = len(tiles)
+    gap = 14
+    tw = (W - 80 - gap * (n - 1)) / n
+    parts = []
+    for i, (label, num, group) in enumerate(tiles):
+        x = 40 + i * (tw + gap)
+        begin = 0.4 + i * 0.14
+        parts.append(count_up(num, x, 62, f'font-family="{SERIF}" font-size="44" fill="url(#shn)"', begin, group=group))
+        parts.append(f'<rect class="g" style="animation-delay:{begin:.2f}s" x="{x}" y="76" width="32" height="3" rx="1.5" fill="{GOLD}"/>')
+        parts.append(f'<text class="f" style="animation-delay:{begin - 0.25:.2f}s" x="{x}" y="100" font-family="{MONO}" font-size="12.5" letter-spacing="1" fill="{MUTED}">{label}</text>')
+    return h, "".join(parts)
+
+
+CREDS = [
+    ("Certified Ethical Hacker", "EC-Council"),
+    ("ISO/IEC 27001:2022 Associate", "SkillFront"),
+    ("Cyber Threat Management", "Cisco"),
+    ("Threat Intelligence Analyst", "arcX"),
+]
+
+
+def credentials():
+    h = 160
+    cells = []
+    for i, (name, issuer) in enumerate(CREDS):
+        col, row = i % 2, i // 2
+        x = 42 + col * 430
+        y = 78 + row * 46
+        cells.append(
+            f'<g class="r" style="animation-delay:{0.5 + i * 0.12:.2f}s">'
+            f'<circle cx="{x + 6}" cy="{y - 5}" r="5" fill="{GOLD}"/>'
+            f'<text x="{x + 26}" y="{y}" font-family="{SANS}" font-size="15" fill="url(#shn)">{escape(name)}</text>'
+            f'<text x="{x + 26}" y="{y + 21}" font-family="{MONO}" font-size="11.5" fill="{MUTED}">{escape(issuer)}</text></g>'
+        )
+    head = (
+        f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="url(#shn)">Certified &amp; <tspan font-style="italic" fill="{GOLD}">recognised</tspan></text>'
+        f'<text class="f" {d(1.2)} x="{W - 42}" y="40" text-anchor="end" font-family="{MONO}" font-size="11.5" fill="{MUTED}">Acknowledged by Google &#183; CERT-In</text>'
+    )
+    return h, head + "".join(cells)
+
+
+ORBIT_IN = ["Offensive Security", "Web AppSec", "Mobile AppSec", "API Security", "OSINT & Recon"]
+ORBIT_OUT = ["Secure Code Review", "Threat Modelling", "GRC \u00b7 NIST/ISO", "AI Security", "VAPT"]
+
+
+def orbital():
+    h = 470
+    cx, cy = W / 2, 250
+    in_rx, in_ry, out_rx, out_ry = 188, 92, 356, 168
+
+    def ell(rx, ry):
+        return (f"M{cx + rx} {cy} A{rx} {ry} 0 1 0 {cx - rx} {cy} "
+                f"A{rx} {ry} 0 1 0 {cx + rx} {cy}")
+
+    body = [
+        f'<circle cx="{cx}" cy="{cy}" r="150" fill="url(#coreglow)"/>',
+        f'<path d="{ell(in_rx, in_ry)}" fill="none" stroke="{GOLD}" stroke-width="1.3" stroke-dasharray="1 7" opacity=".55"/>',
+        f'<path d="{ell(out_rx, out_ry)}" fill="none" stroke="{GOLD}" stroke-width="1.3" stroke-dasharray="1 9" opacity=".45"/>',
+    ]
+    for pid, rx, ry, chips, dur, phase in [("orbin", in_rx, in_ry, ORBIT_IN, 40, 0.0), ("orbout", out_rx, out_ry, ORBIT_OUT, 66, 0.5)]:
+        body.append(f'<path id="{pid}" d="{ell(rx, ry)}" fill="none"/>')
+        n = len(chips)
+        for i, c in enumerate(chips):
+            cw = len(c) * 7.2 + 26
+            body.append(f"""
+<g>
+  <animateMotion dur="{dur}s" begin="{-dur * (i + phase) / n:.2f}s" repeatCount="indefinite" rotate="0">
+    <mpath xlink:href="#{pid}"/>
+  </animateMotion>
+  <g transform="translate({-cw / 2:.1f} -14)">
+    <rect width="{cw:.0f}" height="28" rx="14" fill="{GOLD_TINT}" stroke="{GOLD}" stroke-opacity=".6"/>
+    <text x="{cw / 2:.0f}" y="19" text-anchor="middle" font-family="{SANS}" font-size="13" fill="{GOLD_BRIGHT}">{escape(c)}</text>
+  </g>
+</g>""")
+    body.append(f'<circle class="pu" cx="{cx}" cy="{cy}" r="26" fill="{GOLD}"/>')
+    body.append(
+        f'<circle cx="{cx}" cy="{cy}" r="26" fill="none" stroke="{GOLD_BRIGHT}" stroke-width="2" opacity="0">'
+        f'<animate attributeName="r" from="26" to="68" dur="3.4s" repeatCount="indefinite"/>'
+        f'<animate attributeName="opacity" from="0.55" to="0" dur="3.4s" repeatCount="indefinite"/></circle>'
+    )
+    body.append(f'<circle cx="{cx}" cy="{cy}" r="11" fill="{GOLD_BRIGHT}"/>')
+    head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="{INK}">Skills, <tspan font-style="italic" fill="{GOLD}">in orbit</tspan></text>'
+    return h, f'<defs><radialGradient id="coreglow"><stop offset="0" stop-color="{GOLD}" stop-opacity=".16"/><stop offset="1" stop-color="{GOLD}" stop-opacity="0"/></radialGradient></defs>' + head + "".join(body)
+
+
+TOOLS = [
+    ("TheWildEye FW", "recon / OSINT engine", "1,000+ targets \u00b7 \u221250% recon", 0.90, GOLD),
+    ("MrHunter", "AI appsec + GRC agent", "40+ valid vulns mapped", 0.74, STEEL),
+    ("QuantumShield", "post-quantum OIDC", "+44% handshake speed", 0.66, GOLD_BRIGHT),
+    ("Evidential", "chain-of-custody", "+35% validation speed", 0.55, "#7f8aa0"),
+]
+
+
+def tooling():
+    h = 300
+    x0, bmax, row_h, top = 320, 330, 54, 74
+    rows = []
+    for i, (name, sub, metric, frac, color) in enumerate(TOOLS):
+        y = top + i * row_h
+        bw = round(frac * bmax)
+        delay = 0.5 + i * 0.16
+        rows.append(
+            f'<g class="r" style="animation-delay:{delay - 0.1:.2f}s">'
+            f'<text x="44" y="{y + 6}" font-family="{SANS}" font-weight="600" font-size="17" fill="url(#shn)">{escape(name)}</text>'
+            f'<text x="44" y="{y + 26}" font-family="{MONO}" font-size="12" fill="{MUTED}">{escape(sub)}</text></g>'
+            f'<rect x="{x0}" y="{y - 6}" width="{bmax}" height="14" rx="4" fill="#121826"/>'
+            f'<rect class="g" style="animation-delay:{delay:.2f}s" x="{x0}" y="{y - 6}" width="{bw}" height="14" rx="4" fill="{color}"/>'
+            f'<text class="f" style="animation-delay:{delay + 0.2:.2f}s" x="{x0 + bmax + 16}" y="{y + 6}" '
+            f'font-family="{MONO}" font-size="12" fill="{INK_SOFT}">{escape(metric)}</text>'
+        )
+    head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="url(#shn)">Things I built, and what they <tspan font-style="italic" fill="{GOLD}">do</tspan></text>'
+    return h, head + "".join(rows)
+
+
+CVES = [
+    ("CVE-2026-119731", "Payment Bypass"),
+    ("CVE-2026-119732", "BOLA / IDOR"),
+    ("CVE-2026-119733", "Missing Authorization"),
+    ("CVE-2026-119734", "BOLA / IDOR"),
+    ("CVE-2026-119735", "Stored XSS"),
+    ("CVE-2026-119736", "Hard-coded Credentials"),
+]
+
+
+def cvelog():
+    h = 268
+    rows = []
+    for i, (cid, cls) in enumerate(CVES):
+        y = 82 + i * 32
+        rows.append(
+            f'<g class="r" style="animation-delay:{0.5 + i * 0.13:.2f}s">'
+            f'<circle cx="52" cy="{y - 5}" r="4.5" fill="{GOLD}"/>'
+            f'<text x="74" y="{y}" font-family="{MONO}" font-size="13.5" fill="url(#shn)">{escape(cid)}</text>'
+            f'<text x="320" y="{y}" font-family="{SANS}" font-size="15.5" fill="{INK_SOFT}">{escape(cls)}</text>'
+            f'<text x="{W - 44}" y="{y}" text-anchor="end" font-family="{MONO}" font-size="13" letter-spacing="1" fill="{MUTED}">2026</text></g>'
+        )
+    head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="url(#shn)">6 published <tspan font-style="italic" fill="{GOLD}">CVEs</tspan></text>'
+    return h, head + "".join(rows)
+
+
+REPOS = [
+    ("MrHunter", "MrHunter2", "AI-assisted appsec & compliance agent: SAST, DAST and risk scoring.", "Python", GOLD),
+    ("TheWildEyeFW", "TheWildEyeFW", "Unified recon & OSINT framework: DNS, SSL, WHOIS, WAF detection, email harvesting.", "Python", STEEL),
+    ("QuantumShield", "QuantumShield", "Post-quantum secure OpenID Connect built on KEMTLS with ML-KEM-768.", "Python", GOLD_BRIGHT),
+]
+
+
+def repos(stars):
+    h = 170
+    rw, gap = (W - 2 * 12) / 3, 12
+    out = []
+    for i, (name, slug, desc, lang, color) in enumerate(REPOS):
+        x = i * (rw + gap)
+        meta = f"{lang}  \u00b7  \u2605 {stars[slug]}" if slug in stars else f"{lang}  \u00b7  live"
+        words = desc.split()
+        lines, line = [], ""
+        for wd in words:
+            if line and len(line) + 1 + len(wd) > 34:
+                lines.append(line)
+                line = wd
+            else:
+                line = f"{line} {wd}".strip()
+        if line:
+            lines.append(line)
+        body_lines = "".join(
+            f'<text x="{x + 24}" y="{y0}" font-family="{SANS}" font-size="13" fill="{MUTED}">{escape(l)}</text>'
+            for y0, l in zip(range(96, 96 + 21 * len(lines), 21), lines)
+        )
+        out.append(
+            f'<g class="r" style="animation-delay:{2.4 + i * 0.15:.2f}s">'
+            f'<rect x="{x:.1f}" y="0" width="{rw:.1f}" height="3" rx="1.5" fill="{color}"/>'
+            f'<text x="{x + 24:.1f}" y="38" font-family="{MONO}" font-size="11" letter-spacing="1" fill="{color}">&#9656; REPO</text>'
+            f'<text x="{x + 24:.1f}" y="66" font-family="{SANS}" font-weight="600" font-size="18" fill="url(#shn)">{escape(name)}</text>'
+            f'{body_lines}'
+            f'<text x="{x + 24:.1f}" y="{h - 14}" font-family="{MONO}" font-size="12.5" fill="{MUTED}">{escape(meta)}</text></g>'
+        )
+    return h, "".join(out)
+
+
+def repo_stars():
+    stars = {}
+    try:
+        import requests
+        for _n, slug, *_ in REPOS:
+            r = requests.get(f"https://api.github.com/repos/TheWildEye/{slug}", timeout=10)
+            if r.ok:
+                stars[slug] = r.json().get("stargazers_count", 0)
+    except Exception as e:
+        print(f"stars unavailable: {e}")
+    return stars
+
+
+if __name__ == "__main__":
+    stars = repo_stars()
+    sections = [hero(), kpi(), cvelog(), repos(stars), orbital()]
+    TOP, GAP, BOTTOM = 24, 52, 130
+    y = TOP
+    placed = []
+    for h, inner in sections:
+        placed.append((y, inner))
+        y += h + GAP
+    total = y - GAP + BOTTOM
+    body = SCENE_DEFS + page_scene(W, total) + shine_def(W, total, 0)
+    for yy, inner in placed:
+        body += f'<g transform="translate(0 {yy:.0f})">{inner}</g>'
+    write("page.svg", svg(W, total, body, ["serif", "serif-i", "sans", "sans-b", "mono"],
+                          "Vyom Nagpal - security researcher and ethical hacker. 6x CVE, 100+ vulnerabilities disclosed."))
