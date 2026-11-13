@@ -296,7 +296,7 @@ def count_up(num, x, y, attrs, begin, dur=1.3, frames=6, group=False):
 def hero():
     h = 396
     inner = (
-        f'<text class="f" {d(0.05)} x="44" y="106" font-family="{SANS}" font-weight="700" font-size="21" letter-spacing="0.8" fill="{GREEN}">TheWildEye</text>'
+        f'<text class="f" {d(0.05)} x="44" y="54" font-family="{SANS}" font-weight="700" font-size="21" letter-spacing="0.8" fill="{GREEN}">TheWildEye</text>'
         f'<text class="r" {d(0.15)} x="42" y="176" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom <tspan fill="{GOLD_BRIGHT}">Nagpal</tspan></text>'
         f'<text class="f" {d(0.4)} x="46" y="230" font-family="{SANS}" font-weight="600" font-size="16" fill="{INK_SOFT}">Security Researcher &#183; <tspan fill="{GOLD_BRIGHT}">Certified Ethical Hacker</tspan></text>'
         f'<text class="f" {d(0.5)} x="46" y="262" font-family="{SANS}" font-weight="600" font-size="16" fill="{INK_SOFT}">National Forensic Sciences University</text>'
@@ -400,9 +400,9 @@ def cvelog():
         rows.append(
             f'<g class="r" style="animation-delay:{0.5 + i * 0.13:.2f}s">'
             f'<circle cx="52" cy="{y - 5}" r="4.5" fill="{GOLD}"/>'
-            f'<text x="74" y="{y}" font-family="{MONO}" font-size="13.5" fill="{INK}">{escape(cid)}</text>'
+            f'<text x="74" y="{y}" font-family="{SANS}" font-weight="600" font-size="14.5" fill="{INK}">{escape(cid)}</text>'
             f'<text x="320" y="{y}" font-family="{SANS}" font-weight="600" font-size="15.5" fill="{GOLD_BRIGHT}">{escape(cls)}</text>'
-            f'<text x="{W - 44}" y="{y}" text-anchor="end" font-family="{MONO}" font-size="13" letter-spacing="1" fill="{MUTED}">2026</text></g>'
+            f'<text x="{W - 44}" y="{y}" text-anchor="end" font-family="{SANS}" font-weight="500" font-size="13.5" fill="{MUTED}">2026</text></g>'
         )
     head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="url(#shn)">6 published <tspan font-style="italic" fill="{GOLD}">CVEs</tspan></text>'
     return h, head + "".join(rows)
