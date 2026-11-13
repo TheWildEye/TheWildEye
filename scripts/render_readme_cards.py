@@ -349,13 +349,7 @@ def orbital():
     ]
     for rr in (36, 56):
         body.append(f'<ellipse cx="{cx}" cy="{cy}" rx="{rr}" ry="{rr * 0.42:.0f}" fill="none" stroke="{GOLD}" stroke-opacity=".22"/>')
-    rot = (f'<animateTransform attributeName="transform" type="rotate" '
-           f'values="0 {cx} {cy};180 {cx} {cy};360 {cx} {cy}" dur="80s" repeatCount="indefinite" '
-           f'calcMode="spline" keyTimes="0;0.5;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1"/>')
-    cnt = (f'<animateTransform attributeName="transform" type="rotate" '
-           f'values="360 0 0;180 0 0;0 0 0" dur="80s" repeatCount="indefinite" '
-           f'calcMode="spline" keyTimes="0;0.5;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1"/>')
-    ring = []
+    amp, wave_dur = 9, 6.0
     for i, name in enumerate(ORBIT):
         a = math.radians(-90 + i * 360 / n)
         nx, ny = cx + rx * math.cos(a), cy + ry * math.sin(a)
@@ -367,20 +361,22 @@ def orbital():
         anchor = "start" if ux > 0.3 else ("end" if ux < -0.3 else "middle")
         pdat = f"M{nx:.0f} {ny:.0f} Q{qx:.0f} {qy:.0f} {cx:.0f} {cy:.0f}"
         lx, ly = nx + ux * 30, ny + uy * 20 + 4
-        ring.append(
+        wave = (f'<animateTransform attributeName="transform" type="translate" '
+                f'values="0 0;{ux * amp:.1f} {uy * amp:.1f};0 0;{-ux * amp:.1f} {-uy * amp:.1f};0 0" '
+                f'dur="{wave_dur}s" begin="{-wave_dur * i / n:.2f}s" repeatCount="indefinite"/>')
+        body.append(
             f'<path id="{pid}" d="{pdat}" fill="none"/>'
             f'<path d="{pdat}" fill="none" stroke="{GOLD}" stroke-opacity=".16" stroke-width="4.5"/>'
             f'<path d="{pdat}" fill="none" stroke="{GOLD_BRIGHT}" stroke-opacity=".6" stroke-width="1"/>'
+            f'<g>{wave}'
             f'<polygon points="{hexpts(nx, ny, 9.5)}" fill="#0d1526" stroke="{GOLD}" stroke-opacity=".85" stroke-width="1.3"/>'
             f'<circle cx="{nx:.0f}" cy="{ny:.0f}" r="3" fill="{GOLD_BRIGHT}"/>'
-            f'<g transform="translate({lx:.0f} {ly:.0f})"><g>{cnt}'
-            f'<text x="0" y="0" text-anchor="{anchor}" font-family="{SANS}" font-size="13.5" fill="{INK}">{escape(name)}</text>'
-            f'</g></g>'
+            f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="{anchor}" font-family="{SANS}" '
+            f'font-size="13.5" fill="{INK}">{escape(name)}</text></g>'
             f'<circle r="2.8" fill="{GOLD_BRIGHT}">'
             f'<animateMotion dur="{3.4 + i * 0.21:.1f}s" begin="{-i * 0.34:.2f}s" repeatCount="indefinite" rotate="0">'
             f'<mpath xlink:href="#{pid}"/></animateMotion></circle>'
         )
-    body.append(f'<g>{rot}' + "".join(ring) + "</g>")
     body.append(f'<circle class="pu" cx="{cx}" cy="{cy}" r="20" fill="{GOLD}"/>')
     body.append(
         f'<circle cx="{cx}" cy="{cy}" r="20" fill="none" stroke="{GOLD_BRIGHT}" stroke-width="2" opacity="0">'
