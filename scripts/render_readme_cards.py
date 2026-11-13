@@ -109,25 +109,25 @@ def _skyline(w, base_y, min_h, max_h, min_w, max_w, lit, color, win, rnd):
         style = rnd.random()
         if style < 0.18:
             rh = bw * rnd.uniform(0.35, 0.75)
-            out.append(f'<polygon points="{x:.0f},{top:.0f} {x + bw:.0f},{top:.0f} {cxr:.0f},{top - rh:.0f}" fill="{color}" stroke="rgba(150,182,232,.22)" stroke-width="1"/>')
+            out.append(f'<polygon points="{x:.0f},{top:.0f} {x + bw:.0f},{top:.0f} {cxr:.0f},{top - rh:.0f}" fill="{color}"/>')
             out.append(f'<rect x="{cxr - 1:.0f}" y="{top - rh - 2:.0f}" width="2" height="2" fill="rgba(255,210,120,.8)"/>')
         elif style < 0.38:
             rh = bw * rnd.uniform(0.25, 0.5)
             iw = bw * rnd.uniform(0.38, 0.66)
             out.append(
                 f'<polygon points="{x:.0f},{top:.0f} {x + bw:.0f},{top:.0f} '
-                f'{cxr + iw / 2:.0f},{top - rh:.0f} {cxr - iw / 2:.0f},{top - rh:.0f}" fill="{color}" stroke="rgba(150,182,232,.22)" stroke-width="1"/>'
+                f'{cxr + iw / 2:.0f},{top - rh:.0f} {cxr - iw / 2:.0f},{top - rh:.0f}" fill="{color}"/>'
             )
         elif style < 0.56:
             rh = bw * rnd.uniform(0.3, 0.55)
             out.append(
                 f'<polygon points="{cxr:.0f},{top - rh * 1.9:.0f} {cxr + bw * 0.34:.0f},{top - rh * 0.95:.0f} '
-                f'{cxr:.0f},{top:.0f} {cxr - bw * 0.34:.0f},{top - rh * 0.95:.0f}" fill="{color}" stroke="rgba(150,182,232,.22)" stroke-width="1"/>'
+                f'{cxr:.0f},{top:.0f} {cxr - bw * 0.34:.0f},{top - rh * 0.95:.0f}" fill="{color}"/>'
             )
         elif style < 0.76:
             rh = bw * rnd.uniform(0.2, 0.42)
             iw = bw * rnd.uniform(0.4, 0.72)
-            out.append(f'<rect x="{cxr - iw / 2:.0f}" y="{top - rh:.0f}" width="{iw:.0f}" height="{rh:.0f}" fill="{color}" stroke="rgba(150,182,232,.22)" stroke-width="1"/>')
+            out.append(f'<rect x="{cxr - iw / 2:.0f}" y="{top - rh:.0f}" width="{iw:.0f}" height="{rh:.0f}" fill="{color}"/>')
         cols = max(1, int(bw // 17))
         rows = max(1, int(bh // 27))
         for i in range(cols):
@@ -192,11 +192,10 @@ def page_scene(w, h, seed=7):
             f'values="{bat_wing(s, 1)};{bat_wing(s, 0)};{bat_wing(s, -1)};{bat_wing(s, 0)};{bat_wing(s, 1)}"/>'
             f"</path></g></g>"
         )
-    far_svg, _ = _skyline(w, h - 170, 450, 820, 34, 92, 0.08, "#0c1424", "rgba(150,178,220,0.34)", rnd)
+    far_svg, _ = _skyline(w, h - 170, 450, 820, 34, 92, 0.08, "#0a1220", "rgba(150,178,220,0.30)", rnd)
     near_svg, near_b = _skyline(w, h + 6, 700, 1080, 40, 120, 0.09, "#05080e", "rgba(255,205,80,0.7)", rnd)
-    left_side = [b for b in near_b if b[0] + b[1] / 2 < w * 0.45] or near_b
-    low = [b for b in left_side if b[2] > 990 and b[0] > 90] or left_side
-    host = min(low, key=lambda b: b[0])
+    ons = sorted((b for b in near_b if b[0] + b[1] > 20), key=lambda b: b[0])
+    host = ons[1] if len(ons) > 1 else (ons[0] if ons else near_b[0])
     ox, oy = host[0] + host[1] / 2, host[2]
     tx, ty, rx = 646, 190, 138
     ry = rx * 0.5
@@ -213,7 +212,7 @@ def page_scene(w, h, seed=7):
         + far_svg + near_svg
         + f'<rect x="{ox - 6:.0f}" y="{oy:.0f}" width="12" height="16" fill="#04060b"/>'
         + f'<ellipse cx="{ox:.0f}" cy="{oy:.0f}" rx="13" ry="9" fill="#04060b"/>'
-        + f'<circle cx="{ox:.0f}" cy="{oy:.0f}" r="24" fill="url(#glens)"/>'
+        + f'<circle cx="{ox:.0f}" cy="{oy:.0f}" r="15" fill="url(#glens)"/>'
         + (
             f'<g transform="translate({ox:.0f} {oy:.0f})">'
             f'<g><animateTransform attributeName="transform" type="rotate" values="-0.5;0.5;-0.5" '
@@ -245,7 +244,7 @@ SCENE_DEFS = f"""
   </linearGradient>
   <radialGradient id="gsig"><stop offset="0" stop-color="#ffd54a" stop-opacity=".22"/><stop offset="1" stop-color="#ffd54a" stop-opacity="0"/></radialGradient>
   <linearGradient id="gbeam2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#e8c25c" stop-opacity=".04"/><stop offset="0.55" stop-color="#f7dc85" stop-opacity=".24"/><stop offset="1" stop-color="#fff0b8" stop-opacity=".78"/></linearGradient>
-  <radialGradient id="glens"><stop offset="0" stop-color="#fffce0" stop-opacity=".95"/><stop offset="0.45" stop-color="#ffee8c" stop-opacity=".5"/><stop offset="1" stop-color="#ffe65f" stop-opacity="0"/></radialGradient>
+  <radialGradient id="glens"><stop offset="0" stop-color="#fffce0" stop-opacity=".8"/><stop offset="0.45" stop-color="#ffee8c" stop-opacity=".35"/><stop offset="1" stop-color="#ffe65f" stop-opacity="0"/></radialGradient>
   <radialGradient id="gdisc"><stop offset="0" stop-color="#fff0b8"/><stop offset="1" stop-color="#e8c25c"/></radialGradient>
   <radialGradient id="gvig" cx="0.5" cy="0.42" r="0.9">
     <stop offset="0.4" stop-color="#03040a" stop-opacity="0"/><stop offset="1" stop-color="#020308" stop-opacity="0.9"/>
