@@ -41,9 +41,7 @@ MONO = "'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace"
 
 FONT_FILES = {
     "serif": ("Instrument Serif", "normal", 400, "serif-400.woff"),
-    "serif-i": ("Instrument Serif", "italic", 400, "serif-italic.woff"),
     "sans": ("Geist", "normal", 400, "geist-400.woff"),
-    "sans-b": ("Geist", "normal", 600, "geist-600.woff"),
     "mono": ("Geist Mono", "normal", 400, "geistmono-400.woff"),
 }
 
@@ -142,7 +140,7 @@ def page_scene(w, h, seed=7):
     a big city skyline and a bat searchlight."""
     rnd = random.Random(seed)
     stars = []
-    for _ in range(48):
+    for _ in range(30):
         sx = rnd.uniform(0, w)
         sy = rnd.uniform(0, h * 0.72)
         tw = f' class="tw" style="animation-delay:{rnd.uniform(0, 3.5):.2f}s"' if rnd.random() < 0.25 else ""
@@ -159,7 +157,7 @@ def page_scene(w, h, seed=7):
             f'dur="{dur:.0f}s" repeatCount="indefinite"/></circle>'
         )
     rain = []
-    for _ in range(28):
+    for _ in range(14):
         x = rnd.uniform(-40, w + 40)
         ln = rnd.uniform(12, 28)
         dur = rnd.uniform(0.8, 1.7)
@@ -172,7 +170,7 @@ def page_scene(w, h, seed=7):
             f'<animate attributeName="y2" from="{y0 + ln:.0f}" to="{h + ln:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/></line>'
         )
     bats = []
-    for i in range(5):
+    for i in range(4):
         by = rnd.uniform(h * 0.04, h * 0.42)
         s = rnd.uniform(14, 26)
         drift = rnd.uniform(34, 60)
@@ -270,7 +268,7 @@ def shine_def(w, h, begin, dur=14.0):
     )
 
 
-def count_up(num, x, y, attrs, begin, dur=1.3, frames=9, group=False):
+def count_up(num, x, y, attrs, begin, dur=1.3, frames=6, group=False):
     m = re.match(r"([\d.]+)(.*)", num)
     val, suf = float(m.group(1)), m.group(2)
     dec = len(m.group(1).split(".")[1]) if "." in m.group(1) else 0
@@ -306,7 +304,7 @@ def hero():
 
 def kpi():
     h = 120
-    tiles = [("VULNERABILITIES", "100+", False), ("CVE RECORDS", "6\u00d7", False),
+    tiles = [("VULNERABILITIES", "100+", False), ("APPS SECURED", "20+", False), ("CVE RECORDS", "6\u00d7", False),
              ("RECORDS PROTECTED", "4000", True), ("TARGETS RECONNED", "1000+", True)]
     n = len(tiles)
     gap = 14
@@ -431,6 +429,28 @@ def repos(stars):
     return h, "".join(out)
 
 
+LINKS = [
+    ("cve", "CVE", "linktr.ee"),
+    ("portfolio", "Portfolio", "vyomnagpal.in"),
+    ("linkedin", "LinkedIn", "in/vyomnagpal"),
+    ("medium", "Medium", "@TheWildEye"),
+    ("email", "Email", "contact@vyomnagpal.in"),
+]
+
+
+def link_cards():
+    """Five small linked cards for the row under the artwork. System fonts only, so
+    each file stays tiny (they are separate images so each can carry its own link)."""
+    for slug, label, sub in LINKS:
+        body = (
+            f'<rect x="0" y="0" width="168" height="54" rx="12" fill="#0f1626" stroke="{GOLD}" stroke-opacity=".45"/>'
+            f'<circle cx="14" cy="27" r="3" fill="{GOLD_BRIGHT}"/>'
+            f'<text x="94" y="26" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,\'Segoe UI\',Helvetica,Arial,sans-serif" font-weight="600" font-size="15" fill="{GOLD_BRIGHT}">{label}</text>'
+            f'<text x="94" y="43" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="{MUTED}">{sub}</text>'
+        )
+        write(f"link-{slug}.svg", svg(176, 54, body, [], f"{label} link"))
+
+
 def repo_stars():
     stars = {}
     try:
@@ -461,5 +481,6 @@ if __name__ == "__main__":
             f'fill="none" stroke="{GOLD}" stroke-width="1.2" stroke-opacity=".5"/>'
         )
         body += f'<g transform="translate(0 {yy:.0f})">{inner}</g>'
-    write("page.svg", svg(W, total, body, ["serif", "serif-i", "sans", "sans-b", "mono"],
+    write("page.svg", svg(W, total, body, ["serif", "sans", "mono"],
                           "Vyom Nagpal - security researcher and ethical hacker. 6x CVE, 100+ vulnerabilities disclosed."))
+    link_cards()
