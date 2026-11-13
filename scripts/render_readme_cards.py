@@ -243,7 +243,7 @@ SCENE_DEFS = f"""
     <stop offset="0.75" stop-color="#080d18"/><stop offset="1" stop-color="#05080f"/>
   </linearGradient>
   <radialGradient id="gsig"><stop offset="0" stop-color="#ffd54a" stop-opacity=".22"/><stop offset="1" stop-color="#ffd54a" stop-opacity="0"/></radialGradient>
-  <linearGradient id="gbeam2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#c9a227" stop-opacity=".07"/><stop offset="0.5" stop-color="#ffd54a" stop-opacity=".22"/><stop offset="1" stop-color="#fff0b0" stop-opacity=".6"/></linearGradient>
+  <linearGradient id="gbeam2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#c9a227" stop-opacity=".02"/><stop offset="0.55" stop-color="#ffd54a" stop-opacity=".18"/><stop offset="1" stop-color="#fff6c8" stop-opacity=".72"/></linearGradient>
   <radialGradient id="glens"><stop offset="0" stop-color="#fffce0" stop-opacity=".95"/><stop offset="0.45" stop-color="#ffee8c" stop-opacity=".5"/><stop offset="1" stop-color="#ffe65f" stop-opacity="0"/></radialGradient>
   <radialGradient id="gdisc"><stop offset="0" stop-color="#ffea96"/><stop offset="1" stop-color="#d6a424"/></radialGradient>
   <radialGradient id="gvig" cx="0.5" cy="0.42" r="0.9">
@@ -329,41 +329,45 @@ ORBIT_OUT = ["Secure Code Review", "Threat Modelling", "GRC \u00b7 NIST/ISO", "A
 
 
 def orbital():
-    h = 470
-    cx, cy = W / 2, 250
-    in_rx, in_ry, out_rx, out_ry = 188, 92, 356, 168
+    h = 442
+    cx, cy = W / 2, 242
+    in_rx, in_ry, out_rx, out_ry = 168, 82, 304, 146
 
     def ell(rx, ry):
         return (f"M{cx + rx} {cy} A{rx} {ry} 0 1 0 {cx - rx} {cy} "
                 f"A{rx} {ry} 0 1 0 {cx + rx} {cy}")
 
     body = [
-        f'<circle cx="{cx}" cy="{cy}" r="150" fill="url(#coreglow)"/>',
-        f'<path d="{ell(in_rx, in_ry)}" fill="none" stroke="{GOLD}" stroke-width="1.3" stroke-dasharray="1 7" opacity=".55"/>',
-        f'<path d="{ell(out_rx, out_ry)}" fill="none" stroke="{GOLD}" stroke-width="1.3" stroke-dasharray="1 9" opacity=".45"/>',
+        f'<circle cx="{cx}" cy="{cy}" r="132" fill="url(#coreglow)"/>',
+        f'<path d="{ell(in_rx, in_ry)}" fill="none" stroke="{GOLD}" stroke-width="1" stroke-dasharray="1 8" opacity=".4"/>',
+        f'<path d="{ell(out_rx, out_ry)}" fill="none" stroke="{GOLD}" stroke-width="1" stroke-dasharray="1 10" opacity=".26"/>',
     ]
     for pid, rx, ry, chips, dur, phase in [("orbin", in_rx, in_ry, ORBIT_IN, 40, 0.0), ("orbout", out_rx, out_ry, ORBIT_OUT, 66, 0.5)]:
         body.append(f'<path id="{pid}" d="{ell(rx, ry)}" fill="none"/>')
         n = len(chips)
         for i, c in enumerate(chips):
-            cw = len(c) * 7.2 + 26
+            cw = len(c) * 7.0 + 24
+            begin = -dur * (i + phase) / n
             body.append(f"""
 <g>
-  <animateMotion dur="{dur}s" begin="{-dur * (i + phase) / n:.2f}s" repeatCount="indefinite" rotate="0">
+  <animateMotion dur="{dur}s" begin="{begin:.2f}s" repeatCount="indefinite" rotate="0">
     <mpath xlink:href="#{pid}"/>
   </animateMotion>
-  <g transform="translate({-cw / 2:.1f} -14)">
-    <rect width="{cw:.0f}" height="28" rx="14" fill="{GOLD_TINT}" stroke="{GOLD}" stroke-opacity=".6"/>
-    <text x="{cw / 2:.0f}" y="19" text-anchor="middle" font-family="{SANS}" font-size="13" fill="{INK}">{escape(c)}</text>
+  <g>
+    <animate attributeName="opacity" dur="{dur}s" begin="{begin:.2f}s" repeatCount="indefinite" values="0.5;0.2;0.5;1;0.5"/>
+    <g transform="translate({-cw / 2:.1f} -13)">
+      <rect width="{cw:.0f}" height="26" rx="13" fill="#0b1220" stroke="{GOLD}" stroke-opacity=".35"/>
+      <text x="{cw / 2:.0f}" y="17.5" text-anchor="middle" font-family="{SANS}" font-size="12.5" fill="{INK}">{escape(c)}</text>
+    </g>
   </g>
 </g>""")
-    body.append(f'<circle class="pu" cx="{cx}" cy="{cy}" r="26" fill="{GOLD}"/>')
+    body.append(f'<circle class="pu" cx="{cx}" cy="{cy}" r="24" fill="{GOLD}"/>')
     body.append(
-        f'<circle cx="{cx}" cy="{cy}" r="26" fill="none" stroke="{GOLD_BRIGHT}" stroke-width="2" opacity="0">'
-        f'<animate attributeName="r" from="26" to="68" dur="3.4s" repeatCount="indefinite"/>'
-        f'<animate attributeName="opacity" from="0.55" to="0" dur="3.4s" repeatCount="indefinite"/></circle>'
+        f'<circle cx="{cx}" cy="{cy}" r="24" fill="none" stroke="{GOLD_BRIGHT}" stroke-width="2" opacity="0">'
+        f'<animate attributeName="r" from="24" to="62" dur="3.4s" repeatCount="indefinite"/>'
+        f'<animate attributeName="opacity" from="0.5" to="0" dur="3.4s" repeatCount="indefinite"/></circle>'
     )
-    body.append(f'<circle cx="{cx}" cy="{cy}" r="11" fill="{GOLD_BRIGHT}"/>')
+    body.append(f'<circle cx="{cx}" cy="{cy}" r="10" fill="{GOLD_BRIGHT}"/>')
     head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="{INK}">Skills, <tspan font-style="italic" fill="{GOLD}">in orbit</tspan></text>'
     return h, f'<defs><radialGradient id="coreglow"><stop offset="0" stop-color="{GOLD}" stop-opacity=".16"/><stop offset="1" stop-color="{GOLD}" stop-opacity="0"/></radialGradient></defs>' + head + "".join(body)
 
