@@ -34,6 +34,7 @@ GOLD = "#e6b325"
 GOLD_BRIGHT = "#ffcf3a"
 GOLD_TINT = "#141824"
 STEEL = "#6b86b8"
+GREEN = "#3ddc84"
 W = 880
 
 SERIF = "'Instrument Serif', Georgia, serif"
@@ -296,13 +297,14 @@ def count_up(num, x, y, attrs, begin, dur=1.3, frames=6, group=False):
 
 # ---- sections (each returns (height, inner_svg)) -------------------------------
 def hero():
-    h = 386
+    h = 396
     inner = (
-        f'<text class="r" {d(0.15)} x="42" y="156" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom <tspan fill="{GOLD_BRIGHT}">Nagpal</tspan></text>'
-        f'<text class="f" {d(0.4)} x="46" y="212" font-family="{SANS}" font-size="16" fill="{INK_SOFT}">Security Researcher &#183; <tspan fill="{GOLD_BRIGHT}">Certified Ethical Hacker</tspan></text>'
-        f'<text class="f" {d(0.5)} x="46" y="242" font-family="{MONO}" font-size="13.5" fill="{MUTED}">National Forensic Sciences University</text>'
-        f'<text class="r" {d(0.7)} x="46" y="322" font-family="{SANS}" font-size="19" fill="{INK}">I <tspan fill="{GOLD_BRIGHT}" font-weight="600">break</tspan> web &amp; mobile apps before attackers do,</text>'
-        f'<text class="r" {d(0.78)} x="46" y="350" font-family="{SANS}" font-size="19" fill="{INK}">and <tspan fill="{GOLD_BRIGHT}" font-weight="600">build</tspan> offensive security tooling.</text>'
+        f'<text class="f" {d(0.05)} x="44" y="104" font-family="{MONO}" font-size="17" letter-spacing="4.5" fill="{GREEN}">TheWildEye</text>'
+        f'<text class="r" {d(0.15)} x="42" y="176" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom <tspan fill="{GOLD_BRIGHT}">Nagpal</tspan></text>'
+        f'<text class="f" {d(0.4)} x="46" y="230" font-family="{SANS}" font-size="16" fill="{INK_SOFT}">Security Researcher &#183; <tspan fill="{GOLD_BRIGHT}">Certified Ethical Hacker</tspan></text>'
+        f'<text class="f" {d(0.5)} x="46" y="262" font-family="{SANS}" font-size="16" fill="{INK_SOFT}">National Forensic Sciences University</text>'
+        f'<text class="r" {d(0.7)} x="46" y="332" font-family="{SANS}" font-size="19" fill="{INK}">I <tspan fill="{GOLD_BRIGHT}" font-weight="600">break</tspan> web &amp; mobile apps before attackers do,</text>'
+        f'<text class="r" {d(0.78)} x="46" y="360" font-family="{SANS}" font-size="19" fill="{INK}">and <tspan fill="{GOLD_BRIGHT}" font-weight="600">build</tspan> offensive security tooling.</text>'
     )
     return h, inner
 
@@ -344,11 +346,9 @@ def orbital():
     rx, ry = 300, 172
     n = len(ORBIT)
     body = [
-        f'<circle cx="{cx}" cy="{cy}" r="168" fill="url(#coreglow)"/>',
+        f'<circle cx="{cx}" cy="{cy}" r="150" fill="url(#coreglow)"/>',
         f'<ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="none" stroke="{GOLD}" stroke-opacity=".16" stroke-dasharray="2 9"/>',
     ]
-    for rr in (36, 56):
-        body.append(f'<ellipse cx="{cx}" cy="{cy}" rx="{rr}" ry="{rr * 0.42:.0f}" fill="none" stroke="{GOLD}" stroke-opacity=".22"/>')
     amp, wave_dur = 11, 5.0
     for i, name in enumerate(ORBIT):
         a = math.radians(-90 + i * 360 / n)
@@ -356,8 +356,11 @@ def orbital():
         ux, uy = nx - cx, ny - cy
         ul = math.hypot(ux, uy) or 1
         ux, uy = ux / ul, uy / ul
-        qx, qy = (nx + cx) / 2 - uy * 34, (ny + cy) / 2 + ux * 34
-        ex, ey = cx + ux * 106, cy + uy * 34
+        # land the chain on the wordmark's bounding box, along this node's own radial
+        bw, bh = 100.0, 25.0
+        tt = min(bw / abs(ux) if ux else 1e9, bh / abs(uy) if uy else 1e9)
+        ex, ey = cx + ux * tt, cy + uy * tt
+        qx, qy = (nx + ex) / 2 - uy * 30, (ny + ey) / 2 + ux * 30
         pid = f"cn{i}"
         anchor = "start" if ux > 0.3 else ("end" if ux < -0.3 else "middle")
         pdat = f"M{nx:.0f} {ny:.0f} Q{qx:.0f} {qy:.0f} {ex:.0f} {ey:.0f}"
