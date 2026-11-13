@@ -177,16 +177,24 @@ def page_scene(w, h, seed=7):
         f'<rect width="{w}" height="{h}" fill="url(#gsky)"/>'
         + "".join(stars) + "".join(clouds)
         + far_svg + near_svg
-        + f'<path d="M{ox:.0f} {oy:.0f} L{tx - rx:.0f} {ty:.0f} L{tx + rx:.0f} {ty:.0f} Z" fill="url(#gbeam2)"/>'
         + f'<rect x="{ox - 6:.0f}" y="{oy:.0f}" width="12" height="16" fill="#04060b"/>'
         + f'<ellipse cx="{ox:.0f}" cy="{oy:.0f}" rx="13" ry="9" fill="#04060b"/>'
         + f'<circle cx="{ox:.0f}" cy="{oy:.0f}" r="24" fill="url(#glens)"/>'
-        + f'<ellipse cx="{tx:.0f}" cy="{ty:.0f}" rx="{rx * 2.8:.0f}" ry="{ry * 3.2:.0f}" fill="url(#gsig)"/>'
-        + f'<ellipse cx="{tx:.0f}" cy="{ty:.0f}" rx="{rx:.0f}" ry="{ry:.0f}" fill="url(#gdisc)"/>'
-        + f'<path transform="translate({tx - 500.8 * s:.1f} {ty - 152.6 * s:.1f}) scale({s:.5f})" d="{BAT}" fill="#070a12"/>'
+        + (
+            f'<g><animateTransform attributeName="transform" type="rotate" '
+            f'values="-1.6 {ox:.0f} {oy:.0f};1.6 {ox:.0f} {oy:.0f};-1.6 {ox:.0f} {oy:.0f}" '
+            f'dur="13s" repeatCount="indefinite" calcMode="spline" '
+            f'keyTimes="0;0.5;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>'
+            f'<path d="M{ox:.0f} {oy:.0f} L{tx - rx:.0f} {ty:.0f} L{tx + rx:.0f} {ty:.0f} Z" fill="url(#gbeam2)"/>'
+            f'<ellipse cx="{tx:.0f}" cy="{ty:.0f}" rx="{rx * 2.8:.0f}" ry="{ry * 3.2:.0f}" fill="url(#gsig)">'
+            f'<animate attributeName="opacity" values="0.82;1;0.82" dur="3.4s" repeatCount="indefinite"/></ellipse>'
+            f'<ellipse cx="{tx:.0f}" cy="{ty:.0f}" rx="{rx:.0f}" ry="{ry:.0f}" fill="url(#gdisc)"/>'
+            f'<path transform="translate({tx - 500.8 * s:.1f} {ty - 152.6 * s:.1f}) scale({s:.5f})" d="{BAT}" fill="#070a12"/>'
+            f'</g>'
+        )
         + "".join(rain)
         + f'<rect width="{w}" height="{h}" fill="url(#gvig)"/>'
-        + f'<rect y="{h * 0.52:.0f}" width="{w}" height="{h * 0.48:.0f}" fill="url(#gbot)"/>'
+        + f'<rect y="{h * 0.34:.0f}" width="{w}" height="{h * 0.66:.0f}" fill="url(#gbot)"/>'
         + lightning
     )
 
@@ -198,15 +206,15 @@ SCENE_DEFS = f"""
     <stop offset="0.75" stop-color="#080d18"/><stop offset="1" stop-color="#05080f"/>
   </linearGradient>
   <radialGradient id="gsig"><stop offset="0" stop-color="#ffd54a" stop-opacity=".22"/><stop offset="1" stop-color="#ffd54a" stop-opacity="0"/></radialGradient>
-  <linearGradient id="gbeam2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ffe680" stop-opacity=".5"/><stop offset="1" stop-color="#ffd54a" stop-opacity=".10"/></linearGradient>
+  <linearGradient id="gbeam2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#c9a227" stop-opacity=".07"/><stop offset="0.5" stop-color="#ffd54a" stop-opacity=".22"/><stop offset="1" stop-color="#fff0b0" stop-opacity=".6"/></linearGradient>
   <radialGradient id="glens"><stop offset="0" stop-color="#fffce0" stop-opacity=".95"/><stop offset="0.45" stop-color="#ffee8c" stop-opacity=".5"/><stop offset="1" stop-color="#ffe65f" stop-opacity="0"/></radialGradient>
   <radialGradient id="gdisc"><stop offset="0" stop-color="#ffea96"/><stop offset="1" stop-color="#d6a424"/></radialGradient>
   <radialGradient id="gvig" cx="0.5" cy="0.42" r="0.9">
     <stop offset="0.4" stop-color="#03040a" stop-opacity="0"/><stop offset="1" stop-color="#020308" stop-opacity="0.9"/>
   </radialGradient>
   <linearGradient id="gbot" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#02030a" stop-opacity="0"/><stop offset="0.45" stop-color="#02030a" stop-opacity="0.5"/>
-    <stop offset="1" stop-color="#010208" stop-opacity="0.98"/>
+    <stop offset="0" stop-color="#02030a" stop-opacity="0"/><stop offset="0.5" stop-color="#02030a" stop-opacity="0.45"/>
+    <stop offset="1" stop-color="#010208" stop-opacity="0.97"/>
   </linearGradient>
 </defs>
 """
@@ -464,15 +472,19 @@ def repo_stars():
 if __name__ == "__main__":
     stars = repo_stars()
     sections = [hero(), kpi(), cvelog(), repos(stars), orbital()]
-    TOP, GAP, BOTTOM = 24, 52, 130
+    TOP, GAP, BOTTOM = 30, 60, 130
     y = TOP
     placed = []
     for h, inner in sections:
-        placed.append((y, inner))
+        placed.append((y, h, inner))
         y += h + GAP
     total = y - GAP + BOTTOM
     body = SCENE_DEFS + page_scene(W, total) + shine_def(W, total, 0)
-    for yy, inner in placed:
+    for yy, hh, inner in placed:
+        body += (
+            f'<rect x="16" y="{yy - 22:.0f}" width="{W - 32}" height="{hh + 44:.0f}" rx="24" '
+            f'fill="none" stroke="{GOLD}" stroke-width="1.2" stroke-opacity=".5"/>'
+        )
         body += f'<g transform="translate(0 {yy:.0f})">{inner}</g>'
     write("page.svg", svg(W, total, body, ["serif", "serif-i", "sans", "sans-b", "mono"],
                           "Vyom Nagpal - security researcher and ethical hacker. 6x CVE, 100+ vulnerabilities disclosed."))
