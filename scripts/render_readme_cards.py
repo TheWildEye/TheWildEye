@@ -197,7 +197,7 @@ def page_scene(w, h, seed=7):
     left_side = [b for b in near_b if b[0] + b[1] / 2 < w * 0.4] or near_b
     host = min(left_side, key=lambda b: b[2])
     ox, oy = host[0] + host[1] / 2, host[2]
-    tx, ty, rx = 646, 132, 138
+    tx, ty, rx = 646, 190, 138
     ry = rx * 0.5
     dx, dy = tx - ox, ty - oy
     s = (rx * 1.25) / 1002
@@ -243,7 +243,7 @@ SCENE_DEFS = f"""
     <stop offset="0.75" stop-color="#080d18"/><stop offset="1" stop-color="#05080f"/>
   </linearGradient>
   <radialGradient id="gsig"><stop offset="0" stop-color="#ffd54a" stop-opacity=".22"/><stop offset="1" stop-color="#ffd54a" stop-opacity="0"/></radialGradient>
-  <linearGradient id="gbeam2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#c9a227" stop-opacity=".02"/><stop offset="0.55" stop-color="#ffd54a" stop-opacity=".18"/><stop offset="1" stop-color="#fff6c8" stop-opacity=".72"/></linearGradient>
+  <linearGradient id="gbeam2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#c9a227" stop-opacity=".02"/><stop offset="0.55" stop-color="#f7cf5e" stop-opacity=".2"/><stop offset="1" stop-color="#ffea96" stop-opacity=".72"/></linearGradient>
   <radialGradient id="glens"><stop offset="0" stop-color="#fffce0" stop-opacity=".95"/><stop offset="0.45" stop-color="#ffee8c" stop-opacity=".5"/><stop offset="1" stop-color="#ffe65f" stop-opacity="0"/></radialGradient>
   <radialGradient id="gdisc"><stop offset="0" stop-color="#ffea96"/><stop offset="1" stop-color="#d6a424"/></radialGradient>
   <radialGradient id="gvig" cx="0.5" cy="0.42" r="0.9">
@@ -328,47 +328,58 @@ ORBIT = ["Offensive Security", "Web AppSec", "Mobile AppSec", "API Security", "O
          "Secure Code Review", "Threat Modelling", "GRC \u00b7 NIST/ISO", "AI Security", "VAPT"]
 
 
+def hexpts(cx, cy, r):
+    return " ".join(
+        f"{cx + r * math.cos(math.radians(60 * k - 30)):.1f},{cy + r * math.sin(math.radians(60 * k - 30)):.1f}"
+        for k in range(6)
+    )
+
+
 def orbital():
-    """Neural constellation: skill nodes on an ellipse, each linked to a glowing core
-    by a bowed synapse with a pulse travelling inward. Nodes at the back of the ring
-    (top) fade out, which gives the whole thing depth instead of looking flat."""
-    h = 486
-    cx, cy = W / 2, 258
+    """Neural + blockchain + cyber: hex skill nodes on an orbit, each wired to a ringed
+    core by a glowing synapse with a signal travelling inward. Everything is lit the
+    same — no depth dimming."""
+    h = 490
+    cx, cy = W / 2, 260
     rx, ry = 292, 168
     n = len(ORBIT)
-    body = [f'<circle cx="{cx}" cy="{cy}" r="150" fill="url(#coreglow)"/>',
-            f'<ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="none" stroke="{GOLD}" stroke-opacity=".14" stroke-dasharray="2 10"/>']
+    body = [
+        f'<circle cx="{cx}" cy="{cy}" r="168" fill="url(#coreglow)"/>',
+        f'<ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="none" stroke="{GOLD}" stroke-opacity=".16" stroke-dasharray="2 9"/>',
+    ]
+    for rr in (36, 56):
+        body.append(f'<ellipse cx="{cx}" cy="{cy}" rx="{rr}" ry="{rr * 0.42:.0f}" fill="none" stroke="{GOLD}" stroke-opacity=".22"/>')
     for i, name in enumerate(ORBIT):
         a = math.radians(-90 + i * 360 / n)
         nx, ny = cx + rx * math.cos(a), cy + ry * math.sin(a)
         ux, uy = nx - cx, ny - cy
         ul = math.hypot(ux, uy) or 1
         ux, uy = ux / ul, uy / ul
-        depth = 0.32 + 0.68 * ((ny - (cy - ry)) / (2 * ry))
-        qx, qy = (nx + cx) / 2 - uy * 30, (ny + cy) / 2 + ux * 30
+        qx, qy = (nx + cx) / 2 - uy * 34, (ny + cy) / 2 + ux * 34
         pid = f"cn{i}"
         anchor = "start" if ux > 0.3 else ("end" if ux < -0.3 else "middle")
+        pdat = f"M{nx:.0f} {ny:.0f} Q{qx:.0f} {qy:.0f} {cx:.0f} {cy:.0f}"
         body.append(
-            f'<g opacity="{depth:.2f}">'
-            f'<path id="{pid}" d="M{nx:.0f} {ny:.0f} Q{qx:.0f} {qy:.0f} {cx:.0f} {cy:.0f}" fill="none" '
-            f'stroke="{GOLD}" stroke-opacity=".5" stroke-width="1"/>'
-            f'<circle cx="{nx:.0f}" cy="{ny:.0f}" r="7" fill="{GOLD}" opacity=".22"/>'
-            f'<circle cx="{nx:.0f}" cy="{ny:.0f}" r="3.2" fill="{GOLD_BRIGHT}"/>'
-            f'<text x="{nx + ux * 26:.0f}" y="{ny + uy * 17 + 4:.0f}" text-anchor="{anchor}" '
-            f'font-family="{SANS}" font-size="13.5" fill="{INK}">{escape(name)}</text></g>'
-            f'<circle r="2.6" fill="{GOLD_BRIGHT}">'
+            f'<path id="{pid}" d="{pdat}" fill="none"/>'
+            f'<path d="{pdat}" fill="none" stroke="{GOLD}" stroke-opacity=".16" stroke-width="4.5"/>'
+            f'<path d="{pdat}" fill="none" stroke="{GOLD_BRIGHT}" stroke-opacity=".6" stroke-width="1"/>'
+            f'<polygon points="{hexpts(nx, ny, 9.5)}" fill="#0d1526" stroke="{GOLD}" stroke-opacity=".85" stroke-width="1.3"/>'
+            f'<circle cx="{nx:.0f}" cy="{ny:.0f}" r="3" fill="{GOLD_BRIGHT}"/>'
+            f'<text x="{nx + ux * 30:.0f}" y="{ny + uy * 20 + 4:.0f}" text-anchor="{anchor}" '
+            f'font-family="{SANS}" font-size="13.5" fill="{INK}">{escape(name)}</text>'
+            f'<circle r="2.8" fill="{GOLD_BRIGHT}">'
             f'<animateMotion dur="{3.4 + i * 0.21:.1f}s" begin="{-i * 0.34:.2f}s" repeatCount="indefinite" rotate="0">'
             f'<mpath xlink:href="#{pid}"/></animateMotion></circle>'
         )
-    body.append(f'<circle class="pu" cx="{cx}" cy="{cy}" r="22" fill="{GOLD}"/>')
+    body.append(f'<circle class="pu" cx="{cx}" cy="{cy}" r="20" fill="{GOLD}"/>')
     body.append(
-        f'<circle cx="{cx}" cy="{cy}" r="22" fill="none" stroke="{GOLD_BRIGHT}" stroke-width="2" opacity="0">'
-        f'<animate attributeName="r" from="22" to="60" dur="3.4s" repeatCount="indefinite"/>'
+        f'<circle cx="{cx}" cy="{cy}" r="20" fill="none" stroke="{GOLD_BRIGHT}" stroke-width="2" opacity="0">'
+        f'<animate attributeName="r" from="20" to="58" dur="3.4s" repeatCount="indefinite"/>'
         f'<animate attributeName="opacity" from="0.5" to="0" dur="3.4s" repeatCount="indefinite"/></circle>'
     )
-    body.append(f'<circle cx="{cx}" cy="{cy}" r="9" fill="{GOLD_BRIGHT}"/>')
+    body.append(f'<circle cx="{cx}" cy="{cy}" r="8" fill="{GOLD_BRIGHT}"/>')
     head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="{INK}">Skills, <tspan font-style="italic" fill="{GOLD}">in orbit</tspan></text>'
-    return h, f'<defs><radialGradient id="coreglow"><stop offset="0" stop-color="{GOLD}" stop-opacity=".18"/><stop offset="1" stop-color="{GOLD}" stop-opacity="0"/></radialGradient></defs>' + head + "".join(body)
+    return h, f'<defs><radialGradient id="coreglow"><stop offset="0" stop-color="{GOLD}" stop-opacity=".2"/><stop offset="1" stop-color="{GOLD}" stop-opacity="0"/></radialGradient></defs>' + head + "".join(body)
 
 
 CVES = [
