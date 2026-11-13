@@ -234,16 +234,16 @@ def page_scene(w, h, seed=7):
         return (
             f'<g opacity="0"><animate attributeName="opacity" '
             f'values="0;0;1;0.45;1;0.8;0;0" keyTimes="{kt}" dur="13s" repeatCount="indefinite"/>'
-            f'<path d="{d}" fill="none" stroke="#9cc4ff" stroke-width="8" stroke-linejoin="round" '
-            f'stroke-linecap="round" opacity="0.55" filter="url(#gblur)"/>'
-            f'<path d="{d}" fill="none" stroke="#eaf3ff" stroke-width="2.4" stroke-linejoin="round" '
+            f'<path d="{d}" fill="none" stroke="#9cc4ff" stroke-width="6" stroke-linejoin="round" '
+            f'stroke-linecap="round" opacity="0.42" filter="url(#gblur)"/>'
+            f'<path d="{d}" fill="none" stroke="#dfeeff" stroke-width="2" stroke-linejoin="round" '
             f'stroke-linecap="round"/></g>'
         )
 
     lightning = (
-        f'<rect width="{w}" height="{h}" fill="#aacdff" opacity="0">'
+        f'<rect width="{w}" height="{h}" fill="#9dbcf0" opacity="0">'
         f'<animate attributeName="opacity" '
-        f'values="0;0;0.3;0.06;0.24;0.05;0;0;0.3;0.06;0.24;0" '
+        f'values="0;0;0.15;0.04;0.11;0.03;0;0;0.15;0.04;0.11;0" '
         f'keyTimes="0;0.07;0.095;0.125;0.15;0.18;0.21;0.56;0.585;0.615;0.645;1" '
         f'dur="13s" repeatCount="indefinite"/></rect>'
         + _bolt_g(_bolt(), "0;0.07;0.09;0.11;0.13;0.15;0.19;1")
@@ -254,14 +254,15 @@ def page_scene(w, h, seed=7):
         + "".join(stars) + "".join(clouds) + "".join(bats)
         + far_svg + near_svg
         + lightning
-        + f'<rect x="{ox - 6:.0f}" y="{oy:.0f}" width="12" height="16" fill="#04060b"/>'
-        + f'<ellipse cx="{ox:.0f}" cy="{oy:.0f}" rx="13" ry="9" fill="#04060b"/>'
-        + f'<circle cx="{ox:.0f}" cy="{oy:.0f}" r="15" fill="url(#glens)"/>'
+        + f'<rect x="{ox - 8:.0f}" y="{oy - 2:.0f}" width="16" height="18" fill="#04060b"/>'
+        + f'<path d="M{ox - 9:.0f} {oy + 2:.0f} L{ox + 9:.0f} {oy + 2:.0f} L{ox + 5:.0f} {oy - 7:.0f} L{ox - 5:.0f} {oy - 7:.0f} Z" fill="#04060b"/>'
+        + f'<circle cx="{ox:.0f}" cy="{oy - 5:.0f}" r="4.5" fill="url(#glens)"/>'
         + (
             f'<g transform="translate({ox:.0f} {oy:.0f})">'
             f'<g><animateTransform attributeName="transform" type="rotate" values="-0.5;0.5;-0.5" '
             f'dur="13s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" '
             f'keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>'
+            f'<circle cx="0" cy="-3" r="12" fill="url(#glens)" opacity="0.55"/>'
             f'<path d="M0 0 L{dx - rx:.0f} {dy:.0f} L{dx + rx:.0f} {dy:.0f} Z" fill="url(#gbeam2)"/>'
             f'<g transform="translate({dx:.0f} {dy:.0f})">'
             f'<g><animateTransform attributeName="transform" type="rotate" values="0.5;-0.5;0.5" '
@@ -287,7 +288,7 @@ SCENE_DEFS = f"""
   </linearGradient>
   <radialGradient id="gsig"><stop offset="0" stop-color="#ffd54a" stop-opacity=".22"/><stop offset="1" stop-color="#ffd54a" stop-opacity="0"/></radialGradient>
   <linearGradient id="gbeam2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#e8c25c" stop-opacity=".04"/><stop offset="0.55" stop-color="#f7dc85" stop-opacity=".24"/><stop offset="1" stop-color="#fff0b8" stop-opacity=".78"/></linearGradient>
-  <radialGradient id="glens"><stop offset="0" stop-color="#fffce0" stop-opacity=".8"/><stop offset="0.45" stop-color="#ffee8c" stop-opacity=".35"/><stop offset="1" stop-color="#ffe65f" stop-opacity="0"/></radialGradient>
+  <radialGradient id="glens"><stop offset="0" stop-color="#fff6cf" stop-opacity=".9"/><stop offset="0.4" stop-color="#ffdf70" stop-opacity=".28"/><stop offset="1" stop-color="#ffdf70" stop-opacity="0"/></radialGradient>
   <radialGradient id="gdisc"><stop offset="0" stop-color="#fff0b8"/><stop offset="1" stop-color="#e8c25c"/></radialGradient>
   <radialGradient id="gvig" cx="0.5" cy="0.42" r="0.9">
     <stop offset="0.4" stop-color="#03040a" stop-opacity="0"/><stop offset="1" stop-color="#020308" stop-opacity="0.9"/>
