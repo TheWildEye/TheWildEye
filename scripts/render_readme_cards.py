@@ -141,7 +141,7 @@ def page_scene(w, h, seed=7):
     a big city skyline and a bat searchlight."""
     rnd = random.Random(seed)
     stars = []
-    for _ in range(30):
+    for _ in range(36):
         sx = rnd.uniform(0, w)
         sy = rnd.uniform(0, h * 0.72)
         tw = f' class="tw" style="animation-delay:{rnd.uniform(0, 3.5):.2f}s"' if rnd.random() < 0.25 else ""
@@ -159,19 +159,22 @@ def page_scene(w, h, seed=7):
         )
     rain = []
     for _ in range(34):
-        x = rnd.uniform(-40, w + 40)
+        x = rnd.uniform(-80, w + 140)
         ln = rnd.uniform(14, 30)
         dur = rnd.uniform(0.7, 1.5)
         op = rnd.uniform(0.12, 0.36)
-        dx = ln * 0.24
+        dx = ln * 0.38
         y0 = rnd.uniform(-h, 0)
+        travel = (h - y0) * 0.38
         rain.append(
             f'<line x1="{x:.0f}" y1="{y0:.0f}" x2="{x - dx:.0f}" y2="{y0 + ln:.0f}" stroke="#afc4e4" stroke-width="1" opacity="{op:.2f}">'
+            f'<animate attributeName="x1" from="{x:.0f}" to="{x - travel:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/>'
             f'<animate attributeName="y1" from="{y0:.0f}" to="{h:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/>'
+            f'<animate attributeName="x2" from="{x - dx:.0f}" to="{x - dx - travel:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/>'
             f'<animate attributeName="y2" from="{y0 + ln:.0f}" to="{h + ln:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/></line>'
         )
     bats = []
-    for i in range(4):
+    for i in range(6):
         by = rnd.uniform(h * 0.04, h * 0.42)
         s = rnd.uniform(14, 26)
         drift = rnd.uniform(34, 60)
@@ -197,11 +200,7 @@ def page_scene(w, h, seed=7):
     tx, ty, rx = 646, 132, 138
     ry = rx * 0.5
     dx, dy = tx - ox, ty - oy
-    bl = math.hypot(dx, dy)
-    ux, uy = -dy / bl, dx / bl
-    bhalf = rx * 0.45
     s = (rx * 1.25) / 1002
-    sb = (rx * 0.95) / 1002
     lightning = (
         f'<rect width="{w}" height="{h}" fill="#c8dcff" opacity="0">'
         f'<animate attributeName="opacity" values="0;0;0.16;0.02;0.1;0;0" '
@@ -216,19 +215,18 @@ def page_scene(w, h, seed=7):
         + f'<circle cx="{ox:.0f}" cy="{oy:.0f}" r="24" fill="url(#glens)"/>'
         + (
             f'<g transform="translate({ox:.0f} {oy:.0f})">'
-            f'<g><animateTransform attributeName="transform" type="rotate" values="-1.6;1.6;-1.6" '
+            f'<g><animateTransform attributeName="transform" type="rotate" values="-0.5;0.5;-0.5" '
             f'dur="13s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" '
             f'keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>'
-            f'<path d="M{ux * bhalf:.0f} {uy * bhalf:.0f} L{dx + ux * bhalf:.0f} {dy + uy * bhalf:.0f} L{dx - ux * bhalf:.0f} {dy - uy * bhalf:.0f} L{-ux * bhalf:.0f} {-uy * bhalf:.0f} Z" fill="url(#gbeam2)"/>'
+            f'<path d="M0 0 L{dx - rx:.0f} {dy:.0f} L{dx + rx:.0f} {dy:.0f} Z" fill="url(#gbeam2)"/>'
             f'<g transform="translate({dx:.0f} {dy:.0f})">'
-            f'<g><animateTransform attributeName="transform" type="rotate" values="1.6;-1.6;1.6" '
+            f'<g><animateTransform attributeName="transform" type="rotate" values="0.5;-0.5;0.5" '
             f'dur="13s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" '
             f'keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>'
             f'<ellipse cx="0" cy="0" rx="{rx * 2.8:.0f}" ry="{ry * 3.2:.0f}" fill="url(#gsig)">'
             f'<animate attributeName="opacity" values="0.82;1;0.82" dur="3.4s" repeatCount="indefinite"/></ellipse>'
             f'<ellipse cx="0" cy="0" rx="{rx:.0f}" ry="{ry:.0f}" fill="url(#gdisc)"/>'
-            f'<path transform="translate({-500.8 * sb:.1f} {-152.6 * sb - 26:.1f}) scale({sb:.5f})" d="{BAT}" fill="#070a12"/>'
-            f'<text x="0" y="34" text-anchor="middle" font-family="{SANS}" font-weight="600" font-size="25" letter-spacing="0.5" fill="#070a12">TheWildEye</text>'
+            f'<path transform="translate({-500.8 * s:.1f} {-152.6 * s:.1f}) scale({s:.5f})" d="{BAT}" fill="#070a12"/>'
             f"</g></g></g></g>"
         )
         + "".join(rain)
