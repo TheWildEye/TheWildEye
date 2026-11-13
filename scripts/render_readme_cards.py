@@ -26,13 +26,11 @@ ROOT = os.path.join(HERE, "..")
 OUT = os.path.join(ROOT, "cards")
 FONTS = os.path.join(ROOT, "fonts")
 
-# ---- palette (dark Gotham: night navy + bat-yellow) ------------------------
 INK = "#eef2f8"
 INK_SOFT = "#cfd7e3"
 MUTED = "#a9b3c4"
 GOLD = "#e6b325"
 GOLD_BRIGHT = "#ffcf3a"
-GOLD_TINT = "#141824"
 STEEL = "#6b86b8"
 GREEN = "#3ddc84"
 W = 880
@@ -102,7 +100,6 @@ def d(s):
     return f'style="animation-delay:{s:.2f}s"'
 
 
-# ---- bat silhouette (vectorised from the batman-website project) ---------------
 BAT = ("M500.8 304.4L494.4 285.2L486.8 268.6L475.4 250.2L463.1 235.0L444.4 217.2L427.3 204.9L401.3 190.7L384.7 184.1L360.5 176.5L326.9 169.4L296.6 165.6L267.2 164.2L231.7 165.1L205.6 168.0L173.4 174.1L149.3 181.2L155.2 165.9L157.1 156.9L158.0 146.4L157.1 131.7L153.8 118.0L149.0 105.7L143.3 95.3L132.9 80.6L110.0 57.1L92.9 43.9L75.4 32.5L56.0 22.1L34.6 12.6L0.8 1.5L315.5 1.2L320.0 17.1L327.1 32.3L332.4 39.8L341.1 49.1L353.4 58.1L370.0 65.7L394.7 71.8L419.8 74.7L444.9 74.7L449.6 73.7L455.1 70.2L460.7 58.3L463.6 44.6L469.0 1.2L481.8 40.1L490.3 39.1L519.2 40.1L532.0 0.8L537.0 42.2L542.2 64.0L545.5 69.7L551.5 73.7L568.0 75.1L588.9 74.2L615.9 69.9L633.4 64.7L649.0 57.1L661.4 47.7L673.4 32.7L680.5 18.1L685.5 1.2L1000.8 1.5L984.9 6.0L958.8 15.9L925.2 33.0L907.7 44.3L893.0 55.7L868.6 80.1L853.0 103.8L848.2 115.2L844.4 128.9L843.5 153.5L845.9 165.9L851.3 181.2L825.7 173.7L792.6 167.5L762.3 164.7L731.9 164.2L710.1 165.1L679.8 168.5L645.7 175.1L623.0 181.7L597.9 191.7L577.5 202.6L556.2 217.7L538.4 234.5L522.8 254.4L513.8 269.6L506.2 286.6Z")
 
 
@@ -194,7 +191,6 @@ def page_scene(w, h, seed=7):
         )
     far_svg, _ = _skyline(w, h - 170, 450, 820, 34, 92, 0.08, "#0c1424", "rgba(150,178,220,0.34)", rnd)
     near_svg, near_b = _skyline(w, h + 6, 700, 1080, 40, 120, 0.09, "#05080e", "rgba(255,205,80,0.7)", rnd)
-    # searchlight on the leftmost tower; bat projected to the right of the name
     left_side = [b for b in near_b if b[0] + b[1] / 2 < w * 0.4] or near_b
     host = min(left_side, key=lambda b: b[2])
     ox, oy = host[0] + host[1] / 2, host[2]
@@ -295,11 +291,10 @@ def count_up(num, x, y, attrs, begin, dur=1.3, frames=6, group=False):
     return "".join(out)
 
 
-# ---- sections (each returns (height, inner_svg)) -------------------------------
 def hero():
     h = 396
     inner = (
-        f'<text class="f" {d(0.05)} x="44" y="104" font-family="{MONO}" font-size="17" letter-spacing="4.5" fill="{GREEN}">TheWildEye</text>'
+        f'<text class="f" {d(0.05)} x="44" y="106" font-family="{SERIF}" font-style="italic" font-size="25" letter-spacing="0.5" fill="{GREEN}">TheWildEye</text>'
         f'<text class="r" {d(0.15)} x="42" y="176" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom <tspan fill="{GOLD_BRIGHT}">Nagpal</tspan></text>'
         f'<text class="f" {d(0.4)} x="46" y="230" font-family="{SANS}" font-size="16" fill="{INK_SOFT}">Security Researcher &#183; <tspan fill="{GOLD_BRIGHT}">Certified Ethical Hacker</tspan></text>'
         f'<text class="f" {d(0.5)} x="46" y="262" font-family="{SANS}" font-size="16" fill="{INK_SOFT}">National Forensic Sciences University</text>'
@@ -356,7 +351,6 @@ def orbital():
         ux, uy = nx - cx, ny - cy
         ul = math.hypot(ux, uy) or 1
         ux, uy = ux / ul, uy / ul
-        # land the chain on the wordmark's bounding box, along this node's own radial
         bw, bh = 100.0, 25.0
         tt = min(bw / abs(ux) if ux else 1e9, bh / abs(uy) if uy else 1e9)
         ex, ey = cx + ux * tt, cy + uy * tt
@@ -490,7 +484,7 @@ def repo_stars():
 if __name__ == "__main__":
     stars = repo_stars()
     sections = [hero(), kpi(), cvelog(), repos(stars), orbital()]
-    TOP, GAP, BOTTOM = 30, 60, 130
+    TOP, GAP, BOTTOM = 30, 60, 30
     y = TOP
     placed = []
     for h, inner in sections:
