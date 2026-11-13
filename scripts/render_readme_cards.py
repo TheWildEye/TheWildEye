@@ -194,8 +194,9 @@ def page_scene(w, h, seed=7):
     # searchlight on the leftmost tower; bat projected to the right of the name
     host = min((b for b in near_b if b[0] >= 0), key=lambda b: b[0], default=near_b[0])
     ox, oy = host[0] + host[1] / 2, host[2]
-    tx, ty, rx = 646, 158, 138
+    tx, ty, rx = 646, 132, 138
     ry = rx * 0.5
+    dx, dy = tx - ox, ty - oy
     s = (rx * 1.25) / 1002
     lightning = (
         f'<rect width="{w}" height="{h}" fill="#c8dcff" opacity="0">'
@@ -210,16 +211,20 @@ def page_scene(w, h, seed=7):
         + f'<ellipse cx="{ox:.0f}" cy="{oy:.0f}" rx="13" ry="9" fill="#04060b"/>'
         + f'<circle cx="{ox:.0f}" cy="{oy:.0f}" r="24" fill="url(#glens)"/>'
         + (
-            f'<g><animateTransform attributeName="transform" type="rotate" '
-            f'values="-1.6 {ox:.0f} {oy:.0f};1.6 {ox:.0f} {oy:.0f};-1.6 {ox:.0f} {oy:.0f}" '
-            f'dur="13s" repeatCount="indefinite" calcMode="spline" '
-            f'keyTimes="0;0.5;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>'
-            f'<path d="M{ox:.0f} {oy:.0f} L{tx - rx:.0f} {ty:.0f} L{tx + rx:.0f} {ty:.0f} Z" fill="url(#gbeam2)"/>'
-            f'<ellipse cx="{tx:.0f}" cy="{ty:.0f}" rx="{rx * 2.8:.0f}" ry="{ry * 3.2:.0f}" fill="url(#gsig)">'
+            f'<g transform="translate({ox:.0f} {oy:.0f})">'
+            f'<g><animateTransform attributeName="transform" type="rotate" values="-1.6;1.6;-1.6" '
+            f'dur="13s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" '
+            f'keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>'
+            f'<path d="M0 0 L{dx - rx:.0f} {dy:.0f} L{dx + rx:.0f} {dy:.0f} Z" fill="url(#gbeam2)"/>'
+            f'<g transform="translate({dx:.0f} {dy:.0f})">'
+            f'<g><animateTransform attributeName="transform" type="rotate" values="1.6;-1.6;1.6" '
+            f'dur="13s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" '
+            f'keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>'
+            f'<ellipse cx="0" cy="0" rx="{rx * 2.8:.0f}" ry="{ry * 3.2:.0f}" fill="url(#gsig)">'
             f'<animate attributeName="opacity" values="0.82;1;0.82" dur="3.4s" repeatCount="indefinite"/></ellipse>'
-            f'<ellipse cx="{tx:.0f}" cy="{ty:.0f}" rx="{rx:.0f}" ry="{ry:.0f}" fill="url(#gdisc)"/>'
-            f'<path transform="translate({tx - 500.8 * s:.1f} {ty - 152.6 * s:.1f}) scale({s:.5f})" d="{BAT}" fill="#070a12"/>'
-            f'</g>'
+            f'<ellipse cx="0" cy="0" rx="{rx:.0f}" ry="{ry:.0f}" fill="url(#gdisc)"/>'
+            f'<path transform="translate({-500.8 * s:.1f} {-152.6 * s:.1f}) scale({s:.5f})" d="{BAT}" fill="#070a12"/>'
+            f"</g></g></g></g>"
         )
         + "".join(rain)
         + f'<rect width="{w}" height="{h}" fill="url(#gvig)"/>'
@@ -288,13 +293,13 @@ def count_up(num, x, y, attrs, begin, dur=1.3, frames=9, group=False):
 
 # ---- sections (each returns (height, inner_svg)) -------------------------------
 def hero():
-    h = 340
+    h = 386
     inner = (
         f'<text class="r" {d(0.15)} x="42" y="156" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom <tspan fill="{GOLD_BRIGHT}">Nagpal</tspan></text>'
-        f'<text class="f" {d(0.4)} x="46" y="194" font-family="{SANS}" font-size="16" fill="{INK_SOFT}">Security Researcher &#183; <tspan fill="{GOLD_BRIGHT}">Certified Ethical Hacker</tspan></text>'
-        f'<text class="f" {d(0.5)} x="46" y="218" font-family="{MONO}" font-size="13.5" fill="{MUTED}">National Forensic Sciences University &#183; B.Tech&#8211;M.Tech CSE</text>'
-        f'<text class="r" {d(0.7)} x="46" y="282" font-family="{SANS}" font-size="15" fill="{INK_SOFT}">I break web &amp; mobile apps before attackers do,</text>'
-        f'<text class="r" {d(0.78)} x="46" y="304" font-family="{SANS}" font-size="15" fill="{INK_SOFT}">and build offensive security tooling.</text>'
+        f'<text class="f" {d(0.4)} x="46" y="212" font-family="{SANS}" font-size="16" fill="{INK_SOFT}">Security Researcher &#183; <tspan fill="{GOLD_BRIGHT}">Certified Ethical Hacker</tspan></text>'
+        f'<text class="f" {d(0.5)} x="46" y="242" font-family="{MONO}" font-size="13.5" fill="{MUTED}">National Forensic Sciences University</text>'
+        f'<text class="r" {d(0.7)} x="46" y="322" font-family="{SANS}" font-size="19" fill="{INK}">I <tspan fill="{GOLD_BRIGHT}" font-weight="600">break</tspan> web &amp; mobile apps before attackers do,</text>'
+        f'<text class="r" {d(0.78)} x="46" y="350" font-family="{SANS}" font-size="19" fill="{INK}">and <tspan fill="{GOLD_BRIGHT}" font-weight="600">build</tspan> offensive security tooling.</text>'
     )
     return h, inner
 
@@ -312,7 +317,7 @@ def kpi():
         begin = 0.4 + i * 0.14
         parts.append(count_up(num, x, 62, f'font-family="{SERIF}" font-size="44" fill="{GOLD_BRIGHT}"', begin, group=group))
         parts.append(f'<rect class="g" style="animation-delay:{begin:.2f}s" x="{x}" y="76" width="32" height="3" rx="1.5" fill="{GOLD}"/>')
-        parts.append(f'<text class="f" style="animation-delay:{begin - 0.25:.2f}s" x="{x}" y="100" font-family="{MONO}" font-size="12.5" letter-spacing="1" fill="{MUTED}">{label}</text>')
+        parts.append(f'<text class="f" style="animation-delay:{begin - 0.25:.2f}s" x="{x}" y="100" font-family="{MONO}" font-size="12.5" letter-spacing="1" fill="{INK}">{label}</text>')
     return h, "".join(parts)
 
 
@@ -346,7 +351,7 @@ def orbital():
   </animateMotion>
   <g transform="translate({-cw / 2:.1f} -14)">
     <rect width="{cw:.0f}" height="28" rx="14" fill="{GOLD_TINT}" stroke="{GOLD}" stroke-opacity=".6"/>
-    <text x="{cw / 2:.0f}" y="19" text-anchor="middle" font-family="{SANS}" font-size="13" fill="{GOLD_BRIGHT}">{escape(c)}</text>
+    <text x="{cw / 2:.0f}" y="19" text-anchor="middle" font-family="{SANS}" font-size="13" fill="{INK}">{escape(c)}</text>
   </g>
 </g>""")
     body.append(f'<circle class="pu" cx="{cx}" cy="{cy}" r="26" fill="{GOLD}"/>')
@@ -378,7 +383,7 @@ def cvelog():
         rows.append(
             f'<g class="r" style="animation-delay:{0.5 + i * 0.13:.2f}s">'
             f'<circle cx="52" cy="{y - 5}" r="4.5" fill="{GOLD}"/>'
-            f'<text x="74" y="{y}" font-family="{MONO}" font-size="13.5" fill="url(#shn)">{escape(cid)}</text>'
+            f'<text x="74" y="{y}" font-family="{MONO}" font-size="13.5" fill="{INK}">{escape(cid)}</text>'
             f'<text x="320" y="{y}" font-family="{SANS}" font-size="15.5" fill="{GOLD_BRIGHT}">{escape(cls)}</text>'
             f'<text x="{W - 44}" y="{y}" text-anchor="end" font-family="{MONO}" font-size="13" letter-spacing="1" fill="{MUTED}">2026</text></g>'
         )
