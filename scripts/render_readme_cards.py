@@ -253,7 +253,6 @@ def page_scene(w, h, seed=7):
         f'<rect width="{w}" height="{h}" fill="url(#gsky)"/>'
         + "".join(stars) + "".join(clouds) + "".join(bats)
         + far_svg + near_svg
-        + lightning
         + f'<rect x="{ox - 8:.0f}" y="{oy - 2:.0f}" width="16" height="18" fill="#04060b"/>'
         + f'<path d="M{ox - 9:.0f} {oy + 2:.0f} L{ox + 9:.0f} {oy + 2:.0f} L{ox + 5:.0f} {oy - 7:.0f} L{ox - 5:.0f} {oy - 7:.0f} Z" fill="#04060b"/>'
         + f'<circle cx="{ox:.0f}" cy="{oy - 5:.0f}" r="4.5" fill="url(#glens)"/>'
@@ -274,6 +273,7 @@ def page_scene(w, h, seed=7):
             f'<path transform="translate({-500.8 * s:.1f} {-152.6 * s:.1f}) scale({s:.5f})" d="{BAT}" fill="#070a12"/>'
             f"</g></g></g></g>"
         )
+        + lightning
         + "".join(rain)
         + f'<rect width="{w}" height="{h}" fill="url(#gvig)"/>'
         + f'<rect y="{h * 0.34:.0f}" width="{w}" height="{h * 0.66:.0f}" fill="url(#gbot)"/>'
