@@ -324,52 +324,51 @@ def kpi():
     return h, "".join(parts)
 
 
-ORBIT_IN = ["Offensive Security", "Web AppSec", "Mobile AppSec", "API Security", "OSINT & Recon"]
-ORBIT_OUT = ["Secure Code Review", "Threat Modelling", "GRC \u00b7 NIST/ISO", "AI Security", "VAPT"]
+ORBIT = ["Offensive Security", "Web AppSec", "Mobile AppSec", "API Security", "OSINT & Recon",
+         "Secure Code Review", "Threat Modelling", "GRC \u00b7 NIST/ISO", "AI Security", "VAPT"]
 
 
 def orbital():
-    h = 442
-    cx, cy = W / 2, 242
-    in_rx, in_ry, out_rx, out_ry = 168, 82, 304, 146
-
-    def ell(rx, ry):
-        return (f"M{cx + rx} {cy} A{rx} {ry} 0 1 0 {cx - rx} {cy} "
-                f"A{rx} {ry} 0 1 0 {cx + rx} {cy}")
-
-    body = [
-        f'<circle cx="{cx}" cy="{cy}" r="132" fill="url(#coreglow)"/>',
-        f'<path d="{ell(in_rx, in_ry)}" fill="none" stroke="{GOLD}" stroke-width="1" stroke-dasharray="1 8" opacity=".4"/>',
-        f'<path d="{ell(out_rx, out_ry)}" fill="none" stroke="{GOLD}" stroke-width="1" stroke-dasharray="1 10" opacity=".26"/>',
-    ]
-    for pid, rx, ry, chips, dur, phase in [("orbin", in_rx, in_ry, ORBIT_IN, 40, 0.0), ("orbout", out_rx, out_ry, ORBIT_OUT, 66, 0.5)]:
-        body.append(f'<path id="{pid}" d="{ell(rx, ry)}" fill="none"/>')
-        n = len(chips)
-        for i, c in enumerate(chips):
-            cw = len(c) * 7.0 + 24
-            begin = -dur * (i + phase) / n
-            body.append(f"""
-<g>
-  <animateMotion dur="{dur}s" begin="{begin:.2f}s" repeatCount="indefinite" rotate="0">
-    <mpath xlink:href="#{pid}"/>
-  </animateMotion>
-  <g>
-    <animate attributeName="opacity" dur="{dur}s" begin="{begin:.2f}s" repeatCount="indefinite" values="0.5;0.2;0.5;1;0.5"/>
-    <g transform="translate({-cw / 2:.1f} -13)">
-      <rect width="{cw:.0f}" height="26" rx="13" fill="#0b1220" stroke="{GOLD}" stroke-opacity=".35"/>
-      <text x="{cw / 2:.0f}" y="17.5" text-anchor="middle" font-family="{SANS}" font-size="12.5" fill="{INK}">{escape(c)}</text>
-    </g>
-  </g>
-</g>""")
-    body.append(f'<circle class="pu" cx="{cx}" cy="{cy}" r="24" fill="{GOLD}"/>')
+    """Neural constellation: skill nodes on an ellipse, each linked to a glowing core
+    by a bowed synapse with a pulse travelling inward. Nodes at the back of the ring
+    (top) fade out, which gives the whole thing depth instead of looking flat."""
+    h = 486
+    cx, cy = W / 2, 258
+    rx, ry = 292, 168
+    n = len(ORBIT)
+    body = [f'<circle cx="{cx}" cy="{cy}" r="150" fill="url(#coreglow)"/>',
+            f'<ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="none" stroke="{GOLD}" stroke-opacity=".14" stroke-dasharray="2 10"/>']
+    for i, name in enumerate(ORBIT):
+        a = math.radians(-90 + i * 360 / n)
+        nx, ny = cx + rx * math.cos(a), cy + ry * math.sin(a)
+        ux, uy = nx - cx, ny - cy
+        ul = math.hypot(ux, uy) or 1
+        ux, uy = ux / ul, uy / ul
+        depth = 0.32 + 0.68 * ((ny - (cy - ry)) / (2 * ry))
+        qx, qy = (nx + cx) / 2 - uy * 30, (ny + cy) / 2 + ux * 30
+        pid = f"cn{i}"
+        anchor = "start" if ux > 0.3 else ("end" if ux < -0.3 else "middle")
+        body.append(
+            f'<g opacity="{depth:.2f}">'
+            f'<path id="{pid}" d="M{nx:.0f} {ny:.0f} Q{qx:.0f} {qy:.0f} {cx:.0f} {cy:.0f}" fill="none" '
+            f'stroke="{GOLD}" stroke-opacity=".5" stroke-width="1"/>'
+            f'<circle cx="{nx:.0f}" cy="{ny:.0f}" r="7" fill="{GOLD}" opacity=".22"/>'
+            f'<circle cx="{nx:.0f}" cy="{ny:.0f}" r="3.2" fill="{GOLD_BRIGHT}"/>'
+            f'<text x="{nx + ux * 26:.0f}" y="{ny + uy * 17 + 4:.0f}" text-anchor="{anchor}" '
+            f'font-family="{SANS}" font-size="13.5" fill="{INK}">{escape(name)}</text></g>'
+            f'<circle r="2.6" fill="{GOLD_BRIGHT}">'
+            f'<animateMotion dur="{3.4 + i * 0.21:.1f}s" begin="{-i * 0.34:.2f}s" repeatCount="indefinite" rotate="0">'
+            f'<mpath xlink:href="#{pid}"/></animateMotion></circle>'
+        )
+    body.append(f'<circle class="pu" cx="{cx}" cy="{cy}" r="22" fill="{GOLD}"/>')
     body.append(
-        f'<circle cx="{cx}" cy="{cy}" r="24" fill="none" stroke="{GOLD_BRIGHT}" stroke-width="2" opacity="0">'
-        f'<animate attributeName="r" from="24" to="62" dur="3.4s" repeatCount="indefinite"/>'
+        f'<circle cx="{cx}" cy="{cy}" r="22" fill="none" stroke="{GOLD_BRIGHT}" stroke-width="2" opacity="0">'
+        f'<animate attributeName="r" from="22" to="60" dur="3.4s" repeatCount="indefinite"/>'
         f'<animate attributeName="opacity" from="0.5" to="0" dur="3.4s" repeatCount="indefinite"/></circle>'
     )
-    body.append(f'<circle cx="{cx}" cy="{cy}" r="10" fill="{GOLD_BRIGHT}"/>')
+    body.append(f'<circle cx="{cx}" cy="{cy}" r="9" fill="{GOLD_BRIGHT}"/>')
     head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="{INK}">Skills, <tspan font-style="italic" fill="{GOLD}">in orbit</tspan></text>'
-    return h, f'<defs><radialGradient id="coreglow"><stop offset="0" stop-color="{GOLD}" stop-opacity=".16"/><stop offset="1" stop-color="{GOLD}" stop-opacity="0"/></radialGradient></defs>' + head + "".join(body)
+    return h, f'<defs><radialGradient id="coreglow"><stop offset="0" stop-color="{GOLD}" stop-opacity=".18"/><stop offset="1" stop-color="{GOLD}" stop-opacity="0"/></radialGradient></defs>' + head + "".join(body)
 
 
 CVES = [
