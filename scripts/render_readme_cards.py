@@ -36,12 +36,12 @@ GREEN = "#3ddc84"
 W = 880
 
 SERIF = "'Instrument Serif', Georgia, serif"
-SANS = "Geist, system-ui, -apple-system, sans-serif"
+SANS = "Montserrat, system-ui, -apple-system, sans-serif"
 MONO = "'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace"
 
 FONT_FILES = {
     "serif": ("Instrument Serif", "normal", 400, "serif-400.woff"),
-    "sans": ("Geist", "normal", 400, "geist-400.woff"),
+    "sans": ("Montserrat", "normal", "100 900", "montserrat.woff2"),
     "mono": ("Geist Mono", "normal", 400, "geistmono-400.woff"),
 }
 
@@ -69,9 +69,10 @@ def font_face(keys):
     for k in keys:
         fam, style, weight, fn = FONT_FILES[k]
         b64 = base64.b64encode(open(os.path.join(FONTS, fn), "rb").read()).decode()
+        fmt = "woff2" if fn.endswith("woff2") else "woff"
         out.append(
             f"@font-face{{font-family:'{fam}';font-style:{style};font-weight:{weight};"
-            f"src:url(data:font/woff;base64,{b64}) format('woff')}}"
+            f"src:url(data:font/{fmt};base64,{b64}) format('{fmt}')}}"
         )
     return "".join(out)
 
@@ -296,8 +297,8 @@ def hero():
     inner = (
         f'<text class="f" {d(0.05)} x="44" y="106" font-family="{SERIF}" font-style="italic" font-size="25" letter-spacing="0.5" fill="{GREEN}">TheWildEye</text>'
         f'<text class="r" {d(0.15)} x="42" y="176" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom <tspan fill="{GOLD_BRIGHT}">Nagpal</tspan></text>'
-        f'<text class="f" {d(0.4)} x="46" y="230" font-family="{SANS}" font-size="16" fill="{INK_SOFT}">Security Researcher &#183; <tspan fill="{GOLD_BRIGHT}">Certified Ethical Hacker</tspan></text>'
-        f'<text class="f" {d(0.5)} x="46" y="262" font-family="{SANS}" font-size="16" fill="{INK_SOFT}">National Forensic Sciences University</text>'
+        f'<text class="f" {d(0.4)} x="46" y="230" font-family="{SANS}" font-weight="600" font-size="16" fill="{INK_SOFT}">Security Researcher &#183; <tspan fill="{GOLD_BRIGHT}">Certified Ethical Hacker</tspan></text>'
+        f'<text class="f" {d(0.5)} x="46" y="262" font-family="{SANS}" font-weight="600" font-size="16" fill="{INK_SOFT}">National Forensic Sciences University</text>'
         f'<text class="r" {d(0.7)} x="46" y="332" font-family="{SANS}" font-size="19" fill="{INK}">I <tspan fill="{GOLD_BRIGHT}" font-weight="600">break</tspan> web &amp; mobile apps before attackers do,</text>'
         f'<text class="r" {d(0.78)} x="46" y="360" font-family="{SANS}" font-size="19" fill="{INK}">and <tspan fill="{GOLD_BRIGHT}" font-weight="600">build</tspan> offensive security tooling.</text>'
     )
@@ -317,7 +318,7 @@ def kpi():
         begin = 0.4 + i * 0.14
         parts.append(count_up(num, x, 62, f'font-family="{SERIF}" font-size="44" fill="{GOLD_BRIGHT}"', begin, group=group))
         parts.append(f'<rect class="g" style="animation-delay:{begin:.2f}s" x="{x}" y="76" width="32" height="3" rx="1.5" fill="{GOLD}"/>')
-        parts.append(f'<text class="f" style="animation-delay:{begin - 0.25:.2f}s" x="{x}" y="100" font-family="{MONO}" font-size="12.5" letter-spacing="1" fill="{INK}">{label}</text>')
+        parts.append(f'<text class="f" style="animation-delay:{begin - 0.25:.2f}s" x="{x}" y="100" font-family="{MONO}" font-weight="700" font-size="13" letter-spacing="0.6" fill="{INK}">{label}</text>')
     return h, "".join(parts)
 
 
@@ -399,7 +400,7 @@ def cvelog():
             f'<g class="r" style="animation-delay:{0.5 + i * 0.13:.2f}s">'
             f'<circle cx="52" cy="{y - 5}" r="4.5" fill="{GOLD}"/>'
             f'<text x="74" y="{y}" font-family="{MONO}" font-size="13.5" fill="{INK}">{escape(cid)}</text>'
-            f'<text x="320" y="{y}" font-family="{SANS}" font-size="15.5" fill="{GOLD_BRIGHT}">{escape(cls)}</text>'
+            f'<text x="320" y="{y}" font-family="{SANS}" font-weight="600" font-size="15.5" fill="{GOLD_BRIGHT}">{escape(cls)}</text>'
             f'<text x="{W - 44}" y="{y}" text-anchor="end" font-family="{MONO}" font-size="13" letter-spacing="1" fill="{MUTED}">2026</text></g>'
         )
     head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="url(#shn)">6 published <tspan font-style="italic" fill="{GOLD}">CVEs</tspan></text>'
