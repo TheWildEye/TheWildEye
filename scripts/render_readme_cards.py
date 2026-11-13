@@ -341,7 +341,7 @@ def orbital():
     same — no depth dimming."""
     h = 490
     cx, cy = W / 2, 260
-    rx, ry = 292, 168
+    rx, ry = 300, 172
     n = len(ORBIT)
     body = [
         f'<circle cx="{cx}" cy="{cy}" r="168" fill="url(#coreglow)"/>',
@@ -349,7 +349,7 @@ def orbital():
     ]
     for rr in (36, 56):
         body.append(f'<ellipse cx="{cx}" cy="{cy}" rx="{rr}" ry="{rr * 0.42:.0f}" fill="none" stroke="{GOLD}" stroke-opacity=".22"/>')
-    amp, wave_dur = 9, 6.0
+    amp, wave_dur = 11, 5.0
     for i, name in enumerate(ORBIT):
         a = math.radians(-90 + i * 360 / n)
         nx, ny = cx + rx * math.cos(a), cy + ry * math.sin(a)
@@ -362,14 +362,14 @@ def orbital():
         pdat = f"M{nx:.0f} {ny:.0f} Q{qx:.0f} {qy:.0f} {cx:.0f} {cy:.0f}"
         lx, ly = nx + ux * 30, ny + uy * 20 + 4
         wave = (f'<animateTransform attributeName="transform" type="translate" '
-                f'values="0 0;{ux * amp:.1f} {uy * amp:.1f};0 0;{-ux * amp:.1f} {-uy * amp:.1f};0 0" '
+                f'values="0 0;{-ux * amp:.1f} {-uy * amp:.1f};0 0" '
                 f'dur="{wave_dur}s" begin="{-wave_dur * i / n:.2f}s" repeatCount="indefinite"/>')
         body.append(
             f'<path id="{pid}" d="{pdat}" fill="none"/>'
             f'<path d="{pdat}" fill="none" stroke="{GOLD}" stroke-opacity=".16" stroke-width="4.5"/>'
             f'<path d="{pdat}" fill="none" stroke="{GOLD_BRIGHT}" stroke-opacity=".6" stroke-width="1"/>'
             f'<g>{wave}'
-            f'<polygon points="{hexpts(nx, ny, 9.5)}" fill="#0d1526" stroke="{GOLD}" stroke-opacity=".85" stroke-width="1.3"/>'
+            f'<polygon points="{hexpts(nx, ny, 12)}" fill="#0d1526" stroke="{GOLD}" stroke-opacity=".85" stroke-width="1.3"/>'
             f'<circle cx="{nx:.0f}" cy="{ny:.0f}" r="3" fill="{GOLD_BRIGHT}"/>'
             f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="{anchor}" font-family="{SANS}" '
             f'font-size="13.5" fill="{INK}">{escape(name)}</text></g>'
