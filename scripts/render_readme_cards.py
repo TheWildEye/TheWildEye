@@ -295,7 +295,7 @@ def count_up(num, x, y, attrs, begin, dur=1.3, frames=6, group=False):
 def hero():
     h = 396
     inner = (
-        f'<text class="f" {d(0.05)} x="44" y="106" font-family="{SERIF}" font-style="italic" font-size="25" letter-spacing="0.5" fill="{GREEN}">TheWildEye</text>'
+        f'<text class="f" {d(0.05)} x="44" y="106" font-family="{SANS}" font-weight="700" font-size="21" letter-spacing="0.8" fill="{GREEN}">TheWildEye</text>'
         f'<text class="r" {d(0.15)} x="42" y="176" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom <tspan fill="{GOLD_BRIGHT}">Nagpal</tspan></text>'
         f'<text class="f" {d(0.4)} x="46" y="230" font-family="{SANS}" font-weight="600" font-size="16" fill="{INK_SOFT}">Security Researcher &#183; <tspan fill="{GOLD_BRIGHT}">Certified Ethical Hacker</tspan></text>'
         f'<text class="f" {d(0.5)} x="46" y="262" font-family="{SANS}" font-weight="600" font-size="16" fill="{INK_SOFT}">National Forensic Sciences University</text>'
