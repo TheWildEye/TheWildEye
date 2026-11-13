@@ -352,7 +352,7 @@ def hero():
 def kpi():
     h = 120
     tiles = [("VULNERABILITIES", "100+", False), ("APPS SECURED", "20+", False), ("CVE RECORDS", "6\u00d7", False),
-             ("RECORDS PROTECTED", "4000", True), ("TARGETS RECONNED", "1000+", True)]
+             ("RECORDS PROTECTED", "4000+", False), ("TARGETS RECONNED", "1000+", True)]
     n = len(tiles)
     gap = 14
     tw = (W - 80 - gap * (n - 1)) / n
@@ -438,7 +438,7 @@ CVES = [
     ("CVE-2026-119733", "Missing Authorization"),
     ("CVE-2026-119734", "BOLA / IDOR"),
     ("CVE-2026-119735", "Stored XSS"),
-    ("CVE-2026-119736", "Hard-coded Credentials"),
+    ("CVE-2026-119736", "Hard-coded MQTT Credentials"),
 ]
 
 
