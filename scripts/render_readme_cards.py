@@ -1,19 +1,4 @@
 ﻿#!/usr/bin/env python3
-"""
-Render the profile README as ONE animated SVG (cards/page.svg).
-
-Theme: "Gotham" - a single continuous night scene: night-navy sky, one city
-skyline at the bottom, a bat searchlight in the sky, and all content sitting
-directly on that background (no boxes). Instrument Serif display, Geist body,
-Geist Mono labels.
-
-Everything is one standalone SVG shown through <img>, so it can only use what
-GitHub allows there: inline CSS animations, SMIL and fonts embedded as data URIs
-(no JS, no external requests). Fonts are subset WOFFs in fonts/ (SIL OFL).
-
-Numbers mirror vyomnagpal.in and are set by hand. Only repo stars are fetched live.
-Run by .github/workflows/update-profile-art.yml.
-"""
 import base64
 import math
 import os
@@ -37,12 +22,10 @@ W = 880
 
 SERIF = "'Instrument Serif', Georgia, serif"
 SANS = "Montserrat, system-ui, -apple-system, sans-serif"
-MONO = "'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace"
 
 FONT_FILES = {
     "serif": ("Instrument Serif", "normal", 400, "serif-400.woff"),
     "sans": ("Montserrat", "normal", "100 900", "montserrat.woff2"),
-    "mono": ("Geist Mono", "normal", 400, "geistmono-400.woff"),
 }
 
 BASE_CSS = """
@@ -105,8 +88,6 @@ BAT = ("M500.8 304.4L494.4 285.2L486.8 268.6L475.4 250.2L463.1 235.0L444.4 217.2
 
 
 def bat_wing(s, f):
-    """Two-wing bat silhouette ported from vyomnagpal.in's batWing(bx, by, s, f);
-    f is the flap factor (-1..1)."""
     return (
         f"M0 0"
         f"Q{-0.45 * s:.1f} {-s * (0.5 + 0.45 * f):.1f} {-s:.1f} {-s * 0.9 * f:.1f}"
@@ -136,11 +117,9 @@ def _skyline(w, base_y, min_h, max_h, min_w, max_w, lit, color, win, rnd):
 
 
 def page_scene(w, h, seed=7):
-    """One continuous Gotham scene: starry sky, drifting clouds, rain, lightning,
-    a big city skyline and a bat searchlight."""
     rnd = random.Random(seed)
     stars = []
-    for _ in range(36):
+    for _ in range(28):
         sx = rnd.uniform(0, w)
         sy = rnd.uniform(0, h * 0.72)
         tw = f' class="tw" style="animation-delay:{rnd.uniform(0, 3.5):.2f}s"' if rnd.random() < 0.25 else ""
@@ -157,7 +136,7 @@ def page_scene(w, h, seed=7):
             f'dur="{dur:.0f}s" repeatCount="indefinite"/></circle>'
         )
     rain = []
-    for _ in range(34):
+    for _ in range(22):
         x = rnd.uniform(-80, w + 140)
         ln = rnd.uniform(14, 30)
         dur = rnd.uniform(0.7, 1.5)
@@ -193,7 +172,7 @@ def page_scene(w, h, seed=7):
     far_svg, _ = _skyline(w, h - 170, 450, 820, 34, 92, 0.08, "#0c1424", "rgba(150,178,220,0.34)", rnd)
     near_svg, near_b = _skyline(w, h + 6, 700, 1080, 40, 120, 0.09, "#05080e", "rgba(255,205,80,0.7)", rnd)
     left_side = [b for b in near_b if b[0] + b[1] / 2 < w * 0.45] or near_b
-    low = [b for b in left_side if b[2] > 990] or left_side
+    low = [b for b in left_side if b[2] > 990 and b[0] > 90] or left_side
     host = min(low, key=lambda b: b[0])
     ox, oy = host[0] + host[1] / 2, host[2]
     tx, ty, rx = 646, 190, 138
@@ -257,9 +236,6 @@ SCENE_DEFS = f"""
 
 
 def shine_def(w, h, begin, dur=14.0):
-    """One regular diagonal gold band sweeping top-left -> bottom-right through any
-    text filled with url(#shn). Fixed 45-degree geometry so the wave is even, and it
-    starts/ends off-canvas so the loop resets invisibly."""
     D = 1000
     return (
         f'<defs><linearGradient id="shn" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="{D}" y2="{D}">'
@@ -272,7 +248,7 @@ def shine_def(w, h, begin, dur=14.0):
     )
 
 
-def count_up(num, x, y, attrs, begin, dur=1.3, frames=6, group=False):
+def count_up(num, x, y, attrs, begin, dur=1.3, frames=5, group=False):
     m = re.match(r"([\d.]+)(.*)", num)
     val, suf = float(m.group(1)), m.group(2)
     dec = len(m.group(1).split(".")[1]) if "." in m.group(1) else 0
@@ -296,7 +272,7 @@ def count_up(num, x, y, attrs, begin, dur=1.3, frames=6, group=False):
 def hero():
     h = 396
     inner = (
-        f'<text class="f" {d(0.05)} x="44" y="54" font-family="{SANS}" font-weight="700" font-size="21" letter-spacing="0.8" fill="{GREEN}">TheWildEye</text>'
+        f'<text class="f" {d(0.05)} x="44" y="86" font-family="{SANS}" font-weight="700" font-size="21" letter-spacing="0.8" fill="{GREEN}">TheWildEye</text>'
         f'<text class="r" {d(0.15)} x="42" y="176" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom <tspan fill="{GOLD_BRIGHT}">Nagpal</tspan></text>'
         f'<text class="f" {d(0.4)} x="46" y="230" font-family="{SANS}" font-weight="600" font-size="16" fill="{INK_SOFT}">Security Researcher &#183; <tspan fill="{GOLD_BRIGHT}">Certified Ethical Hacker</tspan></text>'
         f'<text class="f" {d(0.5)} x="46" y="262" font-family="{SANS}" font-weight="600" font-size="16" fill="{INK_SOFT}">National Forensic Sciences University</text>'
@@ -319,7 +295,7 @@ def kpi():
         begin = 0.4 + i * 0.14
         parts.append(count_up(num, x, 62, f'font-family="{SERIF}" font-size="44" fill="{GOLD_BRIGHT}"', begin, group=group))
         parts.append(f'<rect class="g" style="animation-delay:{begin:.2f}s" x="{x}" y="76" width="32" height="3" rx="1.5" fill="{GOLD}"/>')
-        parts.append(f'<text class="f" style="animation-delay:{begin - 0.25:.2f}s" x="{x}" y="100" font-family="{MONO}" font-weight="700" font-size="13" letter-spacing="0.6" fill="{INK}">{label}</text>')
+        parts.append(f'<text class="f" style="animation-delay:{begin - 0.25:.2f}s" x="{x}" y="100" font-family="{SANS}" font-weight="700" font-size="11.5" letter-spacing="0.3" fill="{INK}">{label}</text>')
     return h, "".join(parts)
 
 
@@ -335,9 +311,6 @@ def hexpts(cx, cy, r):
 
 
 def orbital():
-    """Neural + blockchain + cyber: hex skill nodes on an orbit, each wired to a ringed
-    core by a glowing synapse with a signal travelling inward. Everything is lit the
-    same — no depth dimming."""
     h = 490
     cx, cy = W / 2, 260
     rx, ry = 300, 172
@@ -440,10 +413,10 @@ def repos(stars):
         out.append(
             f'<g class="r" style="animation-delay:{2.4 + i * 0.15:.2f}s">'
             f'<rect x="{x:.1f}" y="0" width="{rw:.1f}" height="3" rx="1.5" fill="{color}"/>'
-            f'<text x="{x + 22:.1f}" y="38" font-family="{MONO}" font-size="12" letter-spacing="1" fill="{color}">&#9656; REPO</text>'
+            f'<text x="{x + 22:.1f}" y="38" font-family="{SANS}" font-size="12" letter-spacing="1" fill="{color}">&#9656; REPO</text>'
             f'<text x="{x + 22:.1f}" y="68" font-family="{SANS}" font-weight="600" font-size="19" fill="{GOLD_BRIGHT}">{escape(name)}</text>'
             f'{body_lines}'
-            f'<text x="{x + 22:.1f}" y="{h - 12}" font-family="{MONO}" font-size="13" fill="{MUTED}">{escape(meta)}</text></g>'
+            f'<text x="{x + 22:.1f}" y="{h - 12}" font-family="{SANS}" font-size="13" fill="{MUTED}">{escape(meta)}</text></g>'
         )
     return h, "".join(out)
 
@@ -458,8 +431,6 @@ LINKS = [
 
 
 def link_cards():
-    """Five small linked cards for the row under the artwork. System fonts only, so
-    each file stays tiny (they are separate images so each can carry its own link)."""
     for slug, label, sub in LINKS:
         body = (
             f'<rect x="0" y="0" width="168" height="54" rx="12" fill="#0f1626" stroke="{GOLD}" stroke-opacity=".45"/>'
@@ -500,6 +471,6 @@ if __name__ == "__main__":
             f'fill="none" stroke="{GOLD}" stroke-width="1.2" stroke-opacity=".5"/>'
         )
         body += f'<g transform="translate(0 {yy:.0f})">{inner}</g>'
-    write("page.svg", svg(W, total, body, ["serif", "sans", "mono"],
+    write("page.svg", svg(W, total, body, ["serif", "sans"],
                           "Vyom Nagpal - security researcher and ethical hacker. 6x CVE, 100+ vulnerabilities disclosed."))
     link_cards()
