@@ -15,6 +15,7 @@ Numbers mirror vyomnagpal.in and are set by hand. Only repo stars are fetched li
 Run by .github/workflows/update-profile-art.yml.
 """
 import base64
+import math
 import os
 import random
 import re
@@ -190,12 +191,17 @@ def page_scene(w, h, seed=7):
     far_svg, _ = _skyline(w, h - 170, 450, 820, 34, 92, 0.08, "#0c1424", "rgba(150,178,220,0.34)", rnd)
     near_svg, near_b = _skyline(w, h + 6, 700, 1080, 40, 120, 0.09, "#05080e", "rgba(255,205,80,0.7)", rnd)
     # searchlight on the leftmost tower; bat projected to the right of the name
-    host = min((b for b in near_b if b[0] >= 0), key=lambda b: b[0], default=near_b[0])
+    left_side = [b for b in near_b if b[0] + b[1] / 2 < w * 0.4] or near_b
+    host = min(left_side, key=lambda b: b[2])
     ox, oy = host[0] + host[1] / 2, host[2]
     tx, ty, rx = 646, 132, 138
     ry = rx * 0.5
     dx, dy = tx - ox, ty - oy
+    bl = math.hypot(dx, dy)
+    ux, uy = -dy / bl, dx / bl
+    bhalf = rx * 0.45
     s = (rx * 1.25) / 1002
+    sb = (rx * 1.02) / 1002
     lightning = (
         f'<rect width="{w}" height="{h}" fill="#c8dcff" opacity="0">'
         f'<animate attributeName="opacity" values="0;0;0.16;0.02;0.1;0;0" '
@@ -213,7 +219,7 @@ def page_scene(w, h, seed=7):
             f'<g><animateTransform attributeName="transform" type="rotate" values="-1.6;1.6;-1.6" '
             f'dur="13s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" '
             f'keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>'
-            f'<path d="M0 0 L{dx - rx:.0f} {dy:.0f} L{dx + rx:.0f} {dy:.0f} Z" fill="url(#gbeam2)"/>'
+            f'<path d="M{ux * bhalf:.0f} {uy * bhalf:.0f} L{dx + ux * bhalf:.0f} {dy + uy * bhalf:.0f} L{dx - ux * bhalf:.0f} {dy - uy * bhalf:.0f} L{-ux * bhalf:.0f} {-uy * bhalf:.0f} Z" fill="url(#gbeam2)"/>'
             f'<g transform="translate({dx:.0f} {dy:.0f})">'
             f'<g><animateTransform attributeName="transform" type="rotate" values="1.6;-1.6;1.6" '
             f'dur="13s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" '
@@ -221,7 +227,8 @@ def page_scene(w, h, seed=7):
             f'<ellipse cx="0" cy="0" rx="{rx * 2.8:.0f}" ry="{ry * 3.2:.0f}" fill="url(#gsig)">'
             f'<animate attributeName="opacity" values="0.82;1;0.82" dur="3.4s" repeatCount="indefinite"/></ellipse>'
             f'<ellipse cx="0" cy="0" rx="{rx:.0f}" ry="{ry:.0f}" fill="url(#gdisc)"/>'
-            f'<path transform="translate({-500.8 * s:.1f} {-152.6 * s:.1f}) scale({s:.5f})" d="{BAT}" fill="#070a12"/>'
+            f'<path transform="translate({-500.8 * sb:.1f} {-152.6 * sb - 22:.1f}) scale({sb:.5f})" d="{BAT}" fill="#070a12"/>'
+            f'<text x="0" y="36" text-anchor="middle" font-family="{SANS}" font-weight="600" font-size="21" letter-spacing="1.5" fill="#070a12">TheWildEye</text>'
             f"</g></g></g></g>"
         )
         + "".join(rain)
