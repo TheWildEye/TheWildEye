@@ -365,16 +365,17 @@ REPOS = [
 
 
 def repos(stars):
-    h = 170
-    rw, gap = (W - 2 * 12) / 3, 12
+    h = 190
+    left, gap = 16, 12
+    rw = (W - 2 * left - 2 * gap) / 3
     out = []
     for i, (name, slug, desc, lang, color) in enumerate(REPOS):
-        x = i * (rw + gap)
+        x = left + i * (rw + gap)
         meta = f"{lang}  \u00b7  \u2605 {stars[slug]}" if slug in stars else f"{lang}  \u00b7  live"
         words = desc.split()
         lines, line = [], ""
         for wd in words:
-            if line and len(line) + 1 + len(wd) > 34:
+            if line and len(line) + 1 + len(wd) > 32:
                 lines.append(line)
                 line = wd
             else:
@@ -382,16 +383,16 @@ def repos(stars):
         if line:
             lines.append(line)
         body_lines = "".join(
-            f'<text x="{x + 24}" y="{y0}" font-family="{SANS}" font-size="13" fill="{MUTED}">{escape(l)}</text>'
-            for y0, l in zip(range(96, 96 + 21 * len(lines), 21), lines)
+            f'<text x="{x + 22:.1f}" y="{y0}" font-family="{SANS}" font-size="14.5" fill="{INK_SOFT}">{escape(l)}</text>'
+            for y0, l in zip(range(100, 100 + 24 * len(lines), 24), lines)
         )
         out.append(
             f'<g class="r" style="animation-delay:{2.4 + i * 0.15:.2f}s">'
             f'<rect x="{x:.1f}" y="0" width="{rw:.1f}" height="3" rx="1.5" fill="{color}"/>'
-            f'<text x="{x + 24:.1f}" y="38" font-family="{MONO}" font-size="11" letter-spacing="1" fill="{color}">&#9656; REPO</text>'
-            f'<text x="{x + 24:.1f}" y="66" font-family="{SANS}" font-weight="600" font-size="18" fill="url(#shn)">{escape(name)}</text>'
+            f'<text x="{x + 22:.1f}" y="38" font-family="{MONO}" font-size="12" letter-spacing="1" fill="{color}">&#9656; REPO</text>'
+            f'<text x="{x + 22:.1f}" y="68" font-family="{SANS}" font-weight="600" font-size="19" fill="url(#shn)">{escape(name)}</text>'
             f'{body_lines}'
-            f'<text x="{x + 24:.1f}" y="{h - 14}" font-family="{MONO}" font-size="12.5" fill="{MUTED}">{escape(meta)}</text></g>'
+            f'<text x="{x + 22:.1f}" y="{h - 12}" font-family="{MONO}" font-size="13" fill="{MUTED}">{escape(meta)}</text></g>'
         )
     return h, "".join(out)
 
