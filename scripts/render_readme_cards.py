@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Render the profile README as ONE animated SVG (cards/page.svg).
 
@@ -26,16 +26,12 @@ OUT = os.path.join(ROOT, "cards")
 FONTS = os.path.join(ROOT, "fonts")
 
 # ---- palette (dark Gotham: night navy + bat-yellow) ------------------------
-PAPER = "#0a0f1a"
 INK = "#eef2f8"
 INK_SOFT = "#cfd7e3"
 MUTED = "#a9b3c4"
-RULE = "#1e2739"
 GOLD = "#e6b325"
 GOLD_BRIGHT = "#ffcf3a"
-GOLD_DEEP = "#b8891a"
 GOLD_TINT = "#141824"
-GOLD_GLOW = "#ffcf3a"
 STEEL = "#6b86b8"
 W = 880
 
@@ -81,9 +77,10 @@ def font_face(keys):
 
 
 def svg(w, h, body, fonts, label):
-    css = font_face(fonts) + BASE_CSS
+    css = re.sub(r"\s*\n\s*", "", font_face(fonts) + BASE_CSS)
     if os.environ.get("STATIC"):
-        css += ".r,.f,.g,.p,.pu{animation:none!important;opacity:1!important;transform:none!important}"
+        css += ".r,.f,.g,.p,.pu,.tw{animation:none!important;opacity:1!important;transform:none!important}"
+    body = re.sub(r">\s+<", "><", body).strip()
     return (
         f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '
         f'width="{w:.0f}" height="{h:.0f}" viewBox="0 0 {w:.0f} {h:.0f}" '
@@ -131,7 +128,7 @@ def page_scene(w, h, seed=7):
     a big city skyline and a bat searchlight."""
     rnd = random.Random(seed)
     stars = []
-    for _ in range(64):
+    for _ in range(48):
         sx = rnd.uniform(0, w)
         sy = rnd.uniform(0, h * 0.72)
         tw = f' class="tw" style="animation-delay:{rnd.uniform(0, 3.5):.2f}s"' if rnd.random() < 0.25 else ""
@@ -148,7 +145,7 @@ def page_scene(w, h, seed=7):
             f'dur="{dur:.0f}s" repeatCount="indefinite"/></circle>'
         )
     rain = []
-    for _ in range(38):
+    for _ in range(28):
         x = rnd.uniform(-40, w + 40)
         ln = rnd.uniform(12, 28)
         dur = rnd.uniform(0.8, 1.7)
@@ -236,7 +233,7 @@ def shine_def(w, h, begin, dur=14.0):
     )
 
 
-def count_up(num, x, y, attrs, begin, dur=1.3, frames=13, group=False):
+def count_up(num, x, y, attrs, begin, dur=1.3, frames=9, group=False):
     m = re.match(r"([\d.]+)(.*)", num)
     val, suf = float(m.group(1)), m.group(2)
     dec = len(m.group(1).split(".")[1]) if "." in m.group(1) else 0
@@ -290,34 +287,6 @@ def kpi():
     return h, "".join(parts)
 
 
-CREDS = [
-    ("Certified Ethical Hacker", "EC-Council"),
-    ("ISO/IEC 27001:2022 Associate", "SkillFront"),
-    ("Cyber Threat Management", "Cisco"),
-    ("Threat Intelligence Analyst", "arcX"),
-]
-
-
-def credentials():
-    h = 160
-    cells = []
-    for i, (name, issuer) in enumerate(CREDS):
-        col, row = i % 2, i // 2
-        x = 42 + col * 430
-        y = 78 + row * 46
-        cells.append(
-            f'<g class="r" style="animation-delay:{0.5 + i * 0.12:.2f}s">'
-            f'<circle cx="{x + 6}" cy="{y - 5}" r="5" fill="{GOLD}"/>'
-            f'<text x="{x + 26}" y="{y}" font-family="{SANS}" font-size="15" fill="url(#shn)">{escape(name)}</text>'
-            f'<text x="{x + 26}" y="{y + 21}" font-family="{MONO}" font-size="11.5" fill="{MUTED}">{escape(issuer)}</text></g>'
-        )
-    head = (
-        f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="url(#shn)">Certified &amp; <tspan font-style="italic" fill="{GOLD}">recognised</tspan></text>'
-        f'<text class="f" {d(1.2)} x="{W - 42}" y="40" text-anchor="end" font-family="{MONO}" font-size="11.5" fill="{MUTED}">Acknowledged by Google &#183; CERT-In</text>'
-    )
-    return h, head + "".join(cells)
-
-
 ORBIT_IN = ["Offensive Security", "Web AppSec", "Mobile AppSec", "API Security", "OSINT & Recon"]
 ORBIT_OUT = ["Secure Code Review", "Threat Modelling", "GRC \u00b7 NIST/ISO", "AI Security", "VAPT"]
 
@@ -360,35 +329,6 @@ def orbital():
     body.append(f'<circle cx="{cx}" cy="{cy}" r="11" fill="{GOLD_BRIGHT}"/>')
     head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="{INK}">Skills, <tspan font-style="italic" fill="{GOLD}">in orbit</tspan></text>'
     return h, f'<defs><radialGradient id="coreglow"><stop offset="0" stop-color="{GOLD}" stop-opacity=".16"/><stop offset="1" stop-color="{GOLD}" stop-opacity="0"/></radialGradient></defs>' + head + "".join(body)
-
-
-TOOLS = [
-    ("TheWildEye FW", "recon / OSINT engine", "1,000+ targets \u00b7 \u221250% recon", 0.90, GOLD),
-    ("MrHunter", "AI appsec + GRC agent", "40+ valid vulns mapped", 0.74, STEEL),
-    ("QuantumShield", "post-quantum OIDC", "+44% handshake speed", 0.66, GOLD_BRIGHT),
-    ("Evidential", "chain-of-custody", "+35% validation speed", 0.55, "#7f8aa0"),
-]
-
-
-def tooling():
-    h = 300
-    x0, bmax, row_h, top = 320, 330, 54, 74
-    rows = []
-    for i, (name, sub, metric, frac, color) in enumerate(TOOLS):
-        y = top + i * row_h
-        bw = round(frac * bmax)
-        delay = 0.5 + i * 0.16
-        rows.append(
-            f'<g class="r" style="animation-delay:{delay - 0.1:.2f}s">'
-            f'<text x="44" y="{y + 6}" font-family="{SANS}" font-weight="600" font-size="17" fill="url(#shn)">{escape(name)}</text>'
-            f'<text x="44" y="{y + 26}" font-family="{MONO}" font-size="12" fill="{MUTED}">{escape(sub)}</text></g>'
-            f'<rect x="{x0}" y="{y - 6}" width="{bmax}" height="14" rx="4" fill="#121826"/>'
-            f'<rect class="g" style="animation-delay:{delay:.2f}s" x="{x0}" y="{y - 6}" width="{bw}" height="14" rx="4" fill="{color}"/>'
-            f'<text class="f" style="animation-delay:{delay + 0.2:.2f}s" x="{x0 + bmax + 16}" y="{y + 6}" '
-            f'font-family="{MONO}" font-size="12" fill="{INK_SOFT}">{escape(metric)}</text>'
-        )
-    head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="url(#shn)">Things I built, and what they <tspan font-style="italic" fill="{GOLD}">do</tspan></text>'
-    return h, head + "".join(rows)
 
 
 CVES = [
