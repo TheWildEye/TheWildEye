@@ -35,6 +35,8 @@ BASE_CSS = """
 @keyframes pop{0%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.1)}100%{opacity:1;transform:none}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 @keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.95}}
+@keyframes flick{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes neon{0%,100%{opacity:.3}50%{opacity:.8}}
 @keyframes flap{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.55)}}
 .r{opacity:0;animation:rise .9s cubic-bezier(.2,.7,.2,1) both;transform-box:fill-box}
 .f{opacity:0;animation:fade 1s ease-out both}
@@ -42,8 +44,10 @@ BASE_CSS = """
 .p{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .5s ease-out both}
 .pu{animation:pulse 2.4s ease-in-out infinite}
 .tw{animation:twinkle 3.5s ease-in-out infinite}
+.fl{animation:flick 3.2s ease-in-out infinite}
+.ne{animation:neon 2.6s ease-in-out infinite}
 .bat{transform-box:fill-box;transform-origin:center;animation:flap .8s ease-in-out infinite}
-@media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.pu,.tw,.bat{animation:none!important;opacity:1!important;transform:none!important}}
+@media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.pu,.tw,.fl,.ne,.bat{animation:none!important;opacity:1!important;transform:none!important}}
 """
 
 
@@ -97,6 +101,10 @@ def bat_wing(s, f):
     )
 
 
+WINCOL = ("255,190,95", "150,190,255", "120,230,180")
+NEONCOL = ("255,60,90", "70,180,255", "255,170,40", "120,255,200", "235,90,255")
+
+
 def _skyline(w, base_y, min_h, max_h, min_w, max_w, lit, color, win, rnd):
     out, buildings = [], []
     x = -30.0
@@ -105,35 +113,45 @@ def _skyline(w, base_y, min_h, max_h, min_w, max_w, lit, color, win, rnd):
         bh = rnd.uniform(min_h, max_h)
         top = base_y - bh
         cxr = x + bw / 2
-        out.append(f'<rect x="{x:.0f}" y="{top:.0f}" width="{bw:.0f}" height="{bh:.0f}" fill="{color}"/>')
         style = rnd.random()
-        if style < 0.18:
-            rh = bw * rnd.uniform(0.35, 0.75)
-            out.append(f'<polygon points="{x:.0f},{top:.0f} {x + bw:.0f},{top:.0f} {cxr:.0f},{top - rh:.0f}" fill="{color}"/>')
+        if style < 0.3:
+            rh = bw * rnd.uniform(0.28, 0.6)
+            pts = (f"{x:.0f},{base_y:.0f} {x:.0f},{top:.0f} {cxr:.0f},{top - rh:.0f} "
+                   f"{x + bw:.0f},{top:.0f} {x + bw:.0f},{base_y:.0f}")
             out.append(f'<rect x="{cxr - 1:.0f}" y="{top - rh - 2:.0f}" width="2" height="2" fill="rgba(255,210,120,.8)"/>')
-        elif style < 0.38:
-            rh = bw * rnd.uniform(0.25, 0.5)
-            iw = bw * rnd.uniform(0.38, 0.66)
-            out.append(
-                f'<polygon points="{x:.0f},{top:.0f} {x + bw:.0f},{top:.0f} '
-                f'{cxr + iw / 2:.0f},{top - rh:.0f} {cxr - iw / 2:.0f},{top - rh:.0f}" fill="{color}"/>'
+        elif style < 0.62:
+            rh = bh * rnd.uniform(0.1, 0.22)
+            iw = bw * rnd.uniform(0.45, 0.72)
+            pts = (
+                f"{x:.0f},{base_y:.0f} {x:.0f},{top + rh:.0f} {cxr - iw / 2:.0f},{top + rh:.0f} "
+                f"{cxr - iw / 2:.0f},{top:.0f} {cxr + iw / 2:.0f},{top:.0f} {cxr + iw / 2:.0f},{top + rh:.0f} "
+                f"{x + bw:.0f},{top + rh:.0f} {x + bw:.0f},{base_y:.0f}"
             )
-        elif style < 0.56:
-            rh = bw * rnd.uniform(0.3, 0.55)
-            out.append(
-                f'<polygon points="{cxr:.0f},{top - rh * 1.9:.0f} {cxr + bw * 0.34:.0f},{top - rh * 0.95:.0f} '
-                f'{cxr:.0f},{top:.0f} {cxr - bw * 0.34:.0f},{top - rh * 0.95:.0f}" fill="{color}"/>'
-            )
-        elif style < 0.76:
-            rh = bw * rnd.uniform(0.2, 0.42)
-            iw = bw * rnd.uniform(0.4, 0.72)
-            out.append(f'<rect x="{cxr - iw / 2:.0f}" y="{top - rh:.0f}" width="{iw:.0f}" height="{rh:.0f}" fill="{color}"/>')
+        else:
+            pts = f"{x:.0f},{base_y:.0f} {x:.0f},{top:.0f} {x + bw:.0f},{top:.0f} {x + bw:.0f},{base_y:.0f}"
+        out.append(f'<polygon points="{pts}" fill="{color}"/>')
         cols = max(1, int(bw // 17))
         rows = max(1, int(bh // 27))
         for i in range(cols):
             for j in range(rows):
                 if rnd.random() < lit:
-                    out.append(f'<rect x="{x + 6 + i * 17:.0f}" y="{top + 10 + j * 27:.0f}" width="5" height="8" fill="{win}"/>')
+                    wm = rnd.random()
+                    wc = WINCOL[0] if wm < 0.72 else (WINCOL[1] if wm < 0.92 else WINCOL[2])
+                    wa = round(0.35 + rnd.random() * 0.6, 2)
+                    fl = f' class="fl" style="animation-delay:{rnd.uniform(0, 3.2):.2f}s"' if rnd.random() < 0.12 else ""
+                    out.append(
+                        f'<rect{fl} x="{x + 6 + i * 17:.0f}" y="{top + 10 + j * 27:.0f}" width="5" height="8" '
+                        f'fill="rgba({wc},{wa})"/>'
+                    )
+        if rnd.random() < 0.3:
+            nc = NEONCOL[rnd.randint(0, 4)]
+            nw, nh = rnd.uniform(10, 24), rnd.uniform(4, 8)
+            nx = x + 4 + rnd.uniform(0, max(2, bw - nw - 6))
+            ny = top + 12 + rnd.uniform(0, max(2, bh * 0.45))
+            out.append(
+                f'<rect class="ne" style="animation-delay:{rnd.uniform(0, 2.6):.2f}s" x="{nx:.0f}" y="{ny:.0f}" '
+                f'width="{nw:.0f}" height="{nh:.0f}" fill="rgba({nc},.5)"/>'
+            )
         buildings.append((x, bw, top))
         x += bw + rnd.uniform(3, 16)
     return "".join(out), buildings
