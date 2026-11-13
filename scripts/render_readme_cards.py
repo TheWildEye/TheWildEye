@@ -54,13 +54,15 @@ BASE_CSS = """
 @keyframes pop{0%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.1)}100%{opacity:1;transform:none}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 @keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.95}}
+@keyframes flap{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.55)}}
 .r{opacity:0;animation:rise .9s cubic-bezier(.2,.7,.2,1) both;transform-box:fill-box}
 .f{opacity:0;animation:fade 1s ease-out both}
 .g{transform-box:fill-box;transform-origin:left;transform:scaleX(0);animation:grow 1s cubic-bezier(.2,.7,.2,1) both}
 .p{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .5s ease-out both}
 .pu{animation:pulse 2.4s ease-in-out infinite}
 .tw{animation:twinkle 3.5s ease-in-out infinite}
-@media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.pu,.tw{animation:none!important;opacity:1!important;transform:none!important}}
+.bat{transform-box:fill-box;transform-origin:center;animation:flap .8s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.pu,.tw,.bat{animation:none!important;opacity:1!important;transform:none!important}}
 """
 
 
@@ -157,6 +159,20 @@ def page_scene(w, h, seed=7):
             f'<animate attributeName="y1" from="{y0:.0f}" to="{h:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/>'
             f'<animate attributeName="y2" from="{y0 + ln:.0f}" to="{h + ln:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/></line>'
         )
+    bats = []
+    for i in range(6):
+        by = rnd.uniform(h * 0.04, h * 0.44)
+        sc = rnd.uniform(0.024, 0.055)
+        dur = rnd.uniform(34, 58)
+        dy = rnd.uniform(10, 26)
+        phase = rnd.uniform(0, 1)
+        bats.append(
+            f'<g><animateTransform attributeName="transform" type="translate" '
+            f'values="{-120} {by:.0f};{w / 2:.0f} {by - dy:.0f};{w + 120:.0f} {by:.0f}" '
+            f'keyTimes="0;0.5;1" dur="{dur:.0f}s" begin="{-dur * phase:.0f}s" repeatCount="indefinite"/>'
+            f'<g transform="scale({sc:.4f})">'
+            f'<path class="bat" style="animation-delay:{rnd.uniform(0, 0.8):.2f}s" d="{BAT}" fill="#24395c"/></g></g>'
+        )
     far_svg, _ = _skyline(w, h - 170, 450, 820, 34, 92, 0.08, "#0c1424", "rgba(150,178,220,0.34)", rnd)
     near_svg, near_b = _skyline(w, h + 6, 700, 1080, 40, 120, 0.09, "#05080e", "rgba(255,205,80,0.7)", rnd)
     # searchlight on the leftmost tower; bat projected to the right of the name
@@ -172,7 +188,7 @@ def page_scene(w, h, seed=7):
     )
     return (
         f'<rect width="{w}" height="{h}" fill="url(#gsky)"/>'
-        + "".join(stars) + "".join(clouds)
+        + "".join(stars) + "".join(clouds) + "".join(bats)
         + far_svg + near_svg
         + f'<rect x="{ox - 6:.0f}" y="{oy:.0f}" width="12" height="16" fill="#04060b"/>'
         + f'<ellipse cx="{ox:.0f}" cy="{oy:.0f}" rx="13" ry="9" fill="#04060b"/>'
@@ -258,9 +274,6 @@ def count_up(num, x, y, attrs, begin, dur=1.3, frames=9, group=False):
 def hero():
     h = 340
     inner = (
-        f'<g class="f" {d(0)}>'
-        f'<circle class="pu" cx="46" cy="46" r="4.5" fill="{GOLD}"/>'
-        f'<text x="60" y="50" font-family="{MONO}" font-size="12" letter-spacing="1.6" fill="{MUTED}">OPEN TO SECURITY WORK</text></g>'
         f'<text class="r" {d(0.15)} x="42" y="156" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom Nagpal</text>'
         f'<text class="f" {d(0.4)} x="46" y="194" font-family="{SANS}" font-size="16" fill="url(#shn)">Security Researcher &#183; Certified Ethical Hacker</text>'
         f'<text class="f" {d(0.5)} x="46" y="218" font-family="{MONO}" font-size="13.5" fill="{MUTED}">National Forensic Sciences University &#183; B.Tech&#8211;M.Tech CSE</text>'
@@ -272,7 +285,7 @@ def hero():
 
 def kpi():
     h = 120
-    tiles = [("VULNERABILITIES", "100+", False), ("CVE RECORDS", "6", False), ("APPS SECURED", "20+", False),
+    tiles = [("VULNERABILITIES", "100+", False), ("CVE RECORDS", "6\u00d7", False),
              ("RECORDS PROTECTED", "4000", True), ("TARGETS RECONNED", "1000+", True)]
     n = len(tiles)
     gap = 14
