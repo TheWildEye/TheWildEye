@@ -177,20 +177,20 @@ def page_scene(w, h, seed=7):
             f'dur="{dur:.0f}s" repeatCount="indefinite"/></circle>'
         )
     rain = []
-    for _ in range(22):
-        x = rnd.uniform(-80, w + 140)
-        ln = rnd.uniform(14, 30)
-        dur = rnd.uniform(0.7, 1.5)
-        op = rnd.uniform(0.12, 0.36)
-        dx = ln * 0.38
-        y0 = rnd.uniform(-h, 0)
-        travel = (h - y0) * 0.38
+    for _ in range(120):
+        x = rnd.uniform(-40, w + 200)
+        ln = rnd.uniform(9, 27)
+        dur = rnd.uniform(0.9, 1.7)
+        op = rnd.uniform(0.08, 0.38)
+        dx = ln * 0.22
+        y0 = -ln
+        travel = (h - y0) * 0.22
+        begin = -rnd.uniform(0, dur)
         rain.append(
-            f'<line x1="{x:.0f}" y1="{y0:.0f}" x2="{x - dx:.0f}" y2="{y0 + ln:.0f}" stroke="#afc4e4" stroke-width="1" opacity="{op:.2f}">'
-            f'<animate attributeName="x1" from="{x:.0f}" to="{x - travel:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/>'
-            f'<animate attributeName="y1" from="{y0:.0f}" to="{h:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/>'
-            f'<animate attributeName="x2" from="{x - dx:.0f}" to="{x - dx - travel:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/>'
-            f'<animate attributeName="y2" from="{y0 + ln:.0f}" to="{h + ln:.0f}" dur="{dur:.2f}s" repeatCount="indefinite"/></line>'
+            f'<g><animateTransform attributeName="transform" type="translate" '
+            f'from="0 0" to="{-travel:.0f} {h - y0:.0f}" dur="{dur:.2f}s" begin="{begin:.2f}s" repeatCount="indefinite"/>'
+            f'<line x1="{x:.0f}" y1="{y0:.0f}" x2="{x - dx:.0f}" y2="{y0 + ln:.0f}" '
+            f'stroke="#aac8f0" stroke-width="1" opacity="{op:.2f}"/></g>'
         )
     bats = []
     for i in range(6):
@@ -219,15 +219,41 @@ def page_scene(w, h, seed=7):
     ry = rx * 0.5
     dx, dy = tx - ox, ty - oy
     s = (rx * 1.25) / 1002
+
+    def _bolt():
+        px = w * rnd.uniform(0.2, 0.8)
+        py = -10.0
+        pts = [(px, py)]
+        while py < h * 0.5:
+            px += rnd.uniform(-36, 36)
+            py += rnd.uniform(24, 52)
+            pts.append((px, py))
+        return "M" + " L".join(f"{a:.0f} {b:.0f}" for a, b in pts)
+
+    def _bolt_g(d, kt):
+        return (
+            f'<g opacity="0"><animate attributeName="opacity" '
+            f'values="0;0;1;0.45;1;0.8;0;0" keyTimes="{kt}" dur="13s" repeatCount="indefinite"/>'
+            f'<path d="{d}" fill="none" stroke="#9cc4ff" stroke-width="8" stroke-linejoin="round" '
+            f'stroke-linecap="round" opacity="0.55" filter="url(#gblur)"/>'
+            f'<path d="{d}" fill="none" stroke="#eaf3ff" stroke-width="2.4" stroke-linejoin="round" '
+            f'stroke-linecap="round"/></g>'
+        )
+
     lightning = (
-        f'<rect width="{w}" height="{h}" fill="#c8dcff" opacity="0">'
-        f'<animate attributeName="opacity" values="0;0;0.16;0.02;0.1;0;0" '
-        f'keyTimes="0;0.86;0.89;0.91;0.93;0.96;1" dur="13s" repeatCount="indefinite"/></rect>'
+        f'<rect width="{w}" height="{h}" fill="#aacdff" opacity="0">'
+        f'<animate attributeName="opacity" '
+        f'values="0;0;0.3;0.06;0.24;0.05;0;0;0.3;0.06;0.24;0" '
+        f'keyTimes="0;0.07;0.095;0.125;0.15;0.18;0.21;0.56;0.585;0.615;0.645;1" '
+        f'dur="13s" repeatCount="indefinite"/></rect>'
+        + _bolt_g(_bolt(), "0;0.07;0.09;0.11;0.13;0.15;0.19;1")
+        + _bolt_g(_bolt(), "0;0.56;0.58;0.60;0.62;0.64;0.68;1")
     )
     return (
         f'<rect width="{w}" height="{h}" fill="url(#gsky)"/>'
         + "".join(stars) + "".join(clouds) + "".join(bats)
         + far_svg + near_svg
+        + lightning
         + f'<rect x="{ox - 6:.0f}" y="{oy:.0f}" width="12" height="16" fill="#04060b"/>'
         + f'<ellipse cx="{ox:.0f}" cy="{oy:.0f}" rx="13" ry="9" fill="#04060b"/>'
         + f'<circle cx="{ox:.0f}" cy="{oy:.0f}" r="15" fill="url(#glens)"/>'
@@ -250,7 +276,6 @@ def page_scene(w, h, seed=7):
         + "".join(rain)
         + f'<rect width="{w}" height="{h}" fill="url(#gvig)"/>'
         + f'<rect y="{h * 0.34:.0f}" width="{w}" height="{h * 0.66:.0f}" fill="url(#gbot)"/>'
-        + lightning
     )
 
 
@@ -271,6 +296,7 @@ SCENE_DEFS = f"""
     <stop offset="0" stop-color="#02030a" stop-opacity="0"/><stop offset="0.5" stop-color="#02030a" stop-opacity="0.45"/>
     <stop offset="1" stop-color="#010208" stop-opacity="0.97"/>
   </linearGradient>
+  <filter id="gblur" x="-40%" y="-10%" width="180%" height="130%"><feGaussianBlur stdDeviation="5"/></filter>
 </defs>
 """
 
