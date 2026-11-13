@@ -115,12 +115,12 @@ def _skyline(w, base_y, min_h, max_h, min_w, max_w, lit, color, win, rnd):
         bh = rnd.uniform(min_h, max_h)
         top = base_y - bh
         out.append(f'<rect x="{x:.0f}" y="{top:.0f}" width="{bw:.0f}" height="{bh:.0f}" fill="{color}"/>')
-        cols = max(1, int(bw // 12))
-        rows = max(1, int(bh // 16))
+        cols = max(1, int(bw // 17))
+        rows = max(1, int(bh // 27))
         for i in range(cols):
             for j in range(rows):
                 if rnd.random() < lit:
-                    out.append(f'<rect x="{x + 5 + i * 12:.0f}" y="{top + 7 + j * 16:.0f}" width="4" height="6" fill="{win}"/>')
+                    out.append(f'<rect x="{x + 6 + i * 17:.0f}" y="{top + 10 + j * 27:.0f}" width="5" height="8" fill="{win}"/>')
         buildings.append((x, bw, top))
         x += bw + rnd.uniform(3, 16)
     return "".join(out), buildings
@@ -131,13 +131,13 @@ def page_scene(w, h, seed=7):
     a big city skyline and a bat searchlight."""
     rnd = random.Random(seed)
     stars = []
-    for _ in range(130):
+    for _ in range(64):
         sx = rnd.uniform(0, w)
         sy = rnd.uniform(0, h * 0.72)
         tw = f' class="tw" style="animation-delay:{rnd.uniform(0, 3.5):.2f}s"' if rnd.random() < 0.25 else ""
         stars.append(f'<circle{tw} cx="{sx:.0f}" cy="{sy:.0f}" r="{rnd.uniform(0.6, 1.7):.1f}" fill="#d7e3ff" opacity="{rnd.uniform(0.12, 0.7):.2f}"/>')
     clouds = []
-    for _ in range(6):
+    for _ in range(4):
         cy = rnd.uniform(h * 0.06, h * 0.34)
         r = rnd.uniform(130, 280)
         x0 = rnd.uniform(-w * 0.3, w)
@@ -148,9 +148,9 @@ def page_scene(w, h, seed=7):
             f'dur="{dur:.0f}s" repeatCount="indefinite"/></circle>'
         )
     rain = []
-    for _ in range(70):
+    for _ in range(38):
         x = rnd.uniform(-40, w + 40)
-        ln = rnd.uniform(11, 26)
+        ln = rnd.uniform(12, 28)
         dur = rnd.uniform(0.8, 1.7)
         op = rnd.uniform(0.10, 0.34)
         dx = ln * 0.24
@@ -165,7 +165,7 @@ def page_scene(w, h, seed=7):
     # searchlight on the leftmost tower; bat projected to the right of the name
     host = min((b for b in near_b if b[0] >= 0), key=lambda b: b[0], default=near_b[0])
     ox, oy = host[0] + host[1] / 2, host[2]
-    tx, ty, rx = 648, 172, 46
+    tx, ty, rx = 646, 158, 138
     ry = rx * 0.5
     s = (rx * 1.25) / 1002
     lightning = (
@@ -198,7 +198,7 @@ SCENE_DEFS = f"""
     <stop offset="0.75" stop-color="#080d18"/><stop offset="1" stop-color="#05080f"/>
   </linearGradient>
   <radialGradient id="gsig"><stop offset="0" stop-color="#ffd54a" stop-opacity=".22"/><stop offset="1" stop-color="#ffd54a" stop-opacity="0"/></radialGradient>
-  <linearGradient id="gbeam2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ffe680" stop-opacity=".34"/><stop offset="1" stop-color="#ffd54a" stop-opacity=".05"/></linearGradient>
+  <linearGradient id="gbeam2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ffe680" stop-opacity=".5"/><stop offset="1" stop-color="#ffd54a" stop-opacity=".10"/></linearGradient>
   <radialGradient id="glens"><stop offset="0" stop-color="#fffce0" stop-opacity=".95"/><stop offset="0.45" stop-color="#ffee8c" stop-opacity=".5"/><stop offset="1" stop-color="#ffe65f" stop-opacity="0"/></radialGradient>
   <radialGradient id="gdisc"><stop offset="0" stop-color="#ffea96"/><stop offset="1" stop-color="#d6a424"/></radialGradient>
   <radialGradient id="gvig" cx="0.5" cy="0.42" r="0.9">
@@ -228,7 +228,7 @@ def shine_def(w, h, begin, dur=14.0):
     )
 
 
-def count_up(num, x, y, attrs, begin, dur=1.3, frames=24, group=False):
+def count_up(num, x, y, attrs, begin, dur=1.3, frames=13, group=False):
     m = re.match(r"([\d.]+)(.*)", num)
     val, suf = float(m.group(1)), m.group(2)
     dec = len(m.group(1).split(".")[1]) if "." in m.group(1) else 0
