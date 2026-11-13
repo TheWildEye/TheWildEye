@@ -268,7 +268,7 @@ def page_scene(w, h, seed=7):
             f'dur="13s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" '
             f'keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>'
             f'<ellipse cx="0" cy="0" rx="{rx * 2.8:.0f}" ry="{ry * 3.2:.0f}" fill="url(#gsig)">'
-            f'<animate attributeName="opacity" values="0.82;1;0.82" dur="3.4s" repeatCount="indefinite"/></ellipse>'
+            f'<animate attributeName="opacity" values="0.34;0.46;0.34" dur="3.4s" repeatCount="indefinite"/></ellipse>'
             f'<ellipse cx="0" cy="0" rx="{rx:.0f}" ry="{ry:.0f}" fill="url(#gdisc)"/>'
             f'<path transform="translate({-500.8 * s:.1f} {-152.6 * s:.1f}) scale({s:.5f})" d="{BAT}" fill="#070a12"/>'
             f"</g></g></g></g>"
@@ -287,9 +287,9 @@ SCENE_DEFS = f"""
     <stop offset="0.75" stop-color="#080d18"/><stop offset="1" stop-color="#05080f"/>
   </linearGradient>
   <radialGradient id="gsig"><stop offset="0" stop-color="#ffd54a" stop-opacity=".22"/><stop offset="1" stop-color="#ffd54a" stop-opacity="0"/></radialGradient>
-  <linearGradient id="gbeam2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#e8c25c" stop-opacity=".04"/><stop offset="0.55" stop-color="#f7dc85" stop-opacity=".24"/><stop offset="1" stop-color="#fff0b8" stop-opacity=".78"/></linearGradient>
+  <linearGradient id="gbeam2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#e8c25c" stop-opacity=".02"/><stop offset="0.55" stop-color="#f7dc85" stop-opacity=".1"/><stop offset="1" stop-color="#fff0b8" stop-opacity=".36"/></linearGradient>
   <radialGradient id="glens"><stop offset="0" stop-color="#fff6cf" stop-opacity=".9"/><stop offset="0.4" stop-color="#ffdf70" stop-opacity=".28"/><stop offset="1" stop-color="#ffdf70" stop-opacity="0"/></radialGradient>
-  <radialGradient id="gdisc"><stop offset="0" stop-color="#fff0b8"/><stop offset="1" stop-color="#e8c25c"/></radialGradient>
+  <radialGradient id="gdisc"><stop offset="0" stop-color="#f2d477"/><stop offset="1" stop-color="#b8902f"/></radialGradient>
   <radialGradient id="gvig" cx="0.5" cy="0.42" r="0.9">
     <stop offset="0.4" stop-color="#03040a" stop-opacity="0"/><stop offset="1" stop-color="#020308" stop-opacity="0.9"/>
   </radialGradient>
