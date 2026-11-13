@@ -192,8 +192,9 @@ def page_scene(w, h, seed=7):
         )
     far_svg, _ = _skyline(w, h - 170, 450, 820, 34, 92, 0.08, "#0c1424", "rgba(150,178,220,0.34)", rnd)
     near_svg, near_b = _skyline(w, h + 6, 700, 1080, 40, 120, 0.09, "#05080e", "rgba(255,205,80,0.7)", rnd)
-    left_side = [b for b in near_b if b[0] + b[1] / 2 < w * 0.4] or near_b
-    host = min(left_side, key=lambda b: b[2])
+    left_side = [b for b in near_b if b[0] + b[1] / 2 < w * 0.45] or near_b
+    low = [b for b in left_side if b[2] > 990] or left_side
+    host = min(low, key=lambda b: b[0])
     ox, oy = host[0] + host[1] / 2, host[2]
     tx, ty, rx = 646, 190, 138
     ry = rx * 0.5
