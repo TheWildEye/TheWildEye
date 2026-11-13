@@ -201,7 +201,7 @@ def page_scene(w, h, seed=7):
     ux, uy = -dy / bl, dx / bl
     bhalf = rx * 0.45
     s = (rx * 1.25) / 1002
-    sb = (rx * 1.02) / 1002
+    sb = (rx * 0.95) / 1002
     lightning = (
         f'<rect width="{w}" height="{h}" fill="#c8dcff" opacity="0">'
         f'<animate attributeName="opacity" values="0;0;0.16;0.02;0.1;0;0" '
@@ -227,8 +227,8 @@ def page_scene(w, h, seed=7):
             f'<ellipse cx="0" cy="0" rx="{rx * 2.8:.0f}" ry="{ry * 3.2:.0f}" fill="url(#gsig)">'
             f'<animate attributeName="opacity" values="0.82;1;0.82" dur="3.4s" repeatCount="indefinite"/></ellipse>'
             f'<ellipse cx="0" cy="0" rx="{rx:.0f}" ry="{ry:.0f}" fill="url(#gdisc)"/>'
-            f'<path transform="translate({-500.8 * sb:.1f} {-152.6 * sb - 22:.1f}) scale({sb:.5f})" d="{BAT}" fill="#070a12"/>'
-            f'<text x="0" y="36" text-anchor="middle" font-family="{SANS}" font-weight="600" font-size="21" letter-spacing="1.5" fill="#070a12">TheWildEye</text>'
+            f'<path transform="translate({-500.8 * sb:.1f} {-152.6 * sb - 26:.1f}) scale({sb:.5f})" d="{BAT}" fill="#070a12"/>'
+            f'<text x="0" y="34" text-anchor="middle" font-family="{SANS}" font-weight="600" font-size="25" letter-spacing="0.5" fill="#070a12">TheWildEye</text>'
             f"</g></g></g></g>"
         )
         + "".join(rain)
