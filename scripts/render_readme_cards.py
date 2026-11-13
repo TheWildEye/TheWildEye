@@ -339,10 +339,10 @@ def count_up(num, x, y, attrs, begin, dur=1.3, frames=5, group=False):
 def hero():
     h = 396
     inner = (
-        f'<text class="f" {d(0.05)} x="44" y="86" font-family="{SANS}" font-weight="700" font-style="italic" font-size="20" letter-spacing="3" fill="{MUTED}">THEWILDEYE</text>'
-        f'<text class="r" {d(0.15)} x="42" y="176" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom <tspan fill="{GOLD_BRIGHT}">Nagpal</tspan></text>'
-        f'<text class="f" {d(0.4)} x="46" y="230" font-family="{SANS}" font-weight="600" font-size="16" fill="{INK_SOFT}">Security Researcher &#183; <tspan fill="{GOLD_BRIGHT}">Certified Ethical Hacker</tspan></text>'
-        f'<text class="f" {d(0.5)} x="46" y="262" font-family="{SANS}" font-weight="600" font-size="16" fill="{INK_SOFT}">National Forensic Sciences University</text>'
+        f'<text class="f" {d(0.05)} x="44" y="66" font-family="{SANS}" font-weight="700" font-style="italic" font-size="20" letter-spacing="3" fill="{MUTED}">THEWILDEYE</text>'
+        f'<text class="r" {d(0.15)} x="42" y="156" font-family="{SERIF}" font-size="76" letter-spacing="-1.5" fill="url(#shn)">Vyom <tspan fill="{GOLD_BRIGHT}">Nagpal</tspan></text>'
+        f'<text class="f" {d(0.4)} x="46" y="210" font-family="{SANS}" font-weight="600" font-size="16" fill="{INK_SOFT}">Security Researcher &#183; <tspan fill="{GOLD_BRIGHT}">Certified Ethical Hacker</tspan></text>'
+        f'<text class="f" {d(0.5)} x="46" y="242" font-family="{SANS}" font-weight="600" font-size="16" fill="{INK_SOFT}">National Forensic Sciences University</text>'
         f'<text class="r" {d(0.7)} x="46" y="332" font-family="{SANS}" font-size="19" fill="{INK}">I <tspan fill="{GOLD_BRIGHT}" font-weight="600">break</tspan> web &amp; mobile apps before attackers do,</text>'
         f'<text class="r" {d(0.78)} x="46" y="360" font-family="{SANS}" font-size="19" fill="{INK}">and <tspan fill="{GOLD_BRIGHT}" font-weight="600">build</tspan> offensive security tooling.</text>'
     )
