@@ -1,5 +1,5 @@
 <div align="center">
-<a href="https://vyomnagpal.in"><img src="./cards/page.svg?v=9" width="100%" alt="Vyom Nagpal - security researcher and ethical hacker. 8x CVE, 200+ vulnerabilities disclosed." /></a>
+<a href="https://vyomnagpal.in"><img src="./cards/page.svg?v=10" width="100%" alt="Vyom Nagpal - security researcher and ethical hacker. 8x CVE, 200+ vulnerabilities disclosed." /></a>
 </div>
 
 <br>

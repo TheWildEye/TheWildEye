@@ -217,7 +217,7 @@ def page_scene(w, h, seed=7):
     ox, oy = host[0] + host[1] / 2, host[2]
     tx, ty, rx = 646, 186, 172
     ry = rx * 0.5
-    dx, dy = tx - ox, ty - oy
+    dx, dy = tx - ox, ty - oy + 3
     s = (rx * 1.25) / 1002
 
     def _bolt():
@@ -253,11 +253,11 @@ def page_scene(w, h, seed=7):
         f'<rect width="{w}" height="{h}" fill="url(#gsky)"/>'
         + "".join(stars) + "".join(clouds) + "".join(bats)
         + far_svg + near_svg
-        + f'<rect x="{ox - 8:.0f}" y="{oy - 2:.0f}" width="16" height="18" fill="#04060b"/>'
-        + f'<path d="M{ox - 9:.0f} {oy + 2:.0f} L{ox + 9:.0f} {oy + 2:.0f} L{ox + 5:.0f} {oy - 7:.0f} L{ox - 5:.0f} {oy - 7:.0f} Z" fill="#04060b"/>'
-        + f'<circle cx="{ox:.0f}" cy="{oy - 5:.0f}" r="4.5" fill="url(#glens)"/>'
+        + f'<rect x="{ox - 8:.0f}" y="{oy - 5:.0f}" width="16" height="21" fill="#04060b"/>'
+        + f'<path d="M{ox - 9:.0f} {oy - 1:.0f} L{ox + 9:.0f} {oy - 1:.0f} L{ox + 5:.0f} {oy - 10:.0f} L{ox - 5:.0f} {oy - 10:.0f} Z" fill="#04060b"/>'
+        + f'<circle cx="{ox:.0f}" cy="{oy - 8:.0f}" r="4.5" fill="url(#glens)"/>'
         + (
-            f'<g transform="translate({ox:.0f} {oy:.0f})">'
+            f'<g transform="translate({ox:.0f} {oy - 3:.0f})">'
             f'<g><animateTransform attributeName="transform" type="rotate" values="-0.5;0.5;-0.5" '
             f'dur="13s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" '
             f'keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>'
