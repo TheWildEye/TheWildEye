@@ -440,11 +440,13 @@ CVES = [
     ("CVE-2026-119734", "BOLA / IDOR"),
     ("CVE-2026-119735", "Stored XSS"),
     ("CVE-2026-119736", "Hard-coded MQTT Credentials"),
+    ("CVE-2026-135486", "BOLA / IDOR"),
+    ("CVE-2026-135487", "Stored HTML Injection"),
 ]
 
 
 def cvelog():
-    h = 268
+    h = 332
     rows = []
     for i, (cid, cls) in enumerate(CVES):
         y = 82 + i * 32
@@ -455,7 +457,7 @@ def cvelog():
             f'<text x="320" y="{y}" font-family="{SANS}" font-weight="600" font-size="15.5" fill="{GOLD_BRIGHT}">{escape(cls)}</text>'
             f'<text x="{W - 44}" y="{y}" text-anchor="end" font-family="{SANS}" font-weight="500" font-size="13.5" fill="{MUTED}">2026</text></g>'
         )
-    head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="url(#shn)">6 published <tspan font-style="italic" fill="{GOLD}">CVEs</tspan></text>'
+    head = f'<text class="r" {d(0.2)} x="42" y="40" font-family="{SERIF}" font-size="30" fill="url(#shn)">8 published <tspan font-style="italic" fill="{GOLD}">CVEs</tspan></text>'
     return h, head + "".join(rows)
 
 
@@ -550,5 +552,5 @@ if __name__ == "__main__":
         )
         body += f'<g transform="translate(0 {yy:.0f})">{inner}</g>'
     write("page.svg", svg(W, total, body, ["serif", "sans"],
-                          "Vyom Nagpal - security researcher and ethical hacker. 6x CVE, 100+ vulnerabilities disclosed."))
+                          "Vyom Nagpal - security researcher and ethical hacker. 8x CVE, 100+ vulnerabilities disclosed."))
     link_cards()
