@@ -352,8 +352,8 @@ def hero():
 
 def kpi():
     h = 120
-    tiles = [("VULNERABILITIES", "100+", False), ("APPS SECURED", "20+", False), ("CVE RECORDS", "6\u00d7", False),
-             ("RECORDS PROTECTED", "4000+", False), ("TARGETS RECONNED", "1000+", True)]
+    tiles = [("VULNERABILITIES", "200+", False), ("APPS SECURED", "25+", False), ("CVE RECORDS", "8\u00d7", False),
+             ("RECORDS PROTECTED", "10M+", False), ("TARGETS RECONNED", "1000+", True)]
     n = len(tiles)
     gap = 14
     tw = (W - 80 - gap * (n - 1)) / n
@@ -552,5 +552,5 @@ if __name__ == "__main__":
         )
         body += f'<g transform="translate(0 {yy:.0f})">{inner}</g>'
     write("page.svg", svg(W, total, body, ["serif", "sans"],
-                          "Vyom Nagpal - security researcher and ethical hacker. 8x CVE, 100+ vulnerabilities disclosed."))
+                          "Vyom Nagpal - security researcher and ethical hacker. 8x CVE, 200+ vulnerabilities disclosed."))
     link_cards()
